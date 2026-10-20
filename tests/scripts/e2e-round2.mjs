@@ -129,7 +129,7 @@ if (only.has('footer')) for (const w of [320, 375, 414, 768, 1280]) {
   await page.screenshot({ path: path.join(shotDir, `footer-${w}-viewport.png`) }).catch(() => {});
   if (g.error) { rec(`footer: present ${tag}`, false, g.error); await ctx.close(); continue; }
   const near = (a, b, tol = 1) => Math.abs(a - b) <= tol;
-  rec(`footer: no horizontal scroll ${tag}`, g.scrollW <= g.vw + 1, `scrollWidth=${g.scrollW} viewport=${g.vw}`);
+  rec(`footer: no horizontal scroll ${tag}`, g.scrollW <= g.vw + 1 && g.vw <= w + 1, `scrollWidth=${g.scrollW} layout viewport=${g.vw} (nominal ${w}; a mobile browser widens the layout viewport when content is wider than the screen)`);
   rec(`footer: no text outside viewport ${tag}`, g.overflowRight.length === 0, g.overflowRight.join(' | ') || 'all footer text inside 0..viewport');
   rec(`footer: no text spilling out of its own box ${tag}`, g.overflowBox.length === 0, g.overflowBox.join(' | ') || 'every text line stays inside its link/paragraph box');
   rec(`footer: no overlapping text lines ${tag}`, g.overlaps.length === 0, g.overlaps.join(' | ') || 'no two text lines intersect');
@@ -223,6 +223,10 @@ if (only.has('tiers')) {
     rec('tiers: gentle has nothing rotating/spinning', pr.rotating === 0, `${pr.rotating} rotating element(s)`);
     const hid = await page.evaluate(() => [...document.querySelectorAll('h1,h2,h3,p,li,a,button,img')].filter((el) => { const r = el.getBoundingClientRect(); if (!r.height || r.top > innerHeight || el.closest('[aria-hidden="true"],.sr-only')) return false; let o = 1, p = el; while (p && p !== document.documentElement) { o *= +getComputedStyle(p).opacity; p = p.parentElement; } return o < 0.9 && getComputedStyle(el).visibility !== 'hidden'; }).map((e) => e.tagName + ':' + (e.textContent || e.alt || '').trim().slice(0, 20)));
     rec('tiers: gentle first viewport fully visible after intro', hid.length === 0, hid.slice(0, 5).join(' | ') || 'every first-viewport element opacity>=0.9');
+    const mqs = await page.evaluate(() => { const m = document.querySelector('.marquee'); if (!m) return null; const mr = m.getBoundingClientRect(); const cs = getComputedStyle(m); const shown = (c) => c.getClientRects().length > 0; const chips = [...m.querySelectorAll('.chip')].filter((c) => shown(c) && !c.closest('[aria-hidden="true"]')); const all = [...m.querySelectorAll('.chip')].filter(shown);
+      const out = chips.filter((c) => { const r = c.getBoundingClientRect(); return r.left < mr.left - 0.5 || r.right > mr.right + 0.5; }).length; const tr = m.querySelector('.marquee-track'); const a = tr ? tr.getAnimations().length : 0;
+      return { n: chips.length, shownAll: all.length, out, anims: a, mask: cs.maskImage + '|' + (cs.webkitMaskImage || ''), pseudo: getComputedStyle(m, '::before').content, sw: document.documentElement.scrollWidth, vw: innerWidth }; });
+    rec('tiers: gentle marquee is a static wrapped row (all chips inside the strip, no duplicate group, no animation, no fade mask/overlay)', !!mqs && mqs.n === 9 && mqs.shownAll === 9 && mqs.out === 0 && mqs.anims === 0 && !/url|gradient/.test(mqs.mask) && /^(none|normal|"")$/.test(mqs.pseudo) && mqs.sw <= mqs.vw, JSON.stringify(mqs));
     const hint = await page.evaluate(() => /reduced because|device asks|reduce motion|prefers reduced/i.test(document.querySelector('footer')?.innerText || ''));
     rec('tiers: footer explains why animations are reduced (auto-gentle hint)', hint, hint ? 'hint text present' : 'no hint text in footer', true);
     await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight)); await page.waitForTimeout(600);

@@ -1,0 +1,202 @@
+PASS edge: no long hard-edged luminance step in hero (frame 1) @1683x850 dark  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @1683x850 dark  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: lower-right region clean (user-reported lighter rectangle) @1683x850 dark  no straight step in x>50%, y>30%
+PASS edge: bare hero background (content hidden) has no hard-edged step @1683x850 dark  none
+PASS motion: marquee CSS animation exists, linear, infinite @1683x850 dark  {"D":26000,"n":9,"P":990.0469055175781,"timing":"linear","play":"running","fill":null}
+PASS motion: marquee moves left at P/duration (no stall) @1683x850 dark  moved -114.2px in 2999ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)
+PASS motion: velocity constant over 3 s (no jerk / jump), no reversals @1683x850 dark  reversals=0, worst 8-frame velocity deviation 5% (frames=177)
+PASS frames: all chips shift together (rigid motion) between the two frames @1683x850 dark  chip dx between frames: min -123.75 max -123.75 px (18 chips)
+PASS frames: marquee advanced the expected distance between the two frames @1683x850 dark  dx=-123.8px between frame 1 and frame 2
+PASS edge: no hard-edged step in the hero after scrolling to the marquee @1683x850 dark  none
+PASS edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=663) @1683x850 dark  none
+PASS strip: enough background samples (chips hidden) @1683x850 dark  611 usable columns
+PASS strip: marquee background == hero background, middle zone @1683x850 dark  median step 0 levels, worst column 1.93 (limits 1.2 / 4) over 464 columns
+PASS strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @1683x850 dark  median step -0.14 levels, worst column 1.65 (limits 1.5 / 3.75) over 74 columns; mq=306..918 x 456
+PASS strip: no dark/light block at the RIGHT fade edge @1683x850 dark  median step -0.28 levels, worst column 1.72 (limits 1.5 / 3.75) over 73 columns
+PASS seam: end translate equals the list pitch (loop is exactly one list long) @1683x850 dark  end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px
+PASS seam: chip[N+i] at cycle end sits exactly where chip[i] starts @1683x850 dark  max position error 0.00px over 9 chips
+PASS seam: strip is never empty at the left/right edge during the whole cycle @1683x850 dark  21 phases checked, strip always filled
+PASS seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @1683x850 dark  0.830% of 14099 strip px differ >24 levels, max 36.5, mean 0.377
+PASS page: no JS errors during the artifact run @1683x850 dark  none
+PASS edge: no long hard-edged luminance step in hero (frame 1) @1440x900 dark  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @1440x900 dark  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: lower-right region clean (user-reported lighter rectangle) @1440x900 dark  no straight step in x>50%, y>30%
+PASS edge: bare hero background (content hidden) has no hard-edged step @1440x900 dark  none
+PASS motion: marquee CSS animation exists, linear, infinite @1440x900 dark  {"D":26000,"n":9,"P":990.046875,"timing":"linear","play":"running","fill":null}
+PASS motion: marquee moves left at P/duration (no stall) @1440x900 dark  moved -114.2px in 3000ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)
+PASS motion: velocity constant over 3 s (no jerk / jump), no reversals @1440x900 dark  reversals=0, worst 8-frame velocity deviation 1% (frames=181)
+PASS frames: all chips shift together (rigid motion) between the two frames @1440x900 dark  chip dx between frames: min -124.39 max -124.39 px (18 chips)
+PASS frames: marquee advanced the expected distance between the two frames @1440x900 dark  dx=-124.4px between frame 1 and frame 2
+PASS edge: no hard-edged step in the hero after scrolling to the marquee @1440x900 dark  none
+PASS edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=717) @1440x900 dark  none
+PASS strip: enough background samples (chips hidden) @1440x900 dark  612 usable columns
+PASS strip: marquee background == hero background, middle zone @1440x900 dark  median step -0.14 levels, worst column 1.86 (limits 1.2 / 4) over 465 columns
+PASS strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @1440x900 dark  median step 0 levels, worst column 1.86 (limits 1.5 / 3.75) over 74 columns; mq=184..796 x 482
+PASS strip: no dark/light block at the RIGHT fade edge @1440x900 dark  median step 0 levels, worst column 1.57 (limits 1.5 / 3.75) over 73 columns
+PASS seam: end translate equals the list pitch (loop is exactly one list long) @1440x900 dark  end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px
+PASS seam: chip[N+i] at cycle end sits exactly where chip[i] starts @1440x900 dark  max position error 0.00px over 9 chips
+PASS seam: strip is never empty at the left/right edge during the whole cycle @1440x900 dark  21 phases checked, strip always filled
+PASS seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @1440x900 dark  0.262% of 14122 strip px differ >24 levels, max 35, mean 0.238
+PASS page: no JS errors during the artifact run @1440x900 dark  none
+PASS edge: no long hard-edged luminance step in hero (frame 1) @1280x800 dark  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @1280x800 dark  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: lower-right region clean (user-reported lighter rectangle) @1280x800 dark  no straight step in x>50%, y>30%
+PASS edge: bare hero background (content hidden) has no hard-edged step @1280x800 dark  none
+PASS motion: marquee CSS animation exists, linear, infinite @1280x800 dark  {"D":26000,"n":9,"P":990.046875,"timing":"linear","play":"running","fill":null}
+PASS motion: marquee moves left at P/duration (no stall) @1280x800 dark  moved -114.2px in 3000ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)
+PASS motion: velocity constant over 3 s (no jerk / jump), no reversals @1280x800 dark  reversals=0, worst 8-frame velocity deviation 3% (frames=181)
+PASS frames: all chips shift together (rigid motion) between the two frames @1280x800 dark  chip dx between frames: min -123.12 max -123.12 px (18 chips)
+PASS frames: marquee advanced the expected distance between the two frames @1280x800 dark  dx=-123.1px between frame 1 and frame 2
+PASS edge: no hard-edged step in the hero after scrolling to the marquee @1280x800 dark  none
+PASS edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=625) @1280x800 dark  none
+PASS strip: enough background samples (chips hidden) @1280x800 dark  615 usable columns
+PASS strip: marquee background == hero background, middle zone @1280x800 dark  median step -0.06 levels, worst column 2.49 (limits 1.2 / 4) over 468 columns
+PASS strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @1280x800 dark  median step -0.07 levels, worst column 1.86 (limits 1.5 / 3.75) over 74 columns; mq=100..717 x 432
+PASS strip: no dark/light block at the RIGHT fade edge @1280x800 dark  median step -0.21 levels, worst column 1.28 (limits 1.5 / 3.75) over 73 columns
+PASS seam: end translate equals the list pitch (loop is exactly one list long) @1280x800 dark  end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px
+PASS seam: chip[N+i] at cycle end sits exactly where chip[i] starts @1280x800 dark  max position error 0.00px over 9 chips
+PASS seam: strip is never empty at the left/right edge during the whole cycle @1280x800 dark  21 phases checked, strip always filled
+PASS seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @1280x800 dark  0.944% of 14191 strip px differ >24 levels, max 36.8, mean 0.443
+PASS page: no JS errors during the artifact run @1280x800 dark  none
+PASS edge: no long hard-edged luminance step in hero (frame 1) @768x1024 dark  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @768x1024 dark  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: lower-right region clean (user-reported lighter rectangle) @768x1024 dark  no straight step in x>50%, y>30%
+PASS edge: bare hero background (content hidden) has no hard-edged step @768x1024 dark  none
+PASS motion: marquee CSS animation exists, linear, infinite @768x1024 dark  {"D":26000,"n":9,"P":990.0469055175781,"timing":"linear","play":"running","fill":null}
+PASS motion: marquee moves left at P/duration (no stall) @768x1024 dark  moved -114.2px in 3001ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)
+PASS motion: velocity constant over 3 s (no jerk / jump), no reversals @768x1024 dark  reversals=0, worst 8-frame velocity deviation 2% (frames=180)
+PASS frames: all chips shift together (rigid motion) between the two frames @768x1024 dark  chip dx between frames: min -121.21 max -121.21 px (18 chips)
+PASS frames: marquee advanced the expected distance between the two frames @768x1024 dark  dx=-121.2px between frame 1 and frame 2
+PASS edge: no hard-edged step in the hero after scrolling to the marquee @768x1024 dark  none
+PASS edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=820) @768x1024 dark  none
+PASS strip: enough background samples (chips hidden) @768x1024 dark  377 usable columns
+PASS strip: marquee background == hero background, middle zone @768x1024 dark  median step 0 levels, worst column 2.28 (limits 1.2 / 4) over 286 columns
+PASS strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @768x1024 dark  median step 0 levels, worst column 1.71 (limits 1.5 / 3.75) over 46 columns; mq=25..402 x 541
+PASS strip: no dark/light block at the RIGHT fade edge @768x1024 dark  median step -0.07 levels, worst column 1.43 (limits 1.5 / 3.75) over 45 columns
+PASS seam: end translate equals the list pitch (loop is exactly one list long) @768x1024 dark  end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px
+PASS seam: chip[N+i] at cycle end sits exactly where chip[i] starts @768x1024 dark  max position error 0.00px over 9 chips
+PASS seam: strip is never empty at the left/right edge during the whole cycle @768x1024 dark  21 phases checked, strip always filled
+PASS seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @768x1024 dark  0.000% of 8717 strip px differ >24 levels, max 3.9, mean 0.022
+PASS page: no JS errors during the artifact run @768x1024 dark  none
+PASS edge: no long hard-edged luminance step in hero (frame 1) @430x932 dark  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @430x932 dark  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: lower-right region clean (user-reported lighter rectangle) @430x932 dark  no straight step in x>50%, y>30%
+PASS edge: bare hero background (content hidden) has no hard-edged step @430x932 dark  none
+PASS motion: marquee CSS animation exists, linear, infinite @430x932 dark  {"D":26000,"n":9,"P":990.046875,"timing":"linear","play":"running","fill":null}
+PASS motion: marquee moves left at P/duration (no stall) @430x932 dark  moved -114.2px in 3001ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)
+PASS motion: velocity constant over 3 s (no jerk / jump), no reversals @430x932 dark  reversals=0, worst 8-frame velocity deviation 2% (frames=181)
+PASS frames: all chips shift together (rigid motion) between the two frames @430x932 dark  chip dx between frames: min -117.41 max -117.41 px (18 chips)
+PASS frames: marquee advanced the expected distance between the two frames @430x932 dark  dx=-117.4px between frame 1 and frame 2
+PASS edge: no hard-edged step in the hero after scrolling to the marquee @430x932 dark  none
+PASS edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=629) @430x932 dark  none
+PASS strip: enough background samples (chips hidden) @430x932 dark  394 usable columns
+PASS strip: marquee background == hero background, middle zone @430x932 dark  median step -0.07 levels, worst column 2.21 (limits 1.2 / 4) over 299 columns
+PASS strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @430x932 dark  median step 0.21 levels, worst column 1.64 (limits 1.5 / 3.75) over 48 columns; mq=17..413 x 495
+PASS strip: no dark/light block at the RIGHT fade edge @430x932 dark  median step 0 levels, worst column 1.64 (limits 1.5 / 3.75) over 47 columns
+PASS seam: end translate equals the list pitch (loop is exactly one list long) @430x932 dark  end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px
+PASS seam: chip[N+i] at cycle end sits exactly where chip[i] starts @430x932 dark  max position error 0.00px over 9 chips
+PASS seam: strip is never empty at the left/right edge during the whole cycle @430x932 dark  21 phases checked, strip always filled
+PASS seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @430x932 dark  0.329% of 9108 strip px differ >24 levels, max 36.6, mean 0.4
+PASS page: no JS errors during the artifact run @430x932 dark  none
+PASS edge: no long hard-edged luminance step in hero (frame 1) @1683x850 light  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @1683x850 light  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: lower-right region clean (user-reported lighter rectangle) @1683x850 light  no straight step in x>50%, y>30%
+PASS edge: bare hero background (content hidden) has no hard-edged step @1683x850 light  none
+PASS motion: marquee CSS animation exists, linear, infinite @1683x850 light  {"D":26000,"n":9,"P":990.046875,"timing":"linear","play":"running","fill":null}
+PASS motion: marquee moves left at P/duration (no stall) @1683x850 light  moved -114.2px in 3001ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)
+PASS motion: velocity constant over 3 s (no jerk / jump), no reversals @1683x850 light  reversals=0, worst 8-frame velocity deviation 1% (frames=181)
+PASS frames: all chips shift together (rigid motion) between the two frames @1683x850 light  chip dx between frames: min -125.66 max -125.66 px (18 chips)
+PASS frames: marquee advanced the expected distance between the two frames @1683x850 light  dx=-125.7px between frame 1 and frame 2
+PASS edge: no hard-edged step in the hero after scrolling to the marquee @1683x850 light  none
+PASS edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=663) @1683x850 light  none
+PASS strip: enough background samples (chips hidden) @1683x850 light  611 usable columns
+PASS strip: marquee background == hero background, middle zone @1683x850 light  median step 0 levels, worst column 1.21 (limits 1.2 / 4) over 464 columns
+PASS strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @1683x850 light  median step 0.07 levels, worst column 0.79 (limits 1.5 / 3.75) over 74 columns; mq=306..918 x 456
+PASS strip: no dark/light block at the RIGHT fade edge @1683x850 light  median step 0 levels, worst column 1.43 (limits 1.5 / 3.75) over 73 columns
+PASS seam: end translate equals the list pitch (loop is exactly one list long) @1683x850 light  end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px
+PASS seam: chip[N+i] at cycle end sits exactly where chip[i] starts @1683x850 light  max position error 0.00px over 9 chips
+PASS seam: strip is never empty at the left/right edge during the whole cycle @1683x850 light  21 phases checked, strip always filled
+PASS seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @1683x850 light  0.865% of 14099 strip px differ >24 levels, max 38.8, mean 0.405
+PASS page: no JS errors during the artifact run @1683x850 light  none
+PASS edge: no long hard-edged luminance step in hero (frame 1) @1440x900 light  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @1440x900 light  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: lower-right region clean (user-reported lighter rectangle) @1440x900 light  no straight step in x>50%, y>30%
+PASS edge: bare hero background (content hidden) has no hard-edged step @1440x900 light  none
+PASS motion: marquee CSS animation exists, linear, infinite @1440x900 light  {"D":26000,"n":9,"P":990.0468444824219,"timing":"linear","play":"running","fill":null}
+PASS motion: marquee moves left at P/duration (no stall) @1440x900 light  moved -114.2px in 3000ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)
+PASS motion: velocity constant over 3 s (no jerk / jump), no reversals @1440x900 light  reversals=0, worst 8-frame velocity deviation 1% (frames=181)
+PASS frames: all chips shift together (rigid motion) between the two frames @1440x900 light  chip dx between frames: min -123.75 max -123.75 px (18 chips)
+PASS frames: marquee advanced the expected distance between the two frames @1440x900 light  dx=-123.7px between frame 1 and frame 2
+PASS edge: no hard-edged step in the hero after scrolling to the marquee @1440x900 light  none
+PASS edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=717) @1440x900 light  none
+PASS strip: enough background samples (chips hidden) @1440x900 light  612 usable columns
+PASS strip: marquee background == hero background, middle zone @1440x900 light  median step -0.07 levels, worst column 1.21 (limits 1.2 / 4) over 465 columns
+PASS strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @1440x900 light  median step 0 levels, worst column 0.72 (limits 1.5 / 3.75) over 74 columns; mq=184..796 x 482
+PASS strip: no dark/light block at the RIGHT fade edge @1440x900 light  median step -0.07 levels, worst column 0.72 (limits 1.5 / 3.75) over 73 columns
+PASS seam: end translate equals the list pitch (loop is exactly one list long) @1440x900 light  end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px
+PASS seam: chip[N+i] at cycle end sits exactly where chip[i] starts @1440x900 light  max position error 0.00px over 9 chips
+PASS seam: strip is never empty at the left/right edge during the whole cycle @1440x900 light  21 phases checked, strip always filled
+PASS seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @1440x900 light  0.262% of 14122 strip px differ >24 levels, max 38.8, mean 0.268
+PASS page: no JS errors during the artifact run @1440x900 light  none
+PASS edge: no long hard-edged luminance step in hero (frame 1) @1280x800 light  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @1280x800 light  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: lower-right region clean (user-reported lighter rectangle) @1280x800 light  no straight step in x>50%, y>30%
+PASS edge: bare hero background (content hidden) has no hard-edged step @1280x800 light  none
+PASS motion: marquee CSS animation exists, linear, infinite @1280x800 light  {"D":26000,"n":9,"P":990.0468444824219,"timing":"linear","play":"running","fill":null}
+PASS motion: marquee moves left at P/duration (no stall) @1280x800 light  moved -114.2px in 3002ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)
+PASS motion: velocity constant over 3 s (no jerk / jump), no reversals @1280x800 light  reversals=0, worst 8-frame velocity deviation 1% (frames=181)
+PASS frames: all chips shift together (rigid motion) between the two frames @1280x800 light  chip dx between frames: min -122.48 max -122.48 px (18 chips)
+PASS frames: marquee advanced the expected distance between the two frames @1280x800 light  dx=-122.5px between frame 1 and frame 2
+PASS edge: no hard-edged step in the hero after scrolling to the marquee @1280x800 light  none
+PASS edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=625) @1280x800 light  none
+PASS strip: enough background samples (chips hidden) @1280x800 light  615 usable columns
+PASS strip: marquee background == hero background, middle zone @1280x800 light  median step 0.07 levels, worst column 1.29 (limits 1.2 / 4) over 468 columns
+PASS strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @1280x800 light  median step 0 levels, worst column 0.79 (limits 1.5 / 3.75) over 74 columns; mq=100..717 x 432
+PASS strip: no dark/light block at the RIGHT fade edge @1280x800 light  median step 0 levels, worst column 0.86 (limits 1.5 / 3.75) over 73 columns
+PASS seam: end translate equals the list pitch (loop is exactly one list long) @1280x800 light  end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px
+PASS seam: chip[N+i] at cycle end sits exactly where chip[i] starts @1280x800 light  max position error 0.00px over 9 chips
+PASS seam: strip is never empty at the left/right edge during the whole cycle @1280x800 light  21 phases checked, strip always filled
+PASS seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @1280x800 light  0.994% of 14191 strip px differ >24 levels, max 39, mean 0.472
+PASS page: no JS errors during the artifact run @1280x800 light  none
+PASS edge: no long hard-edged luminance step in hero (frame 1) @768x1024 light  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @768x1024 light  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: lower-right region clean (user-reported lighter rectangle) @768x1024 light  no straight step in x>50%, y>30%
+PASS edge: bare hero background (content hidden) has no hard-edged step @768x1024 light  none
+PASS motion: marquee CSS animation exists, linear, infinite @768x1024 light  {"D":26000,"n":9,"P":990.0469055175781,"timing":"linear","play":"running","fill":null}
+PASS motion: marquee moves left at P/duration (no stall) @768x1024 light  moved -114.2px in 3000ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)
+PASS motion: velocity constant over 3 s (no jerk / jump), no reversals @768x1024 light  reversals=0, worst 8-frame velocity deviation 1% (frames=181)
+PASS frames: all chips shift together (rigid motion) between the two frames @768x1024 light  chip dx between frames: min -121.85 max -121.85 px (18 chips)
+PASS frames: marquee advanced the expected distance between the two frames @768x1024 light  dx=-121.9px between frame 1 and frame 2
+PASS edge: no hard-edged step in the hero after scrolling to the marquee @768x1024 light  none
+PASS edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=820) @768x1024 light  none
+PASS strip: enough background samples (chips hidden) @768x1024 light  377 usable columns
+PASS strip: marquee background == hero background, middle zone @768x1024 light  median step 0 levels, worst column 0.93 (limits 1.2 / 4) over 286 columns
+PASS strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @768x1024 light  median step 0 levels, worst column 0.86 (limits 1.5 / 3.75) over 46 columns; mq=25..402 x 541
+PASS strip: no dark/light block at the RIGHT fade edge @768x1024 light  median step -0.36 levels, worst column 0.93 (limits 1.5 / 3.75) over 45 columns
+PASS seam: end translate equals the list pitch (loop is exactly one list long) @768x1024 light  end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px
+PASS seam: chip[N+i] at cycle end sits exactly where chip[i] starts @768x1024 light  max position error 0.00px over 9 chips
+PASS seam: strip is never empty at the left/right edge during the whole cycle @768x1024 light  21 phases checked, strip always filled
+PASS seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @768x1024 light  0.000% of 8717 strip px differ >24 levels, max 4.2, mean 0.026
+PASS page: no JS errors during the artifact run @768x1024 light  none
+PASS edge: no long hard-edged luminance step in hero (frame 1) @430x932 light  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @430x932 light  none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)
+PASS edge: lower-right region clean (user-reported lighter rectangle) @430x932 light  no straight step in x>50%, y>30%
+PASS edge: bare hero background (content hidden) has no hard-edged step @430x932 light  none
+PASS motion: marquee CSS animation exists, linear, infinite @430x932 light  {"D":26000,"n":9,"P":990.0468444824219,"timing":"linear","play":"running","fill":null}
+PASS motion: marquee moves left at P/duration (no stall) @430x932 light  moved -114.2px in 3000ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)
+PASS motion: velocity constant over 3 s (no jerk / jump), no reversals @430x932 light  reversals=0, worst 8-frame velocity deviation 0% (frames=181)
+PASS frames: all chips shift together (rigid motion) between the two frames @430x932 light  chip dx between frames: min -119.94 max -119.94 px (18 chips)
+PASS frames: marquee advanced the expected distance between the two frames @430x932 light  dx=-119.9px between frame 1 and frame 2
+PASS edge: no hard-edged step in the hero after scrolling to the marquee @430x932 light  none
+PASS edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=629) @430x932 light  none
+PASS strip: enough background samples (chips hidden) @430x932 light  394 usable columns
+PASS strip: marquee background == hero background, middle zone @430x932 light  median step 0.07 levels, worst column 0.86 (limits 1.2 / 4) over 299 columns
+PASS strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @430x932 light  median step 0.07 levels, worst column 0.79 (limits 1.5 / 3.75) over 48 columns; mq=17..413 x 495
+PASS strip: no dark/light block at the RIGHT fade edge @430x932 light  median step 0 levels, worst column 0.72 (limits 1.5 / 3.75) over 47 columns
+PASS seam: end translate equals the list pitch (loop is exactly one list long) @430x932 light  end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px
+PASS seam: chip[N+i] at cycle end sits exactly where chip[i] starts @430x932 light  max position error 0.00px over 9 chips
+PASS seam: strip is never empty at the left/right edge during the whole cycle @430x932 light  21 phases checked, strip always filled
+PASS seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @430x932 light  0.340% of 9108 strip px differ >24 levels, max 38.3, mean 0.44
+PASS page: no JS errors during the artifact run @430x932 light  none
+
+ARTIFACT-DETECT[sub] PASS: 200 checks, 0 fail, 0 warn. Evidence: /Users/karthikmuthumari/Documents/repo/my-profile/tests/evidence/sub/artifacts

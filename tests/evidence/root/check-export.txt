@@ -1,4 +1,4 @@
-check-export  out=/private/tmp/claude-503/-Users-karthikmuthumari-Documents-repo-my-profile/9508d51d-09f2-4966-adcb-354370f3d5ea/scratchpad/qa-work/root/out
+check-export  out=/var/folders/zr/ttc_sp054dq854jpz930r92m0000gq/T/qa-work/root/out
   PASS  structure:index.html             present
   PASS  structure:404.html               present
   PASS  structure:_next/static           present
@@ -8,22 +8,39 @@ check-export  out=/private/tmp/claude-503/-Users-karthikmuthumari-Documents-repo
   PASS  structure:blog-index             blog/index.html present
   PASS  structure:blog-posts             3 post page(s): blog/event-driven-pricing-on-aws/index.html, blog/local-rag-lancedb-bm25-rrf/index.html, blog/spec-driven-development-with-claude-code/index.html
   PASS  structure:favicon                index.html has <link rel=icon>
-  PASS  privacy:no-phone-or-address      scanned 64 files for phone/address patterns (1 phone number(s) derived from CV): none found
-  PASS  contact:email-allowlist          only approved e-mails found in out/: karthikmuthumari7@gmail.com, karthik.muthumari@mindera.com
-  PASS  contact:mailto-targets-approved  mailto targets: karthikmuthumari7@gmail.com, karthik.muthumari@mindera.com
-  PASS  contact:mailto-work-on-home      <a href="mailto:karthik.muthumari@mindera.com"> on index.html (+7 other page(s))
+  PASS  privacy:no-phone-or-address      scanned 61 files for phone/address patterns (1 phone number(s) derived from CV): none found
+  PASS  contact:email-allowlist          only approved e-mails found in out/: karthik.muthumari@mindera.com, karthikmuthumari7@gmail.com
+  PASS  contact:mailto-targets-approved  mailto targets: karthik.muthumari@mindera.com, karthikmuthumari7@gmail.com
+  PASS  contact:mailto-work-on-home      <a href="mailto:karthik.muthumari@mindera.com"> on index.html (+8 other page(s))
   PASS  contact:mailto-work-all-pages    present on every page (footer/contact)
-  PASS  contact:mailto-personal-on-home  <a href="mailto:karthikmuthumari7@gmail.com"> on index.html (+8 other page(s))
+  PASS  contact:mailto-personal-on-home  <a href="mailto:karthikmuthumari7@gmail.com"> on index.html (+7 other page(s))
   PASS  contact:mailto-personal-all-pages present on every page (footer/contact)
+  PASS  contact:work-first-on-home       first mailto in index.html = karthik.muthumari@mindera.com; sequence: karthik.muthumari@mindera.com -> karthikmuthumari7@gmail.com
+  PASS  contact:work-first-in-hero-contact-footer hero mail icon, #contact and <footer>: work address comes first (hero links only to work)
+  PASS  contact:nav-mailto-is-work-if-any header/nav has no mailto (CTA is the #contact anchor)
+  PASS  contact:preferred-badge-present  "Preferred" label is in the static HTML
+  PASS  contact:jsonld-email-is-work     JSON-LD email(s): karthik.muthumari@mindera.com
+  PASS  contact:jsonld-no-personal-email personal address must not be the structured-data contact
   PASS  contact:social-urls-exact        exact https://www.linkedin.com/in/karthikmuthumari/ and https://github.com/karthik-muthumari present; no other linkedin/github profile links
   PASS  contact:no-placeholder-urls      no hello@example.com / example.com / your-*-handle in HTML, RSC payloads or app chunks
   PASS  privacy:no-original-photos       no DSC* names, no image >2MB, no sha256 match with 4 originals in pics/
-  PASS  images:per-file-budget           4 raster images, all ≤ 500KB
-  PASS  images:total-budget              total raster image bytes = 1.00 MB (budget 3 MB)
+  PASS  images:per-file-budget           1 raster images, all ≤ 500KB
+  PASS  images:total-budget              total raster image bytes = 0.08 MB (budget 3 MB)
   PASS  images:max-dimension             no image longer side > 2400px
   PASS  privacy:no-exif-gps              no GPS EXIF tag in any JPEG
-  PASS  weight:js-total                  23 chunks, 1044 KB uncompressed (budget 1500 KB; all-routes sum, not first-load)
-  PASS  weight:out-total                 out/ = 2.93 MB across 64 files
+  PASS  images:no-original-or-leftover-names no MyProfilePic.* original, no DSC*, no portrait-{square,tall,wide}.jpg leftovers in out/
+  PASS  images:lowercase-filenames       every image file name and extension is lowercase
+  PASS  images:hero-img-found            1 hero <img>: <img src="/avatar/karthik-fallback.jpg" alt="Portrait of Karthik Muthumari" width="900" height="900" fetchPriority="high" decoding="async" c
+  PASS  images:hero-src-has-base         /avatar/karthik-fallback.jpg
+  PASS  images:hero-file-exists-lowercase avatar/karthik-fallback.jpg exists=true lowercase=true
+  PASS  images:hero-size-budget          avatar/karthik-fallback.jpg = 82 KB (budget 400 KB)
+  PASS  images:hero-dimensions           1040x1040 (400..1600px; the multi-megapixel original must not ship)
+  PASS  images:hero-not-original         sha256 differs from all 4 originals in pics/
+  PASS  privacy:no-exif-in-png-webp-xmp  no EXIF/XMP/GPS metadata chunk in any PNG/WebP/JPEG
+  PASS  motion:tier-code-shipped         chunks contain "gentle" tier=true, localStorage key "motion"=true, data-motion hook=true
+  PASS  motion:noscript-reveal-fallback  <noscript><style> forces opacity:1 so no-JS visitors do not see an empty page
+  PASS  weight:js-total                  22 chunks, 1056 KB uncompressed (budget 1500 KB; all-routes sum, not first-load)
+  PASS  weight:out-total                 out/ = 2.06 MB across 61 files
   PASS  html:html-lang                   ok on 7 pages
   PASS  html:title                       ok on 7 pages
   PASS  html:viewport                    ok on 7 pages

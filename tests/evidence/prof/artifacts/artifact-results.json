@@ -1,0 +1,1008 @@
+{
+  "label": "prof",
+  "origin": "http://127.0.0.1:4175/profile",
+  "T": 2,
+  "MINLEN": 100,
+  "results": [
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 1) @1683x850 dark",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @1683x850 dark",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: lower-right region clean (user-reported lighter rectangle) @1683x850 dark",
+      "status": "PASS",
+      "msg": "no straight step in x>50%, y>30%"
+    },
+    {
+      "id": "edge: bare hero background (content hidden) has no hard-edged step @1683x850 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "motion: marquee CSS animation exists, linear, infinite @1683x850 dark",
+      "status": "PASS",
+      "msg": "{\"D\":26000,\"n\":9,\"P\":990.0468444824219,\"timing\":\"linear\",\"play\":\"running\",\"fill\":null}"
+    },
+    {
+      "id": "motion: marquee moves left at P/duration (no stall) @1683x850 dark",
+      "status": "PASS",
+      "msg": "moved -114.2px in 3000ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)"
+    },
+    {
+      "id": "motion: velocity constant over 3 s (no jerk / jump), no reversals @1683x850 dark",
+      "status": "PASS",
+      "msg": "reversals=0, worst 8-frame velocity deviation 11% (frames=177)"
+    },
+    {
+      "id": "frames: all chips shift together (rigid motion) between the two frames @1683x850 dark",
+      "status": "PASS",
+      "msg": "chip dx between frames: min -124.39 max -124.39 px (18 chips)"
+    },
+    {
+      "id": "frames: marquee advanced the expected distance between the two frames @1683x850 dark",
+      "status": "PASS",
+      "msg": "dx=-124.4px between frame 1 and frame 2"
+    },
+    {
+      "id": "edge: no hard-edged step in the hero after scrolling to the marquee @1683x850 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=663) @1683x850 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "strip: enough background samples (chips hidden) @1683x850 dark",
+      "status": "PASS",
+      "msg": "611 usable columns"
+    },
+    {
+      "id": "strip: marquee background == hero background, middle zone @1683x850 dark",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 1.93 (limits 1.2 / 4) over 464 columns"
+    },
+    {
+      "id": "strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @1683x850 dark",
+      "status": "PASS",
+      "msg": "median step -0.14 levels, worst column 1.65 (limits 1.5 / 3.75) over 74 columns; mq=306..918 x 456"
+    },
+    {
+      "id": "strip: no dark/light block at the RIGHT fade edge @1683x850 dark",
+      "status": "PASS",
+      "msg": "median step -0.28 levels, worst column 1.72 (limits 1.5 / 3.75) over 73 columns"
+    },
+    {
+      "id": "seam: end translate equals the list pitch (loop is exactly one list long) @1683x850 dark",
+      "status": "PASS",
+      "msg": "end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px"
+    },
+    {
+      "id": "seam: chip[N+i] at cycle end sits exactly where chip[i] starts @1683x850 dark",
+      "status": "PASS",
+      "msg": "max position error 0.00px over 9 chips"
+    },
+    {
+      "id": "seam: strip is never empty at the left/right edge during the whole cycle @1683x850 dark",
+      "status": "PASS",
+      "msg": "21 phases checked, strip always filled"
+    },
+    {
+      "id": "seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @1683x850 dark",
+      "status": "PASS",
+      "msg": "0.830% of 14099 strip px differ >24 levels, max 36.5, mean 0.377"
+    },
+    {
+      "id": "page: no JS errors during the artifact run @1683x850 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 1) @1440x900 dark",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @1440x900 dark",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: lower-right region clean (user-reported lighter rectangle) @1440x900 dark",
+      "status": "PASS",
+      "msg": "no straight step in x>50%, y>30%"
+    },
+    {
+      "id": "edge: bare hero background (content hidden) has no hard-edged step @1440x900 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "motion: marquee CSS animation exists, linear, infinite @1440x900 dark",
+      "status": "PASS",
+      "msg": "{\"D\":26000,\"n\":9,\"P\":990.046875,\"timing\":\"linear\",\"play\":\"running\",\"fill\":null}"
+    },
+    {
+      "id": "motion: marquee moves left at P/duration (no stall) @1440x900 dark",
+      "status": "PASS",
+      "msg": "moved -113.6px in 2983ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)"
+    },
+    {
+      "id": "motion: velocity constant over 3 s (no jerk / jump), no reversals @1440x900 dark",
+      "status": "PASS",
+      "msg": "reversals=0, worst 8-frame velocity deviation 1% (frames=180)"
+    },
+    {
+      "id": "frames: all chips shift together (rigid motion) between the two frames @1440x900 dark",
+      "status": "PASS",
+      "msg": "chip dx between frames: min -123.75 max -123.75 px (18 chips)"
+    },
+    {
+      "id": "frames: marquee advanced the expected distance between the two frames @1440x900 dark",
+      "status": "PASS",
+      "msg": "dx=-123.8px between frame 1 and frame 2"
+    },
+    {
+      "id": "edge: no hard-edged step in the hero after scrolling to the marquee @1440x900 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=717) @1440x900 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "strip: enough background samples (chips hidden) @1440x900 dark",
+      "status": "PASS",
+      "msg": "612 usable columns"
+    },
+    {
+      "id": "strip: marquee background == hero background, middle zone @1440x900 dark",
+      "status": "PASS",
+      "msg": "median step -0.14 levels, worst column 1.86 (limits 1.2 / 4) over 465 columns"
+    },
+    {
+      "id": "strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @1440x900 dark",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 1.86 (limits 1.5 / 3.75) over 74 columns; mq=184..796 x 482"
+    },
+    {
+      "id": "strip: no dark/light block at the RIGHT fade edge @1440x900 dark",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 1.57 (limits 1.5 / 3.75) over 73 columns"
+    },
+    {
+      "id": "seam: end translate equals the list pitch (loop is exactly one list long) @1440x900 dark",
+      "status": "PASS",
+      "msg": "end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px"
+    },
+    {
+      "id": "seam: chip[N+i] at cycle end sits exactly where chip[i] starts @1440x900 dark",
+      "status": "PASS",
+      "msg": "max position error 0.00px over 9 chips"
+    },
+    {
+      "id": "seam: strip is never empty at the left/right edge during the whole cycle @1440x900 dark",
+      "status": "PASS",
+      "msg": "21 phases checked, strip always filled"
+    },
+    {
+      "id": "seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @1440x900 dark",
+      "status": "PASS",
+      "msg": "0.262% of 14122 strip px differ >24 levels, max 35, mean 0.238"
+    },
+    {
+      "id": "page: no JS errors during the artifact run @1440x900 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 1) @1280x800 dark",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @1280x800 dark",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: lower-right region clean (user-reported lighter rectangle) @1280x800 dark",
+      "status": "PASS",
+      "msg": "no straight step in x>50%, y>30%"
+    },
+    {
+      "id": "edge: bare hero background (content hidden) has no hard-edged step @1280x800 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "motion: marquee CSS animation exists, linear, infinite @1280x800 dark",
+      "status": "PASS",
+      "msg": "{\"D\":26000,\"n\":9,\"P\":990.046875,\"timing\":\"linear\",\"play\":\"running\",\"fill\":null}"
+    },
+    {
+      "id": "motion: marquee moves left at P/duration (no stall) @1280x800 dark",
+      "status": "PASS",
+      "msg": "moved -114.2px in 3000ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)"
+    },
+    {
+      "id": "motion: velocity constant over 3 s (no jerk / jump), no reversals @1280x800 dark",
+      "status": "PASS",
+      "msg": "reversals=0, worst 8-frame velocity deviation 2% (frames=181)"
+    },
+    {
+      "id": "frames: all chips shift together (rigid motion) between the two frames @1280x800 dark",
+      "status": "PASS",
+      "msg": "chip dx between frames: min -122.48 max -122.48 px (18 chips)"
+    },
+    {
+      "id": "frames: marquee advanced the expected distance between the two frames @1280x800 dark",
+      "status": "PASS",
+      "msg": "dx=-122.5px between frame 1 and frame 2"
+    },
+    {
+      "id": "edge: no hard-edged step in the hero after scrolling to the marquee @1280x800 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=625) @1280x800 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "strip: enough background samples (chips hidden) @1280x800 dark",
+      "status": "PASS",
+      "msg": "615 usable columns"
+    },
+    {
+      "id": "strip: marquee background == hero background, middle zone @1280x800 dark",
+      "status": "PASS",
+      "msg": "median step -0.06 levels, worst column 2.49 (limits 1.2 / 4) over 468 columns"
+    },
+    {
+      "id": "strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @1280x800 dark",
+      "status": "PASS",
+      "msg": "median step -0.07 levels, worst column 1.86 (limits 1.5 / 3.75) over 74 columns; mq=100..717 x 432"
+    },
+    {
+      "id": "strip: no dark/light block at the RIGHT fade edge @1280x800 dark",
+      "status": "PASS",
+      "msg": "median step -0.21 levels, worst column 1.28 (limits 1.5 / 3.75) over 73 columns"
+    },
+    {
+      "id": "seam: end translate equals the list pitch (loop is exactly one list long) @1280x800 dark",
+      "status": "PASS",
+      "msg": "end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px"
+    },
+    {
+      "id": "seam: chip[N+i] at cycle end sits exactly where chip[i] starts @1280x800 dark",
+      "status": "PASS",
+      "msg": "max position error 0.00px over 9 chips"
+    },
+    {
+      "id": "seam: strip is never empty at the left/right edge during the whole cycle @1280x800 dark",
+      "status": "PASS",
+      "msg": "21 phases checked, strip always filled"
+    },
+    {
+      "id": "seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @1280x800 dark",
+      "status": "PASS",
+      "msg": "0.944% of 14191 strip px differ >24 levels, max 36.8, mean 0.443"
+    },
+    {
+      "id": "page: no JS errors during the artifact run @1280x800 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 1) @768x1024 dark",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @768x1024 dark",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: lower-right region clean (user-reported lighter rectangle) @768x1024 dark",
+      "status": "PASS",
+      "msg": "no straight step in x>50%, y>30%"
+    },
+    {
+      "id": "edge: bare hero background (content hidden) has no hard-edged step @768x1024 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "motion: marquee CSS animation exists, linear, infinite @768x1024 dark",
+      "status": "PASS",
+      "msg": "{\"D\":26000,\"n\":9,\"P\":990.0468444824219,\"timing\":\"linear\",\"play\":\"running\",\"fill\":null}"
+    },
+    {
+      "id": "motion: marquee moves left at P/duration (no stall) @768x1024 dark",
+      "status": "PASS",
+      "msg": "moved -114.2px in 3000ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)"
+    },
+    {
+      "id": "motion: velocity constant over 3 s (no jerk / jump), no reversals @768x1024 dark",
+      "status": "PASS",
+      "msg": "reversals=0, worst 8-frame velocity deviation 2% (frames=181)"
+    },
+    {
+      "id": "frames: all chips shift together (rigid motion) between the two frames @768x1024 dark",
+      "status": "PASS",
+      "msg": "chip dx between frames: min -121.21 max -121.21 px (18 chips)"
+    },
+    {
+      "id": "frames: marquee advanced the expected distance between the two frames @768x1024 dark",
+      "status": "PASS",
+      "msg": "dx=-121.2px between frame 1 and frame 2"
+    },
+    {
+      "id": "edge: no hard-edged step in the hero after scrolling to the marquee @768x1024 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=820) @768x1024 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "strip: enough background samples (chips hidden) @768x1024 dark",
+      "status": "PASS",
+      "msg": "377 usable columns"
+    },
+    {
+      "id": "strip: marquee background == hero background, middle zone @768x1024 dark",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 2.28 (limits 1.2 / 4) over 286 columns"
+    },
+    {
+      "id": "strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @768x1024 dark",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 1.71 (limits 1.5 / 3.75) over 46 columns; mq=25..402 x 541"
+    },
+    {
+      "id": "strip: no dark/light block at the RIGHT fade edge @768x1024 dark",
+      "status": "PASS",
+      "msg": "median step -0.07 levels, worst column 1.43 (limits 1.5 / 3.75) over 45 columns"
+    },
+    {
+      "id": "seam: end translate equals the list pitch (loop is exactly one list long) @768x1024 dark",
+      "status": "PASS",
+      "msg": "end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px"
+    },
+    {
+      "id": "seam: chip[N+i] at cycle end sits exactly where chip[i] starts @768x1024 dark",
+      "status": "PASS",
+      "msg": "max position error 0.00px over 9 chips"
+    },
+    {
+      "id": "seam: strip is never empty at the left/right edge during the whole cycle @768x1024 dark",
+      "status": "PASS",
+      "msg": "21 phases checked, strip always filled"
+    },
+    {
+      "id": "seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @768x1024 dark",
+      "status": "PASS",
+      "msg": "0.000% of 8717 strip px differ >24 levels, max 3.9, mean 0.022"
+    },
+    {
+      "id": "page: no JS errors during the artifact run @768x1024 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 1) @430x932 dark",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @430x932 dark",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: lower-right region clean (user-reported lighter rectangle) @430x932 dark",
+      "status": "PASS",
+      "msg": "no straight step in x>50%, y>30%"
+    },
+    {
+      "id": "edge: bare hero background (content hidden) has no hard-edged step @430x932 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "motion: marquee CSS animation exists, linear, infinite @430x932 dark",
+      "status": "PASS",
+      "msg": "{\"D\":26000,\"n\":9,\"P\":990.046875,\"timing\":\"linear\",\"play\":\"running\",\"fill\":null}"
+    },
+    {
+      "id": "motion: marquee moves left at P/duration (no stall) @430x932 dark",
+      "status": "PASS",
+      "msg": "moved -114.2px in 3001ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)"
+    },
+    {
+      "id": "motion: velocity constant over 3 s (no jerk / jump), no reversals @430x932 dark",
+      "status": "PASS",
+      "msg": "reversals=0, worst 8-frame velocity deviation 1% (frames=181)"
+    },
+    {
+      "id": "frames: all chips shift together (rigid motion) between the two frames @430x932 dark",
+      "status": "PASS",
+      "msg": "chip dx between frames: min -119.31 max -119.31 px (18 chips)"
+    },
+    {
+      "id": "frames: marquee advanced the expected distance between the two frames @430x932 dark",
+      "status": "PASS",
+      "msg": "dx=-119.3px between frame 1 and frame 2"
+    },
+    {
+      "id": "edge: no hard-edged step in the hero after scrolling to the marquee @430x932 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=629) @430x932 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "strip: enough background samples (chips hidden) @430x932 dark",
+      "status": "PASS",
+      "msg": "394 usable columns"
+    },
+    {
+      "id": "strip: marquee background == hero background, middle zone @430x932 dark",
+      "status": "PASS",
+      "msg": "median step -0.07 levels, worst column 2.21 (limits 1.2 / 4) over 299 columns"
+    },
+    {
+      "id": "strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @430x932 dark",
+      "status": "PASS",
+      "msg": "median step 0.21 levels, worst column 1.64 (limits 1.5 / 3.75) over 48 columns; mq=17..413 x 495"
+    },
+    {
+      "id": "strip: no dark/light block at the RIGHT fade edge @430x932 dark",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 1.64 (limits 1.5 / 3.75) over 47 columns"
+    },
+    {
+      "id": "seam: end translate equals the list pitch (loop is exactly one list long) @430x932 dark",
+      "status": "PASS",
+      "msg": "end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px"
+    },
+    {
+      "id": "seam: chip[N+i] at cycle end sits exactly where chip[i] starts @430x932 dark",
+      "status": "PASS",
+      "msg": "max position error 0.00px over 9 chips"
+    },
+    {
+      "id": "seam: strip is never empty at the left/right edge during the whole cycle @430x932 dark",
+      "status": "PASS",
+      "msg": "21 phases checked, strip always filled"
+    },
+    {
+      "id": "seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @430x932 dark",
+      "status": "PASS",
+      "msg": "0.329% of 9108 strip px differ >24 levels, max 36.6, mean 0.4"
+    },
+    {
+      "id": "page: no JS errors during the artifact run @430x932 dark",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 1) @1683x850 light",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @1683x850 light",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: lower-right region clean (user-reported lighter rectangle) @1683x850 light",
+      "status": "PASS",
+      "msg": "no straight step in x>50%, y>30%"
+    },
+    {
+      "id": "edge: bare hero background (content hidden) has no hard-edged step @1683x850 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "motion: marquee CSS animation exists, linear, infinite @1683x850 light",
+      "status": "PASS",
+      "msg": "{\"D\":26000,\"n\":9,\"P\":990.0468444824219,\"timing\":\"linear\",\"play\":\"running\",\"fill\":null}"
+    },
+    {
+      "id": "motion: marquee moves left at P/duration (no stall) @1683x850 light",
+      "status": "PASS",
+      "msg": "moved -114.2px in 3000ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)"
+    },
+    {
+      "id": "motion: velocity constant over 3 s (no jerk / jump), no reversals @1683x850 light",
+      "status": "PASS",
+      "msg": "reversals=0, worst 8-frame velocity deviation 1% (frames=181)"
+    },
+    {
+      "id": "frames: all chips shift together (rigid motion) between the two frames @1683x850 light",
+      "status": "PASS",
+      "msg": "chip dx between frames: min -126.29 max -126.29 px (18 chips)"
+    },
+    {
+      "id": "frames: marquee advanced the expected distance between the two frames @1683x850 light",
+      "status": "PASS",
+      "msg": "dx=-126.3px between frame 1 and frame 2"
+    },
+    {
+      "id": "edge: no hard-edged step in the hero after scrolling to the marquee @1683x850 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=663) @1683x850 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "strip: enough background samples (chips hidden) @1683x850 light",
+      "status": "PASS",
+      "msg": "611 usable columns"
+    },
+    {
+      "id": "strip: marquee background == hero background, middle zone @1683x850 light",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 1.21 (limits 1.2 / 4) over 464 columns"
+    },
+    {
+      "id": "strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @1683x850 light",
+      "status": "PASS",
+      "msg": "median step 0.07 levels, worst column 0.79 (limits 1.5 / 3.75) over 74 columns; mq=306..918 x 456"
+    },
+    {
+      "id": "strip: no dark/light block at the RIGHT fade edge @1683x850 light",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 1.43 (limits 1.5 / 3.75) over 73 columns"
+    },
+    {
+      "id": "seam: end translate equals the list pitch (loop is exactly one list long) @1683x850 light",
+      "status": "PASS",
+      "msg": "end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px"
+    },
+    {
+      "id": "seam: chip[N+i] at cycle end sits exactly where chip[i] starts @1683x850 light",
+      "status": "PASS",
+      "msg": "max position error 0.00px over 9 chips"
+    },
+    {
+      "id": "seam: strip is never empty at the left/right edge during the whole cycle @1683x850 light",
+      "status": "PASS",
+      "msg": "21 phases checked, strip always filled"
+    },
+    {
+      "id": "seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @1683x850 light",
+      "status": "PASS",
+      "msg": "0.865% of 14099 strip px differ >24 levels, max 38.8, mean 0.405"
+    },
+    {
+      "id": "page: no JS errors during the artifact run @1683x850 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 1) @1440x900 light",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @1440x900 light",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: lower-right region clean (user-reported lighter rectangle) @1440x900 light",
+      "status": "PASS",
+      "msg": "no straight step in x>50%, y>30%"
+    },
+    {
+      "id": "edge: bare hero background (content hidden) has no hard-edged step @1440x900 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "motion: marquee CSS animation exists, linear, infinite @1440x900 light",
+      "status": "PASS",
+      "msg": "{\"D\":26000,\"n\":9,\"P\":990.0468444824219,\"timing\":\"linear\",\"play\":\"running\",\"fill\":null}"
+    },
+    {
+      "id": "motion: marquee moves left at P/duration (no stall) @1440x900 light",
+      "status": "PASS",
+      "msg": "moved -114.2px in 2999ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)"
+    },
+    {
+      "id": "motion: velocity constant over 3 s (no jerk / jump), no reversals @1440x900 light",
+      "status": "PASS",
+      "msg": "reversals=0, worst 8-frame velocity deviation 1% (frames=181)"
+    },
+    {
+      "id": "frames: all chips shift together (rigid motion) between the two frames @1440x900 light",
+      "status": "PASS",
+      "msg": "chip dx between frames: min -124.38 max -124.38 px (18 chips)"
+    },
+    {
+      "id": "frames: marquee advanced the expected distance between the two frames @1440x900 light",
+      "status": "PASS",
+      "msg": "dx=-124.4px between frame 1 and frame 2"
+    },
+    {
+      "id": "edge: no hard-edged step in the hero after scrolling to the marquee @1440x900 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=717) @1440x900 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "strip: enough background samples (chips hidden) @1440x900 light",
+      "status": "PASS",
+      "msg": "612 usable columns"
+    },
+    {
+      "id": "strip: marquee background == hero background, middle zone @1440x900 light",
+      "status": "PASS",
+      "msg": "median step -0.07 levels, worst column 1.21 (limits 1.2 / 4) over 465 columns"
+    },
+    {
+      "id": "strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @1440x900 light",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 0.72 (limits 1.5 / 3.75) over 74 columns; mq=184..796 x 482"
+    },
+    {
+      "id": "strip: no dark/light block at the RIGHT fade edge @1440x900 light",
+      "status": "PASS",
+      "msg": "median step -0.07 levels, worst column 0.72 (limits 1.5 / 3.75) over 73 columns"
+    },
+    {
+      "id": "seam: end translate equals the list pitch (loop is exactly one list long) @1440x900 light",
+      "status": "PASS",
+      "msg": "end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px"
+    },
+    {
+      "id": "seam: chip[N+i] at cycle end sits exactly where chip[i] starts @1440x900 light",
+      "status": "PASS",
+      "msg": "max position error 0.00px over 9 chips"
+    },
+    {
+      "id": "seam: strip is never empty at the left/right edge during the whole cycle @1440x900 light",
+      "status": "PASS",
+      "msg": "21 phases checked, strip always filled"
+    },
+    {
+      "id": "seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @1440x900 light",
+      "status": "PASS",
+      "msg": "0.262% of 14122 strip px differ >24 levels, max 38.8, mean 0.268"
+    },
+    {
+      "id": "page: no JS errors during the artifact run @1440x900 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 1) @1280x800 light",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @1280x800 light",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: lower-right region clean (user-reported lighter rectangle) @1280x800 light",
+      "status": "PASS",
+      "msg": "no straight step in x>50%, y>30%"
+    },
+    {
+      "id": "edge: bare hero background (content hidden) has no hard-edged step @1280x800 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "motion: marquee CSS animation exists, linear, infinite @1280x800 light",
+      "status": "PASS",
+      "msg": "{\"D\":26000,\"n\":9,\"P\":990.0468444824219,\"timing\":\"linear\",\"play\":\"running\",\"fill\":null}"
+    },
+    {
+      "id": "motion: marquee moves left at P/duration (no stall) @1280x800 light",
+      "status": "PASS",
+      "msg": "moved -114.2px in 3001ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)"
+    },
+    {
+      "id": "motion: velocity constant over 3 s (no jerk / jump), no reversals @1280x800 light",
+      "status": "PASS",
+      "msg": "reversals=0, worst 8-frame velocity deviation 2% (frames=181)"
+    },
+    {
+      "id": "frames: all chips shift together (rigid motion) between the two frames @1280x800 light",
+      "status": "PASS",
+      "msg": "chip dx between frames: min -123.12 max -123.12 px (18 chips)"
+    },
+    {
+      "id": "frames: marquee advanced the expected distance between the two frames @1280x800 light",
+      "status": "PASS",
+      "msg": "dx=-123.1px between frame 1 and frame 2"
+    },
+    {
+      "id": "edge: no hard-edged step in the hero after scrolling to the marquee @1280x800 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=625) @1280x800 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "strip: enough background samples (chips hidden) @1280x800 light",
+      "status": "PASS",
+      "msg": "615 usable columns"
+    },
+    {
+      "id": "strip: marquee background == hero background, middle zone @1280x800 light",
+      "status": "PASS",
+      "msg": "median step 0.07 levels, worst column 1.29 (limits 1.2 / 4) over 468 columns"
+    },
+    {
+      "id": "strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @1280x800 light",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 0.79 (limits 1.5 / 3.75) over 74 columns; mq=100..717 x 432"
+    },
+    {
+      "id": "strip: no dark/light block at the RIGHT fade edge @1280x800 light",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 0.86 (limits 1.5 / 3.75) over 73 columns"
+    },
+    {
+      "id": "seam: end translate equals the list pitch (loop is exactly one list long) @1280x800 light",
+      "status": "PASS",
+      "msg": "end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px"
+    },
+    {
+      "id": "seam: chip[N+i] at cycle end sits exactly where chip[i] starts @1280x800 light",
+      "status": "PASS",
+      "msg": "max position error 0.00px over 9 chips"
+    },
+    {
+      "id": "seam: strip is never empty at the left/right edge during the whole cycle @1280x800 light",
+      "status": "PASS",
+      "msg": "21 phases checked, strip always filled"
+    },
+    {
+      "id": "seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @1280x800 light",
+      "status": "PASS",
+      "msg": "0.994% of 14191 strip px differ >24 levels, max 39, mean 0.472"
+    },
+    {
+      "id": "page: no JS errors during the artifact run @1280x800 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 1) @768x1024 light",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @768x1024 light",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: lower-right region clean (user-reported lighter rectangle) @768x1024 light",
+      "status": "PASS",
+      "msg": "no straight step in x>50%, y>30%"
+    },
+    {
+      "id": "edge: bare hero background (content hidden) has no hard-edged step @768x1024 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "motion: marquee CSS animation exists, linear, infinite @768x1024 light",
+      "status": "PASS",
+      "msg": "{\"D\":26000,\"n\":9,\"P\":990.0469055175781,\"timing\":\"linear\",\"play\":\"running\",\"fill\":null}"
+    },
+    {
+      "id": "motion: marquee moves left at P/duration (no stall) @768x1024 light",
+      "status": "PASS",
+      "msg": "moved -114.2px in 3000ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)"
+    },
+    {
+      "id": "motion: velocity constant over 3 s (no jerk / jump), no reversals @768x1024 light",
+      "status": "PASS",
+      "msg": "reversals=0, worst 8-frame velocity deviation 3% (frames=181)"
+    },
+    {
+      "id": "frames: all chips shift together (rigid motion) between the two frames @768x1024 light",
+      "status": "PASS",
+      "msg": "chip dx between frames: min -120.58 max -120.58 px (18 chips)"
+    },
+    {
+      "id": "frames: marquee advanced the expected distance between the two frames @768x1024 light",
+      "status": "PASS",
+      "msg": "dx=-120.6px between frame 1 and frame 2"
+    },
+    {
+      "id": "edge: no hard-edged step in the hero after scrolling to the marquee @768x1024 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=820) @768x1024 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "strip: enough background samples (chips hidden) @768x1024 light",
+      "status": "PASS",
+      "msg": "377 usable columns"
+    },
+    {
+      "id": "strip: marquee background == hero background, middle zone @768x1024 light",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 0.93 (limits 1.2 / 4) over 286 columns"
+    },
+    {
+      "id": "strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @768x1024 light",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 0.86 (limits 1.5 / 3.75) over 46 columns; mq=25..402 x 541"
+    },
+    {
+      "id": "strip: no dark/light block at the RIGHT fade edge @768x1024 light",
+      "status": "PASS",
+      "msg": "median step -0.36 levels, worst column 0.93 (limits 1.5 / 3.75) over 45 columns"
+    },
+    {
+      "id": "seam: end translate equals the list pitch (loop is exactly one list long) @768x1024 light",
+      "status": "PASS",
+      "msg": "end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px"
+    },
+    {
+      "id": "seam: chip[N+i] at cycle end sits exactly where chip[i] starts @768x1024 light",
+      "status": "PASS",
+      "msg": "max position error 0.00px over 9 chips"
+    },
+    {
+      "id": "seam: strip is never empty at the left/right edge during the whole cycle @768x1024 light",
+      "status": "PASS",
+      "msg": "21 phases checked, strip always filled"
+    },
+    {
+      "id": "seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @768x1024 light",
+      "status": "PASS",
+      "msg": "0.000% of 8717 strip px differ >24 levels, max 4.2, mean 0.026"
+    },
+    {
+      "id": "page: no JS errors during the artifact run @768x1024 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 1) @430x932 light",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: no long hard-edged luminance step in hero (frame 2 (+3s)) @430x932 light",
+      "status": "PASS",
+      "msg": "none (T=2 levels, minLen=100px, content masked, 32-sample smoothing)"
+    },
+    {
+      "id": "edge: lower-right region clean (user-reported lighter rectangle) @430x932 light",
+      "status": "PASS",
+      "msg": "no straight step in x>50%, y>30%"
+    },
+    {
+      "id": "edge: bare hero background (content hidden) has no hard-edged step @430x932 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "motion: marquee CSS animation exists, linear, infinite @430x932 light",
+      "status": "PASS",
+      "msg": "{\"D\":26000,\"n\":9,\"P\":990.0469055175781,\"timing\":\"linear\",\"play\":\"running\",\"fill\":null}"
+    },
+    {
+      "id": "motion: marquee moves left at P/duration (no stall) @430x932 light",
+      "status": "PASS",
+      "msg": "moved -113.6px in 2985ms = -38.1px/s, expected -38.1px/s (P=990.0px / 26000ms)"
+    },
+    {
+      "id": "motion: velocity constant over 3 s (no jerk / jump), no reversals @430x932 light",
+      "status": "PASS",
+      "msg": "reversals=0, worst 8-frame velocity deviation 1% (frames=180)"
+    },
+    {
+      "id": "frames: all chips shift together (rigid motion) between the two frames @430x932 light",
+      "status": "PASS",
+      "msg": "chip dx between frames: min -118.04 max -118.04 px (18 chips)"
+    },
+    {
+      "id": "frames: marquee advanced the expected distance between the two frames @430x932 light",
+      "status": "PASS",
+      "msg": "dx=-118.0px between frame 1 and frame 2"
+    },
+    {
+      "id": "edge: no hard-edged step in the hero after scrolling to the marquee @430x932 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "edge: no hard horizontal step where the hero ends (bare backgrounds, hero bottom at y=629) @430x932 light",
+      "status": "PASS",
+      "msg": "none"
+    },
+    {
+      "id": "strip: enough background samples (chips hidden) @430x932 light",
+      "status": "PASS",
+      "msg": "394 usable columns"
+    },
+    {
+      "id": "strip: marquee background == hero background, middle zone @430x932 light",
+      "status": "PASS",
+      "msg": "median step 0.07 levels, worst column 0.86 (limits 1.2 / 4) over 299 columns"
+    },
+    {
+      "id": "strip: no dark/light block at the LEFT fade edge (behind the leftmost chip) @430x932 light",
+      "status": "PASS",
+      "msg": "median step 0.07 levels, worst column 0.79 (limits 1.5 / 3.75) over 48 columns; mq=17..413 x 495"
+    },
+    {
+      "id": "strip: no dark/light block at the RIGHT fade edge @430x932 light",
+      "status": "PASS",
+      "msg": "median step 0 levels, worst column 0.72 (limits 1.5 / 3.75) over 47 columns"
+    },
+    {
+      "id": "seam: end translate equals the list pitch (loop is exactly one list long) @430x932 light",
+      "status": "PASS",
+      "msg": "end translateX=-990.05px, pitch chip[N]-chip[0]=990.05px"
+    },
+    {
+      "id": "seam: chip[N+i] at cycle end sits exactly where chip[i] starts @430x932 light",
+      "status": "PASS",
+      "msg": "max position error 0.00px over 9 chips"
+    },
+    {
+      "id": "seam: strip is never empty at the left/right edge during the whole cycle @430x932 light",
+      "status": "PASS",
+      "msg": "21 phases checked, strip always filled"
+    },
+    {
+      "id": "seam: no visual jump when the loop restarts (strip pixels no jump either side; sub-pixel text AA tolerated, a real jump differs by >2%) @430x932 light",
+      "status": "PASS",
+      "msg": "0.340% of 9108 strip px differ >24 levels, max 38.3, mean 0.44"
+    },
+    {
+      "id": "page: no JS errors during the artifact run @430x932 light",
+      "status": "PASS",
+      "msg": "none"
+    }
+  ]
+}

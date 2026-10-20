@@ -1,0 +1,10 @@
+PASS  baseline "left-aligned footer (stacked rows)" -> no FAIL matching /labels share|addresses share|overlapping|outside viewport|horizontal scroll|spilling|same layout|stacked above/
+PASS  control "zig-zag footer (each row centred) -> labels/addresses misaligned" -> expected FAIL matching /labels share one left edge|addresses share one left edge/; got footer: labels share one left edge @320 | footer: addresses share one left edge @320 | footer: labels share one left edge @375
+PASS  control "address wider than a 320px phone -> overflow" -> expected FAIL matching /no horizontal scroll @320|no text outside viewport @320|spilling/; got footer: no horizontal scroll @320 | footer: no text spilling out of its own box @320 | footer: no text spilling out of its own box @375
+PASS  control "labels positioned over addresses -> overlap" -> expected FAIL matching /overlapping text lines|label left of address, clear gap|stacked above address/; got footer: no overlapping text lines @320 | footer: work label left of address, clear gap @320 | footer: personal label left of address, clear gap @320
+PASS  control "one row indented 9px -> misaligned labels" -> expected FAIL matching /labels share one left edge|addresses share one left edge/; got footer: labels share one left edge @320 | footer: addresses share one left edge @320 | footer: labels share one left edge @375
+PASS  control "site ignoring OS reduce-motion / no tier control" -> expected FAIL matching /defaults to "gentle"|footer control offers|control shows Gentle/; got tiers: reduce-motion device defaults to "gentle" (data-motion) | tiers: footer control shows Gentle selected on a reduce-motion phone | tiers: footer control offers Full, Gentle and Off
+PASS  baseline "element that animates in and settles" -> audit finds 0 stuck
+PASS  control "element left at opacity:0" -> audit flags 2 (finalAll,neverFired)
+PASS  control "element parked on translateY(30px)" -> audit flags 1 (transform=matrix(1, 0, 0, 1, 0, 30))
+NEGATIVE CONTROLS R2: PASS (round-2 browser checks proven able to fail)

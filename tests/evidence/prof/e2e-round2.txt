@@ -1,0 +1,194 @@
+PASS work-primary: #contact order work -> personal @375  mailto order in #contact: karthik.muthumari@mindera.com , karthikmuthumari7@gmail.com
+PASS work-primary: work card is first visually @375  {"work":{"top":16061,"left":37,"w":301,"h":91},"personal":{"top":16164,"left":37,"w":301,"h":87}}
+PASS work-primary: "Preferred" badge on work card only @375  work card has badge=true, personal card has badge=false
+PASS work-primary: hero mail icon is work-only, visible, >=44px @375  hero mailto=karthik.muthumari@mindera.com size=44,44 aria-label="Email Karthik at work address"
+PASS work-primary: hero mail aria-label mentions work @375  aria-label="Email Karthik at work address"
+PASS work-primary: footer lists work first @375  karthik.muthumari@mindera.com , karthikmuthumari7@gmail.com
+PASS work-primary: nav/header mailto (if any) is work @375  no mailto in header; CTA href=/profile/#contact,/profile/#contact
+PASS work-primary: copy buttons labelled work/personal in order @375  Copy work email address | Copy personal email address
+PASS work-primary: JSON-LD email is work @375  structured data carries the work address only
+PASS work-primary: #contact order work -> personal @768  mailto order in #contact: karthik.muthumari@mindera.com , karthikmuthumari7@gmail.com
+PASS work-primary: work card is first visually @768  {"work":{"top":12455,"left":58,"w":318,"h":92},"personal":{"top":12455,"left":392,"w":318,"h":92}}
+PASS work-primary: "Preferred" badge on work card only @768  work card has badge=true, personal card has badge=false
+PASS work-primary: hero mail icon is work-only, visible, >=44px @768  hero mailto=karthik.muthumari@mindera.com size=44,44 aria-label="Email Karthik at work address"
+PASS work-primary: hero mail aria-label mentions work @768  aria-label="Email Karthik at work address"
+PASS work-primary: footer lists work first @768  karthik.muthumari@mindera.com , karthikmuthumari7@gmail.com
+PASS work-primary: nav/header mailto (if any) is work @768  no mailto in header; CTA href=/profile/#contact,/profile/#contact
+PASS work-primary: copy buttons labelled work/personal in order @768  Copy work email address | Copy personal email address
+PASS work-primary: JSON-LD email is work @768  structured data carries the work address only
+PASS work-primary: #contact order work -> personal @1440  mailto order in #contact: karthik.muthumari@mindera.com , karthikmuthumari7@gmail.com
+PASS work-primary: work card is first visually @1440  {"work":{"top":11820,"left":732,"w":475,"h":71},"personal":{"top":11907,"left":732,"w":475,"h":70}}
+PASS work-primary: "Preferred" badge on work card only @1440  work card has badge=true, personal card has badge=false
+PASS work-primary: hero mail icon is work-only, visible, >=44px @1440  hero mailto=karthik.muthumari@mindera.com size=44,44 aria-label="Email Karthik at work address"
+PASS work-primary: hero mail aria-label mentions work @1440  aria-label="Email Karthik at work address"
+PASS work-primary: footer lists work first @1440  karthik.muthumari@mindera.com , karthikmuthumari7@gmail.com
+PASS work-primary: nav/header mailto (if any) is work @1440  no mailto in header; CTA href=/profile/#contact,/profile/#contact
+PASS work-primary: copy buttons labelled work/personal in order @1440  Copy work email address | Copy personal email address
+PASS work-primary: JSON-LD email is work @1440  structured data carries the work address only
+PASS footer: no horizontal scroll @320  scrollWidth=320 layout viewport=320 (nominal 320; a mobile browser widens the layout viewport when content is wider than the screen)
+PASS footer: no text outside viewport @320  all footer text inside 0..viewport
+PASS footer: no text spilling out of its own box @320  every text line stays inside its link/paragraph box
+PASS footer: no overlapping text lines @320  no two text lines intersect
+PASS footer: back-to-top button does not cover text @320  visible at page bottom, covers no footer text
+PASS footer: both e-mail rows present, work first @320  karthik.muthumari@mindera.com , karthikmuthumari7@gmail.com
+PASS footer: labels share one left edge @320  work label x=16.0, personal label x=16.0
+PASS footer: addresses share one left edge @320  work address x=16.0, personal address x=16.0
+PASS footer: work label stacked above address, same left edge @320  label x=16.0 y=17508..17523; address x=16.0 y=17529
+PASS footer: personal label stacked above address, same left edge @320  label x=16.0 y=17561..17576; address x=16.0 y=17582
+PASS footer: both rows use the same layout mode @320  work and personal rows are either both side-by-side or both stacked
+PASS footer: row labels align with the "Contact" heading @320  heading x=16.0, labels x=16.0
+PASS footer: Work row inside container @320  address 16..242 container 16..304
+PASS footer: Personal row inside container @320  address 16..227 container 16..304
+PASS footer: left-column items share the container's left edge @320  brand=16.0, Explore=16.0, bottom bar=16.0 (container 16.0)
+PASS footer: social icons start at the contact column's left edge @320  first icon x=16.0 vs heading x=16.0
+PASS footer: Explore links wrap in <=2 lines on phones @320  5 links on 2 line(s)
+PASS footer: bottom bar texts do not collide / right text inside container @320  © 2026 Karthik Muthumari: 16..193 y=17869 | Built with Next.js, deployed o: 16..266 y=17898
+PASS footer: every footer link >=44px tall @320  9 links, min height 44px
+PASS footer: motion control inside container, options >=44px @320  ["Motion: Full — A:93x44","Motion: Gentle —:93x44","Motion: Off — No:93x44"]
+PASS footer: no horizontal scroll @375  scrollWidth=375 layout viewport=375 (nominal 375; a mobile browser widens the layout viewport when content is wider than the screen)
+PASS footer: no text outside viewport @375  all footer text inside 0..viewport
+PASS footer: no text spilling out of its own box @375  every text line stays inside its link/paragraph box
+PASS footer: no overlapping text lines @375  no two text lines intersect
+PASS footer: back-to-top button does not cover text @375  visible at page bottom, covers no footer text
+PASS footer: both e-mail rows present, work first @375  karthik.muthumari@mindera.com , karthikmuthumari7@gmail.com
+PASS footer: labels share one left edge @375  work label x=16.3, personal label x=16.3
+PASS footer: addresses share one left edge @375  work address x=16.3, personal address x=16.3
+PASS footer: work label stacked above address, same left edge @375  label x=16.3 y=16832..16847; address x=16.3 y=16852
+PASS footer: personal label stacked above address, same left edge @375  label x=16.3 y=16885..16900; address x=16.3 y=16905
+PASS footer: both rows use the same layout mode @375  work and personal rows are either both side-by-side or both stacked
+PASS footer: row labels align with the "Contact" heading @375  heading x=16.3, labels x=16.3
+PASS footer: Work row inside container @375  address 16..242 container 16..359
+PASS footer: Personal row inside container @375  address 16..227 container 16..359
+PASS footer: left-column items share the container's left edge @375  brand=16.3, Explore=16.3, bottom bar=16.3 (container 16.3)
+PASS footer: social icons start at the contact column's left edge @375  first icon x=16.3 vs heading x=16.3
+PASS footer: Explore links wrap in <=2 lines on phones @375  5 links on 2 line(s)
+PASS footer: bottom bar texts do not collide / right text inside container @375  © 2026 Karthik Muthumari: 16..193 y=17192 | Built with Next.js, deployed o: 16..311 y=17221
+PASS footer: every footer link >=44px tall @375  9 links, min height 44px
+PASS footer: motion control inside container, options >=44px @375  ["Motion: Full — A:111x44","Motion: Gentle —:111x44","Motion: Off — No:111x44"]
+PASS footer: no horizontal scroll @414  scrollWidth=414 layout viewport=414 (nominal 414; a mobile browser widens the layout viewport when content is wider than the screen)
+PASS footer: no text outside viewport @414  all footer text inside 0..viewport
+PASS footer: no text spilling out of its own box @414  every text line stays inside its link/paragraph box
+PASS footer: no overlapping text lines @414  no two text lines intersect
+PASS footer: back-to-top button does not cover text @414  visible at page bottom, covers no footer text
+PASS footer: both e-mail rows present, work first @414  karthik.muthumari@mindera.com , karthikmuthumari7@gmail.com
+PASS footer: labels share one left edge @414  work label x=17.1, personal label x=17.1
+PASS footer: addresses share one left edge @414  work address x=17.1, personal address x=17.1
+PASS footer: work label stacked above address, same left edge @414  label x=17.1 y=16322..16337; address x=17.1 y=16343
+PASS footer: personal label stacked above address, same left edge @414  label x=17.1 y=16375..16390; address x=17.1 y=16396
+PASS footer: both rows use the same layout mode @414  work and personal rows are either both side-by-side or both stacked
+PASS footer: row labels align with the "Contact" heading @414  heading x=17.1, labels x=17.1
+PASS footer: Work row inside container @414  address 17..243 container 17..397
+PASS footer: Personal row inside container @414  address 17..228 container 17..397
+PASS footer: left-column items share the container's left edge @414  brand=17.1, Explore=17.1, bottom bar=17.1 (container 17.1)
+PASS footer: social icons start at the contact column's left edge @414  first icon x=17.1 vs heading x=17.1
+PASS footer: Explore links wrap in <=2 lines on phones @414  5 links on 1 line(s)
+PASS footer: bottom bar texts do not collide / right text inside container @414  © 2026 Karthik Muthumari: 17..194 y=16683 | Built with Next.js, deployed o: 17..312 y=16712
+PASS footer: every footer link >=44px tall @414  9 links, min height 44px
+PASS footer: motion control inside container, options >=44px @414  ["Motion: Full — A:123x44","Motion: Gentle —:123x44","Motion: Off — No:123x44"]
+PASS footer: no horizontal scroll @768  scrollWidth=768 layout viewport=768 (nominal 768; a mobile browser widens the layout viewport when content is wider than the screen)
+PASS footer: no text outside viewport @768  all footer text inside 0..viewport
+PASS footer: no text spilling out of its own box @768  every text line stays inside its link/paragraph box
+PASS footer: no overlapping text lines @768  no two text lines intersect
+PASS footer: back-to-top button does not cover text @768  visible at page bottom, covers no footer text
+PASS footer: both e-mail rows present, work first @768  karthik.muthumari@mindera.com , karthikmuthumari7@gmail.com
+PASS footer: labels share one left edge @768  work label x=400.0, personal label x=400.0
+PASS footer: addresses share one left edge @768  work address x=400.0, personal address x=400.0
+PASS footer: work label stacked above address, same left edge @768  label x=400.0 y=12749..12764; address x=400.0 y=12769
+PASS footer: personal label stacked above address, same left edge @768  label x=400.0 y=12802..12817; address x=400.0 y=12823
+PASS footer: both rows use the same layout mode @768  work and personal rows are either both side-by-side or both stacked
+PASS footer: row labels align with the "Contact" heading @768  heading x=400.0, labels x=400.0
+PASS footer: Work row inside container @768  address 400..633 container 25..743
+PASS footer: Personal row inside container @768  address 400..617 container 25..743
+PASS footer: "Explore" and "Contact" headings share a top edge @768  Explore y=12716, Contact y=12717
+PASS footer: left-column items share the container's left edge @768  brand=24.9, Explore=24.9, bottom bar=24.9 (container 24.9)
+PASS footer: social icons start at the contact column's left edge @768  first icon x=400.0 vs heading x=400.0
+PASS footer: bottom bar texts do not collide / right text inside container @768  © 2026 Karthik Muthumari: 25..202 y=13135 | Built with Next.js, deployed o: 385..679 y=13135
+PASS footer: bottom bar texts share a baseline @768  13148.6 vs 13148.6
+PASS footer: every footer link >=44px tall @768  9 links, min height 44px
+PASS footer: motion control inside container, options >=44px @768  ["Motion: Full — A:55x44","Motion: Gentle —:76x44","Motion: Off — No:53x44"]
+PASS footer: no horizontal scroll @1280  scrollWidth=1280 layout viewport=1280 (nominal 1280; a mobile browser widens the layout viewport when content is wider than the screen)
+PASS footer: no text outside viewport @1280  all footer text inside 0..viewport
+PASS footer: no text spilling out of its own box @1280  every text line stays inside its link/paragraph box
+PASS footer: no overlapping text lines @1280  no two text lines intersect
+PASS footer: back-to-top button does not cover text @1280  visible at page bottom, covers no footer text
+PASS footer: both e-mail rows present, work first @1280  karthik.muthumari@mindera.com , karthikmuthumari7@gmail.com
+PASS footer: labels share one left edge @1280  work label x=744.0, personal label x=744.0
+PASS footer: addresses share one left edge @1280  work address x=836.0, personal address x=836.0
+PASS footer: work label left of address, clear gap @1280  label 744..788 | address starts 836 (gap 48px)
+PASS footer: work label+address share a baseline @1280  label baseline y=12219.3, address baseline y=12219.3
+PASS footer: personal label left of address, clear gap @1280  label 744..822 | address starts 836 (gap 14px)
+PASS footer: personal label+address share a baseline @1280  label baseline y=12267.3, address baseline y=12267.3
+PASS footer: both rows use the same layout mode @1280  work and personal rows are either both side-by-side or both stacked
+PASS footer: row labels align with the "Contact" heading @1280  heading x=744.0, labels x=744.0
+PASS footer: Work row inside container @1280  address 836..1080 container 100..1180
+PASS footer: Personal row inside container @1280  address 836..1063 container 100..1180
+PASS footer: "Explore" and "Contact" headings share a top edge @1280  Explore y=12164, Contact y=12165
+PASS footer: left-column items share the container's left edge @1280  brand=100.2, bottom bar=100.2 (container 100.2)
+PASS footer: social icons start at the contact column's left edge @1280  first icon x=744.0 vs heading x=744.0
+PASS footer: bottom bar texts do not collide / right text inside container @1280  © 2026 Karthik Muthumari: 100..277 y=12583 | Built with Next.js, deployed o: 821..1116 y=12583
+PASS footer: bottom bar texts share a baseline @1280  12597.2 vs 12597.2
+PASS footer: every footer link >=44px tall @1280  9 links, min height 44px
+PASS footer: motion control inside container, options >=44px @1280  ["Motion: Full — A:55x44","Motion: Gentle —:76x44","Motion: Off — No:53x44"]
+PASS footer: dark theme @375 no overflow / overlap  overlaps=0 overflow=0
+PASS image: hero photo loaded (naturalWidth>0) @375  {"src":"http://127.0.0.1:4175/profile/avatar/karthik-fallback.jpg","nat":[1040,1040],"shown":[273,273],"complete":true,"alt":"Portrait of Karthik Muthumari","state":"fallback"}
+PASS image: hero src under base /profile and lowercase @375  /profile/avatar/karthik-fallback.jpg
+PASS image: hero has meaningful alt @375  alt="Portrait of Karthik Muthumari"
+PASS image: hero sharp enough (natural >= 1.0x displayed) @375  natural 1040x1040 shown 273x273 (dpr 2)
+PASS image: no original/leftover image requested @375  27 requests, none for MyProfilePic.PNG / DSC* / portrait-*.jpg
+PASS image: no 4xx for images @375  none
+PASS image: hero photo loaded (naturalWidth>0) @1280  {"src":"http://127.0.0.1:4175/profile/avatar/karthik-fallback.jpg","nat":[1040,1040],"shown":[432,432],"complete":true,"alt":"Portrait of Karthik Muthumari","state":"fallback"}
+PASS image: hero src under base /profile and lowercase @1280  /profile/avatar/karthik-fallback.jpg
+PASS image: hero has meaningful alt @1280  alt="Portrait of Karthik Muthumari"
+PASS image: hero sharp enough (natural >= 1.0x displayed) @1280  natural 1040x1040 shown 432x432 (dpr 1)
+PASS image: no original/leftover image requested @1280  27 requests, none for MyProfilePic.PNG / DSC* / portrait-*.jpg
+PASS image: no 4xx for images @1280  none
+PASS tiers: reduce-motion device defaults to "gentle" (data-motion)  html[data-motion]=gentle (matchMedia reduce=true)
+PASS tiers: default choice is not written to storage (it is a default, not a choice)  localStorage.motion=null
+PASS tiers: gentle keeps a soft float (alive, <=5.5px) on a reduce-motion phone  avatar vertical range over 2.5s = 1.02px
+PASS tiers: gentle has nothing rotating/spinning  0 rotating element(s)
+PASS tiers: gentle first viewport fully visible after intro  every first-viewport element opacity>=0.9
+PASS tiers: gentle marquee is a static wrapped row (all chips inside the strip, no duplicate group, no animation, no fade mask/overlay)  {"n":9,"shownAll":9,"out":0,"anims":0,"mask":"none|none","pseudo":"none","sw":375,"vw":375}
+PASS tiers: footer explains why animations are reduced (auto-gentle hint)  hint text present
+PASS tiers: footer control shows Gentle selected on a reduce-motion phone  gentle selected=true
+PASS tiers: reduce-motion phone can switch to Full (data-motion+storage)  data-motion=full stored=full
+PASS tiers: Full on a reduce-motion phone really animates (ring/blobs rotate, avatar floats > gentle)  rotating=1 avatarRange=7.58px (gentle was 1.02px)
+PASS tiers: Full choice survives reload (overrides OS default)  data-motion after reload=full
+PASS tiers: no page errors on reduce-motion phone  none
+PASS tiers: no OS preference defaults to "full"  data-motion=full
+PASS tiers: full is alive (running anims >= 8, something rotates, avatar floats >1.5px)  {"running":22,"infinite":13,"avatarRange":10.31,"rotating":2,"dataMotion":"full"}
+PASS tiers: footer control offers Full, Gentle and Off  option counts full/gentle/off = 1/1/1
+PASS tiers: control is a labelled radiogroup  role=radiogroup with accessible name
+PASS tiers: Full is selected by default  full selected=true
+PASS tiers: click gentle -> data-motion, aria state, storage  data-motion=gentle selected=true stored=gentle
+PASS tiers: gentle behaviour (float <=5.5px, no rotation)  {"running":1,"infinite":1,"avatarRange":2.88,"rotating":0,"dataMotion":"gentle"}
+PASS tiers: click off -> data-motion, aria state, storage  data-motion=off selected=true stored=off
+PASS tiers: off behaviour (nothing moves: no float, no rotation, no infinite animation)  {"running":0,"infinite":0,"avatarRange":0,"rotating":0,"dataMotion":"off"}
+PASS tiers: click full -> data-motion, aria state, storage  data-motion=full selected=true stored=full
+PASS tiers: switching back to full restores motion  {"running":14,"infinite":13,"avatarRange":7.26,"rotating":2,"dataMotion":"full"}
+PASS tiers: Off persists after reload  data-motion=off
+PASS tiers: after reload Off is truly static  {"running":0,"infinite":0,"avatarRange":0,"rotating":0,"dataMotion":"off"}
+PASS tiers: Off shows every section fully (no hidden content)  all text blocks opaque after scroll
+PASS tiers: choice kept on client-side navigation to /blog/  data-motion=off on /profile/blog/
+PASS tiers: control also present in the /blog/ footer  footer on /blog/
+PASS tiers: choice applied on a fresh hard load of another page before paint  data-motion=off
+PASS tiers: focused option has a visible focus indicator  outline/box-shadow present
+PASS tiers: option can be activated from the keyboard  activated with Space
+PASS tiers: arrow keys move the selection (radiogroup pattern)  ArrowRight -> off, ArrowLeft -> gentle
+PASS tiers: no page errors while switching  none
+PASS tiers: Off option >=44px and fully inside a 320px viewport  {"x":206,"w":93,"h":44}
+PASS tiers: tapping Off on a phone works  data-motion=off
+PASS failsafe: JavaScript disabled -> all content readable (noscript reveal)  8931 chars of text; hidden elements: 0
+PASS failsafe: IntersectionObserver never fires -> on-screen content still revealed within ~4s  every on-screen element visible
+PASS failsafe: ...and after scrolling (re-check on scroll end)   on-screen content at 3 viewports down is visible
+PASS failsafe: 4x CPU + slow-4G -> on-screen content visible 3.2s after load  load took 5464ms; all on-screen content visible
+PASS anim: FULL tier, touch 375x667: all animated elements fully revealed after scroll+flick  0 stuck of every content element; pageHeight=17368px, reached bottom=true, errors=0
+PASS anim: FULL tier, touch 375x667: motion is alive (>=8 running animations, avatar floats, something rotates)  {"running":10,"infinite":10,"avatarRange":9.94,"rotating":1,"dataMotion":"full"}
+PASS anim: no page errors 375x667  none
+PASS anim: FULL tier, touch 320x568: all animated elements fully revealed after scroll+flick  0 stuck of every content element; pageHeight=18066px, reached bottom=true, errors=0
+PASS anim: FULL tier, touch 320x568: motion is alive (>=8 running animations, avatar floats, something rotates)  {"running":10,"infinite":10,"avatarRange":9.85,"rotating":1,"dataMotion":"full"}
+PASS anim: no page errors 320x568  none
+PASS anim: reduce-motion phone (default gentle), 375x667: all content fully revealed  0 stuck; data-motion=gentle; probe={"running":1,"infinite":1,"avatarRange":1.02,"rotating":0,"dataMotion":"gentle"}
+PASS anim: tier Off, 375x667: all content immediately/fully visible  0 stuck; probe={"running":0,"infinite":0,"avatarRange":0,"rotating":0,"dataMotion":"off"}
+PASS anim: tier Gentle (explicit), 375x667: all content fully revealed, nothing rotating  0 stuck; probe={"running":1,"infinite":1,"avatarRange":1.02,"rotating":0,"dataMotion":"gentle"}
+
+E2E-ROUND2 PASS: 192 checks, 0 fail, 0 warn. Screenshots: /Users/karthikmuthumari/Documents/repo/my-profile/tests/screenshots/prof/round2

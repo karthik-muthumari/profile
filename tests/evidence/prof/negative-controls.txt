@@ -1,0 +1,15 @@
+PASS  baseline (untouched export) -> check-export exit 0
+PASS  control "planted phone number" -> expected FAIL on privacy:no-phone-or-address; got exit 1, failing: privacy:no-phone-or-address
+PASS  control "planted home address (Ryehill)" -> expected FAIL on privacy:no-phone-or-address; got exit 1, failing: privacy:no-phone-or-address
+PASS  control "planted postcode (NG2 2LQ)" -> expected FAIL on privacy:no-phone-or-address; got exit 1, failing: privacy:no-phone-or-address
+PASS  control "planted tel: link" -> expected FAIL on privacy:no-phone-or-address; got exit 1, failing: privacy:no-phone-or-address
+PASS  control "planted original photo (DSC01768.JPG)" -> expected FAIL on privacy:no-original-photos; got exit 1, failing: privacy:no-original-photos,images:per-file-budget,images:total-budget,images:no-original-or-leftover-names,images:lowercase-filenames
+PASS  control "planted THIRD e-mail in text" -> expected FAIL on contact:email-allowlist; got exit 1, failing: contact:email-allowlist,contact:no-placeholder-urls
+PASS  control "planted THIRD e-mail as mailto link" -> expected FAIL on contact:mailto-targets-approved; got exit 1, failing: contact:email-allowlist,contact:mailto-targets-approved
+PASS  control "planted third e-mail inside JS chunk" -> expected FAIL on contact:email-allowlist; got exit 1, failing: contact:email-allowlist
+PASS  control "placeholder hello@example.com" -> expected FAIL on contact:no-placeholder-urls; got exit 1, failing: contact:email-allowlist,contact:mailto-targets-approved,contact:no-placeholder-urls
+PASS  control "placeholder TODO text" -> expected FAIL on html:placeholder-text; got exit 1, failing: html:placeholder-text
+PASS  control "wrong LinkedIn URL" -> expected FAIL on contact:social-urls-exact; got exit 1, failing: contact:social-urls-exact
+PASS  control "work e-mail mailto removed from home" -> expected FAIL on contact:mailto-work-on-home; got exit 1, failing: contact:mailto-work-on-home,contact:work-first-on-home,contact:work-first-in-hero-contact-footer,contact:jsonld-email-is-work
+PASS  control "personal e-mail mailto removed from home" -> expected FAIL on contact:mailto-personal-on-home; got exit 1, failing: contact:mailto-personal-on-home
+NEGATIVE CONTROLS: PASS (13 planted defects all caught)

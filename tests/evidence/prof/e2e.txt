@@ -1,0 +1,281 @@
+PASS no-h-overflow / @320  scrollWidth=320 viewport=320
+PASS no-clipped-content / @320  no visible content cut off by overflow:hidden containers
+PASS tap-targets / @320  0 targets <44px
+PASS type-size / @320  body=16px smallest=12px ("AWS Certified")
+PASS avatar-slot / @320  {"w":230,"h":230,"left":45,"right":275,"top":112}
+PASS network / @320  no 4xx/failed requests
+PASS console / @320  no console errors
+PASS no-h-overflow / @375  scrollWidth=375 viewport=375
+PASS no-clipped-content / @375  no visible content cut off by overflow:hidden containers
+PASS tap-targets / @375  0 targets <44px
+PASS type-size / @375  body=16.035px smallest=12px ("AWS Certified")
+PASS avatar-slot / @375  {"w":270,"h":270,"left":53,"right":323,"top":112}
+PASS network / @375  no 4xx/failed requests
+PASS console / @375  no console errors
+PASS no-h-overflow / @768  scrollWidth=768 viewport=768
+PASS no-clipped-content / @768  no visible content cut off by overflow:hidden containers
+PASS tap-targets / @768  1 targets <44px e.g. a[Scroll to experience] 57x37
+PASS type-size / @768  body=16.7424px smallest=12px ("Open to interesting problems")
+PASS avatar-slot / @768  {"w":309,"h":309,"left":434,"right":743,"top":390}
+PASS network / @768  no 4xx/failed requests
+PASS console / @768  no console errors
+PASS no-h-overflow / @1024  scrollWidth=1024 viewport=1024
+PASS no-clipped-content / @1024  no visible content cut off by overflow:hidden containers
+PASS tap-targets / @1024  1 targets <44px e.g. a[Scroll to experience] 57x37
+PASS type-size / @1024  body=17px smallest=12px ("Open to interesting problems")
+PASS avatar-slot / @1024  {"w":376,"h":376,"left":626,"right":1002,"top":228}
+PASS network / @1024  no 4xx/failed requests
+PASS console / @1024  no console errors
+PASS no-h-overflow / @1440  scrollWidth=1440 viewport=1440
+PASS no-clipped-content / @1440  no visible content cut off by overflow:hidden containers
+PASS tap-targets / @1440  2 targets <44px e.g. a[Scroll to experience] 57x37 | button[Back to top] 37x37
+PASS type-size / @1440  body=17px smallest=12px ("Open to interesting problems")
+PASS avatar-slot / @1440  {"w":438,"h":438,"left":835,"right":1273,"top":263}
+PASS network / @1440  no 4xx/failed requests
+PASS console / @1440  no console errors
+PASS no-h-overflow /blog/ @320  scrollWidth=320 viewport=320
+PASS no-clipped-content /blog/ @320  no visible content cut off by overflow:hidden containers
+PASS tap-targets /blog/ @320  0 targets <44px
+PASS type-size /blog/ @320  body=16px smallest=12px ("Blog")
+PASS network /blog/ @320  no 4xx/failed requests
+PASS console /blog/ @320  no console errors
+PASS no-h-overflow /blog/ @375  scrollWidth=375 viewport=375
+PASS no-clipped-content /blog/ @375  no visible content cut off by overflow:hidden containers
+PASS tap-targets /blog/ @375  0 targets <44px
+PASS type-size /blog/ @375  body=16.035px smallest=12px ("Blog")
+PASS network /blog/ @375  no 4xx/failed requests
+PASS console /blog/ @375  no console errors
+PASS no-h-overflow /blog/ @768  scrollWidth=768 viewport=768
+PASS no-clipped-content /blog/ @768  no visible content cut off by overflow:hidden containers
+PASS tap-targets /blog/ @768  0 targets <44px
+PASS type-size /blog/ @768  body=16.7424px smallest=12px ("Blog")
+PASS network /blog/ @768  no 4xx/failed requests
+PASS console /blog/ @768  no console errors
+PASS no-h-overflow /blog/ @1024  scrollWidth=1024 viewport=1024
+PASS no-clipped-content /blog/ @1024  no visible content cut off by overflow:hidden containers
+PASS tap-targets /blog/ @1024  0 targets <44px
+PASS type-size /blog/ @1024  body=17px smallest=12px ("Blog")
+PASS network /blog/ @1024  no 4xx/failed requests
+PASS console /blog/ @1024  no console errors
+PASS no-h-overflow /blog/ @1440  scrollWidth=1440 viewport=1440
+PASS no-clipped-content /blog/ @1440  no visible content cut off by overflow:hidden containers
+PASS tap-targets /blog/ @1440  0 targets <44px
+PASS type-size /blog/ @1440  body=17px smallest=12px ("Blog")
+PASS network /blog/ @1440  no 4xx/failed requests
+PASS console /blog/ @1440  no console errors
+PASS internal-links-found  /profile/, /profile/#about, /profile/#experience, /profile/#projects, /profile/blog/, /profile/#contact, /profile/blog/spec-driven-development-with-claude-code/, /profile/blog/local-rag-lancedb-bm25-rrf/, /profile/blog/event-driven-pricing-on-aws/
+PASS links-have-base  all root-relative hrefs carry the base path
+PASS spa-nav /profile/blog/  landed /profile/blog/ marker=alive newBadRequests=0
+PASS spa-nav /profile/blog/spec-driven-development-with-claude-code/  landed /profile/blog/spec-driven-development-with-claude-code/ marker=alive newBadRequests=0
+PASS spa-nav /profile/blog/local-rag-lancedb-bm25-rrf/  landed /profile/blog/local-rag-lancedb-bm25-rrf/ marker=alive newBadRequests=0
+PASS spa-nav /profile/blog/event-driven-pricing-on-aws/  landed /profile/blog/event-driven-pricing-on-aws/ marker=alive newBadRequests=0
+PASS blog-post-client-nav  http://127.0.0.1:4175/profile/blog/spec-driven-development-with-claude-code/ h1="Spec-Driven Development with Claude Code"
+PASS blog-post-hard-reload  status 200
+PASS 404-page  status 404 text="Skip to content KM Karthik Muthumari Home Experience Project"
+PASS 404-links-have-base  ok
+PASS prefers-color-scheme:light  body bg luma=248 (WARN may just mean the site defaults to a fixed theme; confirm intent)
+PASS theme-toggle (start light)  __variable_975384 __variable_7af3d7 __variable_82e13a __variable_abb0b6|light|rgb(251, 248, 242)  ->  __variable_975384 __variable_7af3d7 __variable_82e13a __variable_abb0b6|dark|rgb(11, 13, 18)
+PASS theme-persists (start light)  after reload: __variable_975384 __variable_7af3d7 __variable_82e13a __variable_abb0b6|dark|rgb(11, 13, 18)
+PASS axe dark (after earlier toggle+reload; ctx prefers light)  no violations
+PASS axe dark (after second toggle)  no violations
+PASS focus-visible light  {"tag":"A","outline":"solid 3px","shadow":"none"}
+PASS prefers-color-scheme:dark  body bg luma=13 (WARN may just mean the site defaults to a fixed theme; confirm intent)
+PASS theme-toggle (start dark)  __variable_975384 __variable_7af3d7 __variable_82e13a __variable_abb0b6|dark|rgb(11, 13, 18)  ->  __variable_975384 __variable_7af3d7 __variable_82e13a __variable_abb0b6|light|rgb(251, 248, 242)
+PASS theme-persists (start dark)  after reload: __variable_975384 __variable_7af3d7 __variable_82e13a __variable_abb0b6|light|rgb(251, 248, 242)
+PASS axe light (after earlier toggle+reload; ctx prefers dark)  no violations
+PASS axe light (after second toggle)  no violations
+PASS focus-visible dark  {"tag":"A","outline":"solid 3px","shadow":"none"}
+PASS reduced-motion: content visible  no invisible text blocks in first viewport
+WARN reduced-motion: no infinite CSS/WAAPI animations  1 infinite running (of 5) – JS-driven (framer-motion rAF) loops are NOT counted here; review code for useReducedMotion
+PASS reduced-motion: all content visible after scrolling  every text block reaches opacity>0 once scrolled into view
+PASS contact: theme matches prefers-color-scheme light @320  data-theme=light
+PASS contact: both e-mail addresses shown as text in section light @320  both addresses visible in #contact text
+PASS contact: no placeholder text light @320  none
+PASS contact: work email visible+unclipped+topmost light @320  {"vis":true,"inViewport":true,"topmost":true,"left":48,"right":220}
+PASS contact: work email tap target >=44px light @320  246x87 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: work email href exact light @320  mailto:karthik.muthumari@mindera.com
+PASS contact: work email focusable (tabindex) light @320  tabindex=null
+PASS contact: personal email visible+unclipped+topmost light @320  {"vis":true,"inViewport":true,"topmost":true,"left":48,"right":220}
+PASS contact: personal email tap target >=44px light @320  246x83 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: personal email href exact light @320  mailto:karthikmuthumari7@gmail.com
+PASS contact: personal email focusable (tabindex) light @320  tabindex=null
+PASS contact: LinkedIn visible+unclipped+topmost light @320  {"vis":true,"inViewport":true,"topmost":true,"left":37,"right":283}
+PASS contact: LinkedIn tap target >=44px light @320  246x48
+PASS contact: LinkedIn href exact light @320  https://www.linkedin.com/in/karthikmuthumari/ target=_blank rel="noopener noreferrer"
+PASS contact: LinkedIn focusable (tabindex) light @320  tabindex=null
+PASS contact: GitHub visible+unclipped+topmost light @320  {"vis":true,"inViewport":true,"topmost":true,"left":37,"right":283}
+PASS contact: GitHub tap target >=44px light @320  246x48
+PASS contact: GitHub href exact light @320  https://github.com/karthik-muthumari target=_blank rel="noopener noreferrer"
+PASS contact: GitHub focusable (tabindex) light @320  tabindex=null
+PASS contact: all 4 links reachable via Tab light @320  Tab order reaches work email, personal email, LinkedIn, GitHub
+PASS contact: visible focus ring on contact links light @320  outline or box-shadow present
+PASS contact: axe (section#contact) light @320  no violations
+PASS contact: no horizontal overflow light @320  
+PASS contact: theme matches prefers-color-scheme light @375  data-theme=light
+PASS contact: both e-mail addresses shown as text in section light @375  both addresses visible in #contact text
+PASS contact: no placeholder text light @375  none
+PASS contact: work email visible+unclipped+topmost light @375  {"vis":true,"inViewport":true,"topmost":true,"left":102,"right":269}
+PASS contact: work email tap target >=44px light @375  301x91 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: work email href exact light @375  mailto:karthik.muthumari@mindera.com
+PASS contact: work email focusable (tabindex) light @375  tabindex=null
+PASS contact: personal email visible+unclipped+topmost light @375  {"vis":true,"inViewport":true,"topmost":true,"left":102,"right":269}
+PASS contact: personal email tap target >=44px light @375  301x87 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: personal email href exact light @375  mailto:karthikmuthumari7@gmail.com
+PASS contact: personal email focusable (tabindex) light @375  tabindex=null
+PASS contact: LinkedIn visible+unclipped+topmost light @375  {"vis":true,"inViewport":true,"topmost":true,"left":37,"right":338}
+PASS contact: LinkedIn tap target >=44px light @375  301x48
+PASS contact: LinkedIn href exact light @375  https://www.linkedin.com/in/karthikmuthumari/ target=_blank rel="noopener noreferrer"
+PASS contact: LinkedIn focusable (tabindex) light @375  tabindex=null
+PASS contact: GitHub visible+unclipped+topmost light @375  {"vis":true,"inViewport":true,"topmost":true,"left":37,"right":338}
+PASS contact: GitHub tap target >=44px light @375  301x48
+PASS contact: GitHub href exact light @375  https://github.com/karthik-muthumari target=_blank rel="noopener noreferrer"
+PASS contact: GitHub focusable (tabindex) light @375  tabindex=null
+PASS contact: all 4 links reachable via Tab light @375  Tab order reaches work email, personal email, LinkedIn, GitHub
+PASS contact: visible focus ring on contact links light @375  outline or box-shadow present
+PASS contact: axe (section#contact) light @375  no violations
+PASS contact: no horizontal overflow light @375  
+PASS contact: theme matches prefers-color-scheme light @768  data-theme=light
+PASS contact: both e-mail addresses shown as text in section light @768  both addresses visible in #contact text
+PASS contact: no placeholder text light @768  none
+PASS contact: work email visible+unclipped+topmost light @768  {"vis":true,"inViewport":true,"topmost":true,"left":123,"right":299}
+PASS contact: work email tap target >=44px light @768  318x92 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: work email href exact light @768  mailto:karthik.muthumari@mindera.com
+PASS contact: work email focusable (tabindex) light @768  tabindex=null
+PASS contact: personal email visible+unclipped+topmost light @768  {"vis":true,"inViewport":true,"topmost":true,"left":457,"right":633}
+PASS contact: personal email tap target >=44px light @768  318x88 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: personal email href exact light @768  mailto:karthikmuthumari7@gmail.com
+PASS contact: personal email focusable (tabindex) light @768  tabindex=null
+PASS contact: LinkedIn visible+unclipped+topmost light @768  {"vis":true,"inViewport":true,"topmost":true,"left":217,"right":374}
+PASS contact: LinkedIn tap target >=44px light @768  157x48
+PASS contact: LinkedIn href exact light @768  https://www.linkedin.com/in/karthikmuthumari/ target=_blank rel="noopener noreferrer"
+PASS contact: LinkedIn focusable (tabindex) light @768  tabindex=null
+PASS contact: GitHub visible+unclipped+topmost light @768  {"vis":true,"inViewport":true,"topmost":true,"left":58,"right":205}
+PASS contact: GitHub tap target >=44px light @768  147x48
+PASS contact: GitHub href exact light @768  https://github.com/karthik-muthumari target=_blank rel="noopener noreferrer"
+PASS contact: GitHub focusable (tabindex) light @768  tabindex=null
+PASS contact: all 4 links reachable via Tab light @768  Tab order reaches work email, personal email, LinkedIn, GitHub
+PASS contact: visible focus ring on contact links light @768  outline or box-shadow present
+PASS contact: axe (section#contact) light @768  no violations
+PASS contact: no horizontal overflow light @768  
+PASS contact: theme matches prefers-color-scheme light @1440  data-theme=light
+PASS contact: both e-mail addresses shown as text in section light @1440  both addresses visible in #contact text
+PASS contact: no placeholder text light @1440  none
+PASS contact: work email visible+unclipped+topmost light @1440  {"vis":true,"inViewport":true,"topmost":true,"left":797,"right":1130}
+PASS contact: work email tap target >=44px light @1440  475x71 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: work email href exact light @1440  mailto:karthik.muthumari@mindera.com
+PASS contact: work email focusable (tabindex) light @1440  tabindex=null
+PASS contact: personal email visible+unclipped+topmost light @1440  {"vis":true,"inViewport":true,"topmost":true,"left":797,"right":1130}
+PASS contact: personal email tap target >=44px light @1440  475x70 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: personal email href exact light @1440  mailto:karthikmuthumari7@gmail.com
+PASS contact: personal email focusable (tabindex) light @1440  tabindex=null
+PASS contact: LinkedIn visible+unclipped+topmost light @1440  {"vis":true,"inViewport":true,"topmost":true,"left":891,"right":1048}
+PASS contact: LinkedIn tap target >=44px light @1440  157x48
+PASS contact: LinkedIn href exact light @1440  https://www.linkedin.com/in/karthikmuthumari/ target=_blank rel="noopener noreferrer"
+PASS contact: LinkedIn focusable (tabindex) light @1440  tabindex=null
+PASS contact: GitHub visible+unclipped+topmost light @1440  {"vis":true,"inViewport":true,"topmost":true,"left":732,"right":879}
+PASS contact: GitHub tap target >=44px light @1440  147x48
+PASS contact: GitHub href exact light @1440  https://github.com/karthik-muthumari target=_blank rel="noopener noreferrer"
+PASS contact: GitHub focusable (tabindex) light @1440  tabindex=null
+PASS contact: all 4 links reachable via Tab light @1440  Tab order reaches work email, personal email, LinkedIn, GitHub
+PASS contact: visible focus ring on contact links light @1440  outline or box-shadow present
+PASS contact: axe (section#contact) light @1440  no violations
+PASS contact: no horizontal overflow light @1440  
+PASS contact: theme matches prefers-color-scheme dark @320  data-theme=dark
+PASS contact: both e-mail addresses shown as text in section dark @320  both addresses visible in #contact text
+PASS contact: no placeholder text dark @320  none
+PASS contact: work email visible+unclipped+topmost dark @320  {"vis":true,"inViewport":true,"topmost":true,"left":48,"right":220}
+PASS contact: work email tap target >=44px dark @320  246x87 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: work email href exact dark @320  mailto:karthik.muthumari@mindera.com
+PASS contact: work email focusable (tabindex) dark @320  tabindex=null
+PASS contact: personal email visible+unclipped+topmost dark @320  {"vis":true,"inViewport":true,"topmost":true,"left":48,"right":220}
+PASS contact: personal email tap target >=44px dark @320  246x83 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: personal email href exact dark @320  mailto:karthikmuthumari7@gmail.com
+PASS contact: personal email focusable (tabindex) dark @320  tabindex=null
+PASS contact: LinkedIn visible+unclipped+topmost dark @320  {"vis":true,"inViewport":true,"topmost":true,"left":37,"right":283}
+PASS contact: LinkedIn tap target >=44px dark @320  246x48
+PASS contact: LinkedIn href exact dark @320  https://www.linkedin.com/in/karthikmuthumari/ target=_blank rel="noopener noreferrer"
+PASS contact: LinkedIn focusable (tabindex) dark @320  tabindex=null
+PASS contact: GitHub visible+unclipped+topmost dark @320  {"vis":true,"inViewport":true,"topmost":true,"left":37,"right":283}
+PASS contact: GitHub tap target >=44px dark @320  246x48
+PASS contact: GitHub href exact dark @320  https://github.com/karthik-muthumari target=_blank rel="noopener noreferrer"
+PASS contact: GitHub focusable (tabindex) dark @320  tabindex=null
+PASS contact: all 4 links reachable via Tab dark @320  Tab order reaches work email, personal email, LinkedIn, GitHub
+PASS contact: visible focus ring on contact links dark @320  outline or box-shadow present
+PASS contact: axe (section#contact) dark @320  no violations
+PASS contact: no horizontal overflow dark @320  
+PASS contact: theme matches prefers-color-scheme dark @375  data-theme=dark
+PASS contact: both e-mail addresses shown as text in section dark @375  both addresses visible in #contact text
+PASS contact: no placeholder text dark @375  none
+PASS contact: work email visible+unclipped+topmost dark @375  {"vis":true,"inViewport":true,"topmost":true,"left":102,"right":269}
+PASS contact: work email tap target >=44px dark @375  301x91 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: work email href exact dark @375  mailto:karthik.muthumari@mindera.com
+PASS contact: work email focusable (tabindex) dark @375  tabindex=null
+PASS contact: personal email visible+unclipped+topmost dark @375  {"vis":true,"inViewport":true,"topmost":true,"left":102,"right":269}
+PASS contact: personal email tap target >=44px dark @375  301x87 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: personal email href exact dark @375  mailto:karthikmuthumari7@gmail.com
+PASS contact: personal email focusable (tabindex) dark @375  tabindex=null
+PASS contact: LinkedIn visible+unclipped+topmost dark @375  {"vis":true,"inViewport":true,"topmost":true,"left":37,"right":338}
+PASS contact: LinkedIn tap target >=44px dark @375  301x48
+PASS contact: LinkedIn href exact dark @375  https://www.linkedin.com/in/karthikmuthumari/ target=_blank rel="noopener noreferrer"
+PASS contact: LinkedIn focusable (tabindex) dark @375  tabindex=null
+PASS contact: GitHub visible+unclipped+topmost dark @375  {"vis":true,"inViewport":true,"topmost":true,"left":37,"right":338}
+PASS contact: GitHub tap target >=44px dark @375  301x48
+PASS contact: GitHub href exact dark @375  https://github.com/karthik-muthumari target=_blank rel="noopener noreferrer"
+PASS contact: GitHub focusable (tabindex) dark @375  tabindex=null
+PASS contact: all 4 links reachable via Tab dark @375  Tab order reaches work email, personal email, LinkedIn, GitHub
+PASS contact: visible focus ring on contact links dark @375  outline or box-shadow present
+PASS contact: axe (section#contact) dark @375  no violations
+PASS contact: no horizontal overflow dark @375  
+PASS contact: theme matches prefers-color-scheme dark @768  data-theme=dark
+PASS contact: both e-mail addresses shown as text in section dark @768  both addresses visible in #contact text
+PASS contact: no placeholder text dark @768  none
+PASS contact: work email visible+unclipped+topmost dark @768  {"vis":true,"inViewport":true,"topmost":true,"left":123,"right":299}
+PASS contact: work email tap target >=44px dark @768  318x92 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: work email href exact dark @768  mailto:karthik.muthumari@mindera.com
+PASS contact: work email focusable (tabindex) dark @768  tabindex=null
+PASS contact: personal email visible+unclipped+topmost dark @768  {"vis":true,"inViewport":true,"topmost":true,"left":457,"right":633}
+PASS contact: personal email tap target >=44px dark @768  318x88 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: personal email href exact dark @768  mailto:karthikmuthumari7@gmail.com
+PASS contact: personal email focusable (tabindex) dark @768  tabindex=null
+PASS contact: LinkedIn visible+unclipped+topmost dark @768  {"vis":true,"inViewport":true,"topmost":true,"left":217,"right":374}
+PASS contact: LinkedIn tap target >=44px dark @768  157x48
+PASS contact: LinkedIn href exact dark @768  https://www.linkedin.com/in/karthikmuthumari/ target=_blank rel="noopener noreferrer"
+PASS contact: LinkedIn focusable (tabindex) dark @768  tabindex=null
+PASS contact: GitHub visible+unclipped+topmost dark @768  {"vis":true,"inViewport":true,"topmost":true,"left":58,"right":205}
+PASS contact: GitHub tap target >=44px dark @768  147x48
+PASS contact: GitHub href exact dark @768  https://github.com/karthik-muthumari target=_blank rel="noopener noreferrer"
+PASS contact: GitHub focusable (tabindex) dark @768  tabindex=null
+PASS contact: all 4 links reachable via Tab dark @768  Tab order reaches work email, personal email, LinkedIn, GitHub
+PASS contact: visible focus ring on contact links dark @768  outline or box-shadow present
+PASS contact: axe (section#contact) dark @768  no violations
+PASS contact: no horizontal overflow dark @768  
+PASS contact: theme matches prefers-color-scheme dark @1440  data-theme=dark
+PASS contact: both e-mail addresses shown as text in section dark @1440  both addresses visible in #contact text
+PASS contact: no placeholder text dark @1440  none
+PASS contact: work email visible+unclipped+topmost dark @1440  {"vis":true,"inViewport":true,"topmost":true,"left":797,"right":1130}
+PASS contact: work email tap target >=44px dark @1440  475x71 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: work email href exact dark @1440  mailto:karthik.muthumari@mindera.com
+PASS contact: work email focusable (tabindex) dark @1440  tabindex=null
+PASS contact: personal email visible+unclipped+topmost dark @1440  {"vis":true,"inViewport":true,"topmost":true,"left":797,"right":1130}
+PASS contact: personal email tap target >=44px dark @1440  475x70 (stretched-link ::after hit area, verified by elementFromPoint)
+PASS contact: personal email href exact dark @1440  mailto:karthikmuthumari7@gmail.com
+PASS contact: personal email focusable (tabindex) dark @1440  tabindex=null
+PASS contact: LinkedIn visible+unclipped+topmost dark @1440  {"vis":true,"inViewport":true,"topmost":true,"left":891,"right":1048}
+PASS contact: LinkedIn tap target >=44px dark @1440  157x48
+PASS contact: LinkedIn href exact dark @1440  https://www.linkedin.com/in/karthikmuthumari/ target=_blank rel="noopener noreferrer"
+PASS contact: LinkedIn focusable (tabindex) dark @1440  tabindex=null
+PASS contact: GitHub visible+unclipped+topmost dark @1440  {"vis":true,"inViewport":true,"topmost":true,"left":732,"right":879}
+PASS contact: GitHub tap target >=44px dark @1440  147x48
+PASS contact: GitHub href exact dark @1440  https://github.com/karthik-muthumari target=_blank rel="noopener noreferrer"
+PASS contact: GitHub focusable (tabindex) dark @1440  tabindex=null
+PASS contact: all 4 links reachable via Tab dark @1440  Tab order reaches work email, personal email, LinkedIn, GitHub
+PASS contact: visible focus ring on contact links dark @1440  outline or box-shadow present
+PASS contact: axe (section#contact) dark @1440  no violations
+PASS contact: no horizontal overflow dark @1440  
+PASS contact: work email in footer of /blog/  present
+PASS contact: personal email in footer of /blog/  present
+PASS contact: LinkedIn in footer of /blog/  present
+PASS contact: GitHub in footer of /blog/  present
+PASS contact: /blog/ has no placeholder text  
+
+E2E PASS: 279 checks, 0 fail, 1 warn. Screenshots: /Users/karthikmuthumari/Documents/repo/my-profile/tests/screenshots/prof

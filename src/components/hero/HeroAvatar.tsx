@@ -77,9 +77,9 @@ export default function HeroAvatar({ avatar }: { avatar: ResolvedAvatar }) {
         <motion.div
           aria-hidden
           style={{ x: pointerFx ? glowX : 0, y: pointerFx ? glowY : 0 }}
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[130%] w-[130%] -translate-x-1/2 -translate-y-1/2"
+          className="pointer-events-none absolute -inset-[15%]"
         >
-          <div className="avatar-glow h-full w-full bg-glow-hero opacity-90" />
+          <div className="avatar-glow avatar-glow-bg h-full w-full" />
         </motion.div>
 
         {/* 2 rings: SVG stroke-gradient arc (no mask) + faint dashed CSS ring (≥640px) */}

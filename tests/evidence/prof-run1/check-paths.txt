@@ -1,0 +1,4 @@
+check-paths  out=/var/folders/zr/ttc_sp054dq854jpz930r92m0000gq/T/qa-work/prof/out  base=/profile
+  pages=7 css=1 js=24 local URLs checked=375 external=3
+  webpack publicPath: /profile/_next/
+RESULT: PASS (0 broken, 0 warnings)

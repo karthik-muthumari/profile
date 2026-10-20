@@ -1,0 +1,6 @@
+PASS negative control "clean": clean mock passes all 20 checks (exit 0)
+PASS negative control "rect": detector flagged 5 x /edge:/ (exit 1)
+PASS negative control "overlay": detector flagged 1 x /strip: no (dark\/light )?block at the (LEFT|RIGHT)/ (exit 1)
+PASS negative control "seam": detector flagged 3 x /seam:/ (exit 1)
+
+NEGATIVE-CONTROLS-ARTIFACTS PASS: 0 control(s) misbehaved

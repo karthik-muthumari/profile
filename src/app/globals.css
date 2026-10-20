@@ -68,6 +68,23 @@ html[data-motion="gentle"] .avatar-ring-svg, html[data-motion="off"] .avatar-rin
 @keyframes ring-spin-from { from { transform: rotate(-60deg); } to { transform: rotate(300deg); } }
 .avatar-ring-svg { animation-name: ring-spin-from; }
 
+/* Hero glows (artifact fix, round 2). Every gradient is sized so it reaches fully transparent INSIDE its own box:
+   no gradient is ever clipped by the box edge, so no rectangle can show, whatever the layer is translated by.
+   Kept in globals.css (not tokens.css) so `npm run sync:design` cannot overwrite them. */
+:root, :root[data-theme="dark"] { --gl-a: 255 181 71; --gl-a-o: .2; --gl-b: 92 200 255; --gl-b-o: .12; --gl-av-o: .24; }
+:root[data-theme="light"] { --gl-a: 245 165 36; --gl-a-o: .26; --gl-b: 92 200 255; --gl-b-o: .2; --gl-av-o: .3; }
+@media (prefers-color-scheme: light) { :root:not([data-theme]) { --gl-a: 245 165 36; --gl-a-o: .26; --gl-b: 92 200 255; --gl-b-o: .2; --gl-av-o: .3; } }
+/* section backdrop: ellipses fully inside the box (x may run off the viewport sides, y never touches top/bottom) */
+.hero-glow {
+  background:
+    radial-gradient(ellipse 44% 44% at 68% 46%, rgb(var(--gl-a) / var(--gl-a-o)) 0%, rgb(var(--gl-a) / calc(var(--gl-a-o) * .45)) 45%, rgb(var(--gl-a) / 0) 100%),
+    radial-gradient(ellipse 38% 36% at 15% 62%, rgb(var(--gl-b) / var(--gl-b-o)) 0%, rgb(var(--gl-b) / calc(var(--gl-b-o) * .45)) 45%, rgb(var(--gl-b) / 0) 100%);
+}
+/* avatar halo: one centred closest-side circle, transparent at the box edge (the box is 130% of the avatar) */
+.avatar-glow-bg {
+  background: radial-gradient(closest-side, rgb(var(--gl-a) / var(--gl-av-o)) 0%, rgb(var(--gl-a) / calc(var(--gl-av-o) * .5)) 55%, rgb(var(--gl-a) / 0) 100%);
+}
+
 /* Glow pulse + avatar float: CSS keyframes (opacity / transform only) so they keep running on the compositor thread */
 .avatar-glow { animation: glow-pulse 5s ease-in-out infinite; }
 .avatar-float { animation: avatar-float 6s ease-in-out infinite; }
@@ -88,7 +105,7 @@ html[data-motion="gentle"] .avatar-glow { animation: none; }
 @keyframes badge-in { from { opacity: 0; transform: translate3d(0, 8px, 0); } to { opacity: 1; transform: none; } }
 @keyframes badge-float { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, var(--bf, -4px), 0); } }
 /* offsets relative to the avatar box (design/07 §3.6 B) */
-.badge-aws { left: max(-14%, calc(8px - (100vw - 100%) / 2)); top: 12%; }
+.badge-aws { left: max(-14%, calc(8px - (100vw - 100%) / 2)); top: 4%; }
 .badge-yrs { right: max(-10%, calc(8px - (100vw - 100%) / 2)); top: 5%; }
 .badge-ibm { right: max(-12%, calc(8px - (100vw - 100%) / 2)); bottom: 10%; }
 .badge-ibm .badge-float { white-space: normal; text-align: center; max-width: 6.5rem; }
@@ -98,12 +115,12 @@ html[data-motion="gentle"] .avatar-glow { animation: none; }
   .badge-ibm .badge-float { white-space: nowrap; max-width: none; }
 }
 @media (min-width: 768px) {
-  .badge-aws { left: -6%; } .badge-yrs { right: -4%; } .badge-ibm { right: -4%; }
+  .badge-aws { left: -6%; top: 3%; } .badge-yrs { right: -4%; } .badge-ibm { right: -4%; }
   .badge-ibm .badge-float { white-space: normal; max-width: 7rem; }
 }
 @media (min-width: 1024px) {
   .badge-float { --bf: -8px; font-size: var(--fs-small, 14px); }
-  .badge-aws { left: -1rem; top: 14%; } .badge-yrs { right: -.5rem; top: 8%; } .badge-ibm { right: -1.5rem; bottom: 12%; }
+  .badge-aws { left: -1.5rem; top: 14%; } .badge-yrs { right: -.5rem; top: 8%; } .badge-ibm { right: -1.5rem; bottom: 12%; }
   .badge-ibm .badge-float { white-space: nowrap; max-width: none; }
 }
 @media (min-width: 1280px) { .badge-aws { left: -2.5rem; } .badge-yrs { right: -2rem; } .badge-ibm { right: -3.5rem; } }
@@ -132,19 +149,28 @@ html:not([data-hydrated]) [style*="opacity:0"], html:not([data-hydrated]) [style
 }
 
 /* ---------- Marquee (CSS-only) ---------- */
+/* Edge fade = MASK on the static wrapper (design/07 §7.3), not opaque bg-coloured overlays (those read as dark boxes over
+   the hero glow). Fine pointers only: touch/WebKit gets no mask on a subtree with an animating descendant; chips just clip.
+   Two identical groups (each with its trailing gap) + translate -50% = mathematically seamless loop. No will-change. */
 .marquee { position: relative; overflow: hidden; }
-.marquee::before, .marquee::after { content: ""; position: absolute; top: 0; bottom: 0; width: 10%; z-index: 1; pointer-events: none; }
-.marquee::before { left: 0; background: linear-gradient(to right, rgb(var(--c-bg)), transparent); }
-.marquee::after { right: 0; background: linear-gradient(to left, rgb(var(--c-bg)), transparent); }
-.marquee-track { display: flex; width: max-content; gap: .5rem; animation: marquee 40s linear infinite; }
+@media (hover: hover) and (pointer: fine) {
+  .marquee { -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: 100% 100%; mask-size: 100% 100%; }
+}
+.marquee-track { display: flex; width: max-content; animation: marquee 26s linear infinite; }
+.marquee-group { display: flex; flex: none; gap: .5rem; padding-right: .5rem; margin: 0; padding-left: 0; list-style: none; }
+.marquee .chip { background: rgb(var(--c-surface-2) / .6); border-color: rgb(var(--c-border) / .9); backdrop-filter: none; box-shadow: none; flex: none; }
 @media (hover: hover) and (pointer: fine) { .marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; } }
-@keyframes marquee { to { transform: translateX(calc(-50% - .25rem)); } }
+@keyframes marquee { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
 /* Static marquee: "gentle" and "off" tiers (and OS reduce-motion before JS has chosen a tier). */
-html[data-motion="gentle"] .marquee::before, html[data-motion="gentle"] .marquee::after, html[data-motion="off"] .marquee::before, html[data-motion="off"] .marquee::after { display: none; }
-html[data-motion="gentle"] .marquee-track, html[data-motion="off"] .marquee-track { width: auto; flex-wrap: wrap; animation: none; }
+html[data-motion="gentle"] .marquee, html[data-motion="off"] .marquee { -webkit-mask-image: none; mask-image: none; }
+html[data-motion="gentle"] .marquee-track, html[data-motion="off"] .marquee-track { display: block; width: auto; animation: none; }
+html[data-motion="gentle"] .marquee-group, html[data-motion="off"] .marquee-group { flex-wrap: wrap; padding-right: 0; }
 html[data-motion="gentle"] .marquee-dup, html[data-motion="off"] .marquee-dup { display: none; }
 @media (prefers-reduced-motion: reduce) {
-  html:not([data-motion]) .marquee-track { width: auto; flex-wrap: wrap; animation: none; }
+  html:not([data-motion]) .marquee { -webkit-mask-image: none; mask-image: none; }
+  html:not([data-motion]) .marquee-track { display: block; width: auto; animation: none; }
+  html:not([data-motion]) .marquee-group { flex-wrap: wrap; padding-right: 0; }
   html:not([data-motion]) .marquee-dup { display: none; }
 }
 html { scroll-behavior: smooth; }

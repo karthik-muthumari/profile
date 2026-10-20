@@ -86,6 +86,7 @@ for (const route of routes) {
       const clippedBy = [];
       for (const el of document.body.querySelectorAll('a,button,h1,h2,h3,p,li,input,img,svg,span')) {
         if (el.closest('[aria-hidden="true"],[data-allow-overflow]')) continue;
+        if (document.documentElement.dataset.motion === 'full' && el.closest('.marquee-track')) continue;   // full tier: the marquee scrolls, chips outside the strip are clipped by design (static tiers ARE checked, see e2e-round2 'marquee static row')
         const cs = getComputedStyle(el); if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
         const r = el.getBoundingClientRect(); if (!r.width || !r.height) continue;
         let p = el.parentElement;
@@ -200,10 +201,14 @@ for (const scheme of ['light', 'dark']) {
   await page.screenshot({ path: path.join(shotDir, `home-1280-${scheme}.png`), fullPage: true });
   await page.addScriptTag({ content: axeSrc });
   const runAxe = async (label) => {
-    await page.waitForTimeout(900);   // let colour transitions finish (axe reads mid-transition colours otherwise)
-    const ax = await page.evaluate(async () => { const r = await axe.run(document, { runOnly: ['wcag2a', 'wcag2aa', 'wcag22aa', 'best-practice'] }); return r.violations.map((v) => ({ id: v.id, impact: v.impact, n: v.nodes.length, ex: v.nodes[0]?.target?.join(' '), html: v.nodes[0]?.html?.slice(0, 120) })); });
+    const tS = Date.now(); await page.waitForTimeout(300);
+    // wait for colour transitions to finish (axe reads mid-transition colours otherwise); theme-switch transitions on cards were observed to run > 0.9 s
+    await page.waitForFunction(() => !document.getAnimations().some((a) => typeof CSSTransition !== 'undefined' && a instanceof CSSTransition && a.playState === 'running'), null, { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(150); const settleMs = Date.now() - tS;
+    if (settleMs > 1300) rec(`theme-transition settles quickly (${label})`, 'WARN', `colour transitions still running ${settleMs}ms after the switch (axe is run only after they finish; mid-transition frames can fail contrast)`);
+    const ax = await page.evaluate(async () => { const r = await axe.run(document, { runOnly: ['wcag2a', 'wcag2aa', 'wcag22aa', 'best-practice'] }); return r.violations.map((v) => ({ id: v.id, impact: v.impact, n: v.nodes.length, ex: v.nodes[0]?.target?.join(' '), html: v.nodes[0]?.html?.slice(0, 120), det: (() => { const d = v.nodes[0]?.any?.[0]?.data; return d && d.contrastRatio ? `fg ${d.fgColor} on bg ${d.bgColor} = ${d.contrastRatio} (need ${d.expectedContrastRatio})` : ''; })() })); });
     const serious = ax.filter((v) => ['serious', 'critical'].includes(v.impact));
-    rec(`axe ${label}`, serious.length ? 'FAIL' : (ax.length ? 'WARN' : 'PASS'), serious.length || ax.length ? ax.map((v) => `${v.id}(${v.impact},${v.n}) ${v.ex}`).join(' | ') : 'no violations');
+    rec(`axe ${label}`, serious.length ? 'FAIL' : (ax.length ? 'WARN' : 'PASS'), serious.length || ax.length ? ax.map((v) => `${v.id}(${v.impact},${v.n}) ${v.ex} ${v.det || ''}`).join(' | ') : 'no violations');
   };
   const themeNow = () => page.evaluate(() => (document.documentElement.classList.contains('dark') || document.documentElement.dataset.theme === 'dark') ? 'dark' : 'light');
   await runAxe(`${await themeNow()} (after earlier toggle+reload; ctx prefers ${scheme})`);

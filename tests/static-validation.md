@@ -14,6 +14,10 @@ All tooling lives in `tests/` and is isolated from the app's `package.json`:
 | `scripts/negative-controls.mjs` | none | Plants defects (phone, address, original photo, third e-mail, placeholders, wrong LinkedIn, removed mailto) into a *copy* of a clean export and requires the gate to FAIL on the right check. |
 | `scripts/serve.mjs` | none | GitHub-Pages-like static server (`--base /my-profile` makes the site reachable *only* under the prefix, so unprefixed `/_next/...` 404s). |
 | `scripts/e2e.mjs` | `tests/node_modules` (`playwright-core`, `axe-core`) + a Chrome binary | Browser checks: widths, overflow, tap targets, client-side nav, requests, theme, reduced motion, axe, contact-link checks, screenshots. |
+| `scripts/e2e-round2.mjs`, `scripts/anim-audit.mjs` | same | Round 2: work-email-first, footer alignment (320/375/414/768/1280), motion tiers Full/Gentle/Off, failsafe, hero photo, mobile animation completion. |
+| `scripts/e2e-hero.mjs [--engine chromium\|webkit]` | same (+ `npx playwright install webkit`) | Round 2: badges + rings visible / inside viewport / non-overlapping / moving at 360-768 on a phone profile (WebKit uses the iPhone 16 Pro Max device), entrance timing, hidden-load, forbidden effects. |
+| `scripts/artifact-detect.mjs` | same | Round 2: hero screenshots 1683x850…430x932 dark+light; long hard luminance edges (rectangles), marquee strip background vs hero, marquee motion / seam. `negative-controls-artifacts.mjs` + `negative-controls-r2.mjs` prove they can fail. |
+| `scripts/run-all.sh` | same | Isolated builds + everything above for base modes `''`, `/my-profile`, `/profile` (`QA_MODES=prof` for one). |
 
 One-time setup for the browser tests: `cd tests && npm install` (Chrome is auto-detected on macOS; else `CHROME_PATH=...`).
 > ⚠ `tests/node_modules` ships `.d.ts` files. The app's `tsconfig.json` should `exclude` `tests` (and `design`) so `next build` type-checking never walks them.

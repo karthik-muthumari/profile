@@ -1,0 +1,148 @@
+WARN entrance: hero reaches final state <=1.5s after load (iOS-safe entrance) WK @360x780 light  2114ms after load event (budget 1500ms; headless tolerance +300ms)
+PASS badges: exactly one Highlights list with 3 items, no legacy AvatarChips WK @360x780 light  lists=1, items=AWS Certified | 14+ yrs | IBM Hackathon Winner, legacy=0
+PASS badges: all 3 visible (display/visibility/opacity) WK @360x780 light  AWS Certified op=1.00 114x24 | 14+ yrs op=1.00 76x24 | IBM Hackathon Winner op=1.00 104x51
+PASS badges: inside viewport with >=8px margin at every sample (while floating) WK @360x780 light  all inside 8..352 (14..128, 260..336, 237..341)
+FAIL badges: do not overlap each other nor the head rectangle (x28-71%, y14-67%) WK @360x780 light  AWS Certified x head (5x19px overlap) | AWS Certified x head (5x20px overlap) | AWS Certified x head (5x21px overlap) | AWS Certified x head (5x22px overlap) | AWS Certified x head (5x18px overlap)
+PASS layout: no horizontal scroll WK @360x780 light  scrollWidth=360 innerWidth=360
+PASS badges: floating (computed transform changes over 4.2s) WK @360x780 light  ty range per badge = 3.7 / 3.9 / 4.0px; animations: badge-float:running | badge-float:running | badge-float:running
+PASS badges: no filter / backdrop-filter / mask / will-change on badges WK @360x780 light  none|none|none auto|auto ; none|none|none auto|auto ; none|none|none auto|auto
+PASS ring: SVG gradient ring present, visible, inside viewport WK @360x780 light  circle x 39..321 (rotating bbox -21..381 may exceed the viewport harmlessly), op=1.00, stroke=url("#ring_R_16glfilb_"), stroke-width=1.15
+PASS ring: gradient stops resolve to real colours (theme tokens apply) WK @360x780 light  rgb(217, 119, 6) rgb(234, 88, 12) rgb(11, 106, 156)
+PASS ring: rotating (transform angle changes between samples) WK @360x780 light  angles over 4.2s: 34,52,70,89,108,126,144,163; ring-spin-from:running
+PASS ring: no filter / mask on the ring WK @360x780 light  none|none
+PASS ring: dashed outer ring intentionally hidden <640px (design 07 §3.6 D) WK @360x780 light  none
+PASS ring: visible gap between photo and ring arc (>=3px) WK @360x780 light  ring radius 140.8px, photo radius 129.5px, stroke 3.34px -> gap 9.6px
+PASS ring: arc is painted in the screenshot (>=35% of ring circle contrasts with the gap) WK @360x780 light  91% of 180 ring points contrast with the gap radius (arc covers ~72% when fully visible; dpr 3)
+PASS avatar: float running (transform changes between samples 1.5s apart) WK @360x780 light  ty range 11.85px over 4.2s; avatar-float:running
+PASS avatar: tier is full, avatar state ok WK @360x780 light  data-motion=full, data-avatar-state=fallback
+PASS effects: no filter/backdrop/mask/will-change/preserve-3d on animating hero/nav/marquee subtrees WK @360x780 light  clean
+PASS reveal: after full scroll no element is left at opacity<0.1 (except ping rings) WK @360x780 light  none
+PASS page: no JS/console errors WK @360x780 light  none
+PASS entrance: hero reaches final state <=1.5s after load (iOS-safe entrance) WK @390x844 light  835ms after load event (budget 1500ms; headless tolerance +300ms)
+PASS badges: exactly one Highlights list with 3 items, no legacy AvatarChips WK @390x844 light  lists=1, items=AWS Certified | 14+ yrs | IBM Hackathon Winner, legacy=0
+PASS badges: all 3 visible (display/visibility/opacity) WK @390x844 light  AWS Certified op=1.00 114x24 | 14+ yrs op=1.00 76x24 | IBM Hackathon Winner op=1.00 104x51
+PASS badges: inside viewport with >=8px margin at every sample (while floating) WK @390x844 light  all inside 8..382 (15..129, 288..363, 265..369)
+PASS badges: do not overlap each other nor the head rectangle (x28-71%, y14-67%) WK @390x844 light  8 samples over 4.2s, no intersection
+PASS layout: no horizontal scroll WK @390x844 light  scrollWidth=390 innerWidth=390
+PASS badges: floating (computed transform changes over 4.2s) WK @390x844 light  ty range per badge = 3.8 / 3.9 / 4.0px; animations: badge-float:running | badge-float:running | badge-float:running
+PASS badges: no filter / backdrop-filter / mask / will-change on badges WK @390x844 light  none|none|none auto|auto ; none|none|none auto|auto ; none|none|none auto|auto
+PASS ring: SVG gradient ring present, visible, inside viewport WK @390x844 light  circle x 42..347 (rotating bbox -25..415 may exceed the viewport harmlessly), op=1.00, stroke=url("#ring_R_16glfilb_"), stroke-width=1.15
+PASS ring: gradient stops resolve to real colours (theme tokens apply) WK @390x844 light  rgb(217, 119, 6) rgb(234, 88, 12) rgb(11, 106, 156)
+PASS ring: rotating (transform angle changes between samples) WK @390x844 light  angles over 4.2s: 37,55,73,92,110,128,146,165; ring-spin-from:running
+PASS ring: no filter / mask on the ring WK @390x844 light  none|none
+PASS ring: dashed outer ring intentionally hidden <640px (design 07 §3.6 D) WK @390x844 light  none
+PASS ring: visible gap between photo and ring arc (>=3px) WK @390x844 light  ring radius 152.5px, photo radius 140.5px, stroke 3.62px -> gap 10.2px
+PASS ring: arc is painted in the screenshot (>=35% of ring circle contrasts with the gap) WK @390x844 light  92% of 180 ring points contrast with the gap radius (arc covers ~72% when fully visible; dpr 3)
+PASS avatar: float running (transform changes between samples 1.5s apart) WK @390x844 light  ty range 11.67px over 4.2s; avatar-float:running
+PASS avatar: tier is full, avatar state ok WK @390x844 light  data-motion=full, data-avatar-state=fallback
+PASS effects: no filter/backdrop/mask/will-change/preserve-3d on animating hero/nav/marquee subtrees WK @390x844 light  clean
+PASS reveal: after full scroll no element is left at opacity<0.1 (except ping rings) WK @390x844 light  none
+PASS page: no JS/console errors WK @390x844 light  none
+PASS entrance: hero reaches final state <=1.5s after load (iOS-safe entrance) WK @430x932 light  845ms after load event (budget 1500ms; headless tolerance +300ms)
+PASS badges: exactly one Highlights list with 3 items, no legacy AvatarChips WK @430x932 light  lists=1, items=AWS Certified | 14+ yrs | IBM Hackathon Winner, legacy=0
+PASS badges: all 3 visible (display/visibility/opacity) WK @430x932 light  AWS Certified op=1.00 114x24 | 14+ yrs op=1.00 76x24 | IBM Hackathon Winner op=1.00 104x51
+PASS badges: inside viewport with >=8px margin at every sample (while floating) WK @430x932 light  all inside 8..422 (23..137, 319..395, 297..401)
+PASS badges: do not overlap each other nor the head rectangle (x28-71%, y14-67%) WK @430x932 light  8 samples over 4.2s, no intersection
+PASS layout: no horizontal scroll WK @430x932 light  scrollWidth=430 innerWidth=430
+PASS badges: floating (computed transform changes over 4.2s) WK @430x932 light  ty range per badge = 3.7 / 3.9 / 4.0px; animations: badge-float:running | badge-float:running | badge-float:running
+PASS badges: no filter / backdrop-filter / mask / will-change on badges WK @430x932 light  none|none|none auto|auto ; none|none|none auto|auto ; none|none|none auto|auto
+PASS ring: SVG gradient ring present, visible, inside viewport WK @430x932 light  circle x 52..378 (rotating bbox -19..449 may exceed the viewport harmlessly), op=1.00, stroke=url("#ring_R_16glfilb_"), stroke-width=1.15
+PASS ring: gradient stops resolve to real colours (theme tokens apply) WK @430x932 light  rgb(217, 119, 6) rgb(234, 88, 12) rgb(11, 106, 156)
+PASS ring: rotating (transform angle changes between samples) WK @430x932 light  angles over 4.2s: 36,54,72,90,109,127,145,163; ring-spin-from:running
+PASS ring: no filter / mask on the ring WK @430x932 light  none|none
+PASS ring: dashed outer ring intentionally hidden <640px (design 07 §3.6 D) WK @430x932 light  none
+PASS ring: visible gap between photo and ring arc (>=3px) WK @430x932 light  ring radius 163.0px, photo radius 150.0px, stroke 3.86px -> gap 11.0px
+PASS ring: arc is painted in the screenshot (>=35% of ring circle contrasts with the gap) WK @430x932 light  93% of 180 ring points contrast with the gap radius (arc covers ~72% when fully visible; dpr 3)
+PASS avatar: float running (transform changes between samples 1.5s apart) WK @430x932 light  ty range 11.77px over 4.2s; avatar-float:running
+PASS avatar: tier is full, avatar state ok WK @430x932 light  data-motion=full, data-avatar-state=fallback
+PASS effects: no filter/backdrop/mask/will-change/preserve-3d on animating hero/nav/marquee subtrees WK @430x932 light  clean
+PASS reveal: after full scroll no element is left at opacity<0.1 (except ping rings) WK @430x932 light  none
+PASS page: no JS/console errors WK @430x932 light  none
+PASS marquee: still running after a tap (no sticky :hover pause on touch) WK @430x932 light  playState=running
+PASS entrance: hero reaches final state <=1.5s after load (iOS-safe entrance) WK @768x1024 light  840ms after load event (budget 1500ms; headless tolerance +300ms)
+PASS badges: exactly one Highlights list with 3 items, no legacy AvatarChips WK @768x1024 light  lists=1, items=AWS Certified | 14+ yrs | IBM Hackathon Winner, legacy=0
+PASS badges: all 3 visible (display/visibility/opacity) WK @768x1024 light  AWS Certified op=1.00 124x29 | 14+ yrs op=1.00 83x29 | IBM Hackathon Winner op=1.00 112x59
+PASS badges: inside viewport with >=8px margin at every sample (while floating) WK @768x1024 light  all inside 8..760 (416..540, 672..755, 643..755)
+FAIL badges: do not overlap each other nor the head rectangle (x28-71%, y14-67%) WK @768x1024 light  AWS Certified x head (19x21px overlap) | AWS Certified x head (19x23px overlap) | AWS Certified x head (19x24px overlap) | AWS Certified x head (19x22px overlap) | AWS Certified x head (19x20px overlap)
+PASS layout: no horizontal scroll WK @768x1024 light  scrollWidth=768 innerWidth=768
+PASS badges: floating (computed transform changes over 4.2s) WK @768x1024 light  ty range per badge = 3.8 / 3.9 / 4.0px; animations: badge-float:running | badge-float:running | badge-float:running
+PASS badges: no filter / backdrop-filter / mask / will-change on badges WK @768x1024 light  none|none|none auto|auto ; none|none|none auto|auto ; none|none|none auto|auto
+PASS ring: SVG gradient ring present, visible, inside viewport WK @768x1024 light  circle x 421..757 (rotating bbox 347..831 may exceed the viewport harmlessly), op=1.00, stroke=url("#ring_R_16glfilb_"), stroke-width=0.9
+PASS ring: gradient stops resolve to real colours (theme tokens apply) WK @768x1024 light  rgb(217, 119, 6) rgb(234, 88, 12) rgb(11, 106, 156)
+PASS ring: rotating (transform angle changes between samples) WK @768x1024 light  angles over 4.2s: 37,55,73,92,110,128,146,165; ring-spin-from:running
+PASS ring: no filter / mask on the ring WK @768x1024 light  none|none
+PASS ring: dashed outer ring visible and rotating (>=640px) WK @768x1024 light  block ring-spin:running
+PASS ring: visible gap between photo and ring arc (>=3px) WK @768x1024 light  ring radius 167.7px, photo radius 154.5px, stroke 3.11px -> gap 11.7px
+PASS ring: arc is painted in the screenshot (>=35% of ring circle contrasts with the gap) WK @768x1024 light  91% of 180 ring points contrast with the gap radius (arc covers ~72% when fully visible; dpr 3)
+PASS avatar: float running (transform changes between samples 1.5s apart) WK @768x1024 light  ty range 11.67px over 4.2s; avatar-float:running
+PASS avatar: tier is full, avatar state ok WK @768x1024 light  data-motion=full, data-avatar-state=fallback
+PASS effects: no filter/backdrop/mask/will-change/preserve-3d on animating hero/nav/marquee subtrees WK @768x1024 light  clean
+PASS reveal: after full scroll no element is left at opacity<0.1 (except ping rings) WK @768x1024 light  none
+PASS page: no JS/console errors WK @768x1024 light  none
+PASS entrance: hero reaches final state <=1.5s after load (iOS-safe entrance) WK @390x844 dark  834ms after load event (budget 1500ms; headless tolerance +300ms)
+PASS badges: exactly one Highlights list with 3 items, no legacy AvatarChips WK @390x844 dark  lists=1, items=AWS Certified | 14+ yrs | IBM Hackathon Winner, legacy=0
+PASS badges: all 3 visible (display/visibility/opacity) WK @390x844 dark  AWS Certified op=1.00 114x24 | 14+ yrs op=1.00 76x24 | IBM Hackathon Winner op=1.00 104x51
+PASS badges: inside viewport with >=8px margin at every sample (while floating) WK @390x844 dark  all inside 8..382 (15..129, 288..363, 265..369)
+PASS badges: do not overlap each other nor the head rectangle (x28-71%, y14-67%) WK @390x844 dark  8 samples over 4.2s, no intersection
+PASS layout: no horizontal scroll WK @390x844 dark  scrollWidth=390 innerWidth=390
+PASS badges: floating (computed transform changes over 4.2s) WK @390x844 dark  ty range per badge = 3.8 / 4.0 / 4.0px; animations: badge-float:running | badge-float:running | badge-float:running
+PASS badges: no filter / backdrop-filter / mask / will-change on badges WK @390x844 dark  none|none|none auto|auto ; none|none|none auto|auto ; none|none|none auto|auto
+PASS ring: SVG gradient ring present, visible, inside viewport WK @390x844 dark  circle x 42..347 (rotating bbox -25..415 may exceed the viewport harmlessly), op=1.00, stroke=url("#ring_R_16glfilb_"), stroke-width=1.15
+PASS ring: gradient stops resolve to real colours (theme tokens apply) WK @390x844 dark  rgb(255, 181, 71) rgb(255, 138, 61) rgb(92, 200, 255)
+PASS ring: rotating (transform angle changes between samples) WK @390x844 dark  angles over 4.2s: 37,56,74,92,110,128,147,165; ring-spin-from:running
+PASS ring: no filter / mask on the ring WK @390x844 dark  none|none
+PASS ring: dashed outer ring intentionally hidden <640px (design 07 §3.6 D) WK @390x844 dark  none
+PASS ring: visible gap between photo and ring arc (>=3px) WK @390x844 dark  ring radius 152.5px, photo radius 140.5px, stroke 3.62px -> gap 10.2px
+PASS ring: arc is painted in the screenshot (>=35% of ring circle contrasts with the gap) WK @390x844 dark  93% of 180 ring points contrast with the gap radius (arc covers ~72% when fully visible; dpr 3)
+PASS avatar: float running (transform changes between samples 1.5s apart) WK @390x844 dark  ty range 11.64px over 4.2s; avatar-float:running
+PASS avatar: tier is full, avatar state ok WK @390x844 dark  data-motion=full, data-avatar-state=fallback
+PASS effects: no filter/backdrop/mask/will-change/preserve-3d on animating hero/nav/marquee subtrees WK @390x844 dark  clean
+PASS reveal: after full scroll no element is left at opacity<0.1 (except ping rings) WK @390x844 dark  none
+PASS page: no JS/console errors WK @390x844 dark  none
+PASS entrance: hero reaches final state <=1.5s after load (iOS-safe entrance) WK @430x932 dark  834ms after load event (budget 1500ms; headless tolerance +300ms)
+PASS badges: exactly one Highlights list with 3 items, no legacy AvatarChips WK @430x932 dark  lists=1, items=AWS Certified | 14+ yrs | IBM Hackathon Winner, legacy=0
+PASS badges: all 3 visible (display/visibility/opacity) WK @430x932 dark  AWS Certified op=1.00 114x24 | 14+ yrs op=1.00 76x24 | IBM Hackathon Winner op=1.00 104x51
+PASS badges: inside viewport with >=8px margin at every sample (while floating) WK @430x932 dark  all inside 8..422 (23..137, 319..395, 297..401)
+PASS badges: do not overlap each other nor the head rectangle (x28-71%, y14-67%) WK @430x932 dark  8 samples over 4.2s, no intersection
+PASS layout: no horizontal scroll WK @430x932 dark  scrollWidth=430 innerWidth=430
+PASS badges: floating (computed transform changes over 4.2s) WK @430x932 dark  ty range per badge = 3.8 / 3.9 / 4.0px; animations: badge-float:running | badge-float:running | badge-float:running
+PASS badges: no filter / backdrop-filter / mask / will-change on badges WK @430x932 dark  none|none|none auto|auto ; none|none|none auto|auto ; none|none|none auto|auto
+PASS ring: SVG gradient ring present, visible, inside viewport WK @430x932 dark  circle x 52..378 (rotating bbox -20..450 may exceed the viewport harmlessly), op=1.00, stroke=url("#ring_R_16glfilb_"), stroke-width=1.15
+PASS ring: gradient stops resolve to real colours (theme tokens apply) WK @430x932 dark  rgb(255, 181, 71) rgb(255, 138, 61) rgb(92, 200, 255)
+PASS ring: rotating (transform angle changes between samples) WK @430x932 dark  angles over 4.2s: 37,55,73,92,110,128,146,164; ring-spin-from:running
+PASS ring: no filter / mask on the ring WK @430x932 dark  none|none
+PASS ring: dashed outer ring intentionally hidden <640px (design 07 §3.6 D) WK @430x932 dark  none
+PASS ring: visible gap between photo and ring arc (>=3px) WK @430x932 dark  ring radius 163.0px, photo radius 150.0px, stroke 3.86px -> gap 11.0px
+PASS ring: arc is painted in the screenshot (>=35% of ring circle contrasts with the gap) WK @430x932 dark  93% of 180 ring points contrast with the gap radius (arc covers ~72% when fully visible; dpr 3)
+PASS avatar: float running (transform changes between samples 1.5s apart) WK @430x932 dark  ty range 11.68px over 4.2s; avatar-float:running
+PASS avatar: tier is full, avatar state ok WK @430x932 dark  data-motion=full, data-avatar-state=fallback
+PASS effects: no filter/backdrop/mask/will-change/preserve-3d on animating hero/nav/marquee subtrees WK @430x932 dark  clean
+PASS reveal: after full scroll no element is left at opacity<0.1 (except ping rings) WK @430x932 dark  none
+PASS page: no JS/console errors WK @430x932 dark  none
+PASS entrance: hero reaches final state <=1.5s after load (iOS-safe entrance) WK @768x1024 dark  843ms after load event (budget 1500ms; headless tolerance +300ms)
+PASS badges: exactly one Highlights list with 3 items, no legacy AvatarChips WK @768x1024 dark  lists=1, items=AWS Certified | 14+ yrs | IBM Hackathon Winner, legacy=0
+PASS badges: all 3 visible (display/visibility/opacity) WK @768x1024 dark  AWS Certified op=1.00 124x29 | 14+ yrs op=1.00 83x29 | IBM Hackathon Winner op=1.00 112x59
+PASS badges: inside viewport with >=8px margin at every sample (while floating) WK @768x1024 dark  all inside 8..760 (416..540, 672..755, 643..755)
+FAIL badges: do not overlap each other nor the head rectangle (x28-71%, y14-67%) WK @768x1024 dark  AWS Certified x head (19x21px overlap) | AWS Certified x head (19x23px overlap) | AWS Certified x head (19x24px overlap) | AWS Certified x head (19x20px overlap)
+PASS layout: no horizontal scroll WK @768x1024 dark  scrollWidth=768 innerWidth=768
+PASS badges: floating (computed transform changes over 4.2s) WK @768x1024 dark  ty range per badge = 3.7 / 3.9 / 4.0px; animations: badge-float:running | badge-float:running | badge-float:running
+PASS badges: no filter / backdrop-filter / mask / will-change on badges WK @768x1024 dark  none|none|none auto|auto ; none|none|none auto|auto ; none|none|none auto|auto
+PASS ring: SVG gradient ring present, visible, inside viewport WK @768x1024 dark  circle x 421..757 (rotating bbox 348..830 may exceed the viewport harmlessly), op=1.00, stroke=url("#ring_R_16glfilb_"), stroke-width=0.9
+PASS ring: gradient stops resolve to real colours (theme tokens apply) WK @768x1024 dark  rgb(255, 181, 71) rgb(255, 138, 61) rgb(92, 200, 255)
+PASS ring: rotating (transform angle changes between samples) WK @768x1024 dark  angles over 4.2s: 35,53,72,90,108,126,145,163; ring-spin-from:running
+PASS ring: no filter / mask on the ring WK @768x1024 dark  none|none
+PASS ring: dashed outer ring visible and rotating (>=640px) WK @768x1024 dark  block ring-spin:running
+PASS ring: visible gap between photo and ring arc (>=3px) WK @768x1024 dark  ring radius 167.7px, photo radius 154.5px, stroke 3.11px -> gap 11.7px
+PASS ring: arc is painted in the screenshot (>=35% of ring circle contrasts with the gap) WK @768x1024 dark  91% of 180 ring points contrast with the gap radius (arc covers ~72% when fully visible; dpr 3)
+PASS avatar: float running (transform changes between samples 1.5s apart) WK @768x1024 dark  ty range 11.80px over 4.2s; avatar-float:running
+PASS avatar: tier is full, avatar state ok WK @768x1024 dark  data-motion=full, data-avatar-state=fallback
+PASS effects: no filter/backdrop/mask/will-change/preserve-3d on animating hero/nav/marquee subtrees WK @768x1024 dark  clean
+PASS reveal: after full scroll no element is left at opacity<0.1 (except ping rings) WK @768x1024 dark  none
+PASS page: no JS/console errors WK @768x1024 dark  none
+PASS hidden-load: entrance still plays once the tab becomes visible (opacity at +120ms < 1) WK @430x932  h1 word opacity at +120ms = 1.00, badge = 0.26
+PASS hidden-load: hero fully visible <=1.4s after becoming visible WK @430x932  min opacity 1.00 over 14 nodes
+PASS landscape: touch/mobile branch (hover:none or coarse pointer) WK @932x430 landscape  hover:none=true pointer:coarse=true
+PASS landscape: badges visible, inside viewport, no horizontal scroll WK @932x430 landscape  512..636, 825..908, 796..908 vw=932 sw=932
+PASS landscape: no forbidden effects on animating subtrees WK @932x430 landscape  clean
+
+E2E-HERO[webkit] FAIL: 146 checks, 3 fail, 1 warn. Screenshots: /Users/karthikmuthumari/Documents/repo/my-profile/tests/screenshots/sub/round2

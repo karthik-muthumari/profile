@@ -67,7 +67,7 @@ export default function HeroClient({ avatar }: { avatar: ResolvedAvatar }) {
     <section ref={ref} id="about" aria-label="Introduction" className="relative overflow-hidden md:min-h-[calc(100svh-var(--nav-h))]">
       {/* background: glow + masked grid */}
       <motion.div aria-hidden initial={{ opacity: m.tier === "off" ? 1 : 0 }} animate={{ opacity: 1 }} transition={{ duration: m.tier === "off" ? 0 : m.mobile ? 0.5 : 1.2, ease: ease.inOut }} className="pointer-events-none absolute inset-0">
-        <motion.div style={par ? { y: glowY } : undefined} className="absolute inset-0 bg-glow-hero" />
+        <motion.div style={par ? { y: glowY } : undefined} className="hero-glow absolute inset-x-0 -bottom-12 -top-12" />
         <div className="hero-grid absolute inset-0" />
       </motion.div>
 

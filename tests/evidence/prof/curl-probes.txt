@@ -1,0 +1,6 @@
+200 /profile/
+404 /_next/static/
+200 /profile/blog/
+404 /profile/nope/
+200 /profile/404.html
+no-JS SSR check, occurrences of 'Karthik' in /: 1
