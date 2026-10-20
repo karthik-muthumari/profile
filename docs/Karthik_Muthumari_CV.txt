@@ -1,0 +1,119 @@
+PAGES: 3
+Karthik Muthumari
+Full stack developer - React, NextJs, Nodejs, GraphQL, Apollo Federation, TypegraphQL, AWS
+(Certified Solution Architect), IaC - CDK, Terraform, SAM CLI, Devops - Gitlabs / Github Actions /
+Docker / CI CD, Hybrid mobile developer (Ionic 2 & 3, React Native)
+EXPERIENCE
+Mindera- Full stack Engineer (5 years)
+SEPTEMBER 2021 - PRESENT
+Wipro Technologies - Senior Software Engineer (8.5 years)
+OCTOBER 2012 - AUGUST 2021
+RECENT PROJECTS
+Mindera (September 2021 - Present)
+Kingfisher (September 2025 - Present) - Retail / E-Commerce
+Tax Engine, Kingfisher PLC – Senior Engineer (3 months)
+Tax calculation platform supporting basket and checkout services across multiple Kingfisher
+banners. Backend architecture – Node.js, TypeScript, REST APIs. Integrated with enterprise tax
+data feeds containing tax plans, rates and jurisdictions, with event/data ingestion through
+Kafka. Designed service components for tax data ingestion, persistence and runtime tax
+calculation. Cloud hosted – AWS: Lambda, CloudWatch. Observability – DataDog.. IaC – CDK.
+AI-assisted engineering – Claude Code. Applied Spec-Driven Development (SDD) with structured
+Markdown specifications, project-level AI guardrails and reusable development instructions. Built a
+local RAG-based knowledge retrieval approach using vector embeddings, LanceDB, BM25
+lexical search and Reciprocal Rank Fusion (RRF) to provide relevant project context to LLMs
+during development.
+Basket Orchestrator, Kingfisher PLC – Senior Engineer (8 months)
+Basket Orchestrator - Node js, TypeScript, GraphQL, Apollo Federation, Playwright.
+Currently migrating legacy REST endpoints. Cloud hosted – AWS: API Gateway, Lambda,
+Fargate, CloudWatch. Observability – DataDog & Dynatrace. IaC – CDK. AI-assisted
+development using GitHub Copilot, Codex & GitLab Duo for code generation, refactoring, test
+creation and developer productivity.
+Apartment 16, Ryehill House,
+Nottingham, NG2 2LQ
++44 777 454 8930
+karthik.muthumari@mindera.com
+SKILLS
+React.js + a11y
+Node.js
+Next Js
+GraphQL + TypeGraphQL
+Apollo Federation
+AWS - CF, S3, EC2, Lambda,
+WAF, Elasticache, SQS, API
+Gateway, Step Function
+Jest, TDD
+Playwright
+Devops - Github Actions,
+GitLab Pipelines, Jenkins,
+Docker, CICD
+Git + Branching strategy
+IaC - CDK, SAM CLI
+Google Tag Manager
+Ionic 2 & 3
+Angular 2 & 4
+React Native + Expo
+Ansible
+TOOLS
+Claude code
+Co-Pilot
+Cursor
+SDD - OpenSpec
+Selfridges (September 2021 - September 2025) - Fashion E-Commerce / Retail Tech
+PLP (Product Listing Page), Selfridges – Frontend developer (1 year)
+Product listing UI Application (MFE) - Next.js, TypeScript, GraphQL. Integrated features –
+sponsored products, product listings, quotes, component library. Cloud hosted – AWS:
+CloudFront, S3, Lambda, CloudWatch (Logs, RUM) & Cloudflare. Observability – Dynatrace.
+CMS – Contentstack. IaC – CDK.
+Pricing, Selfridges - Full stack developer (2 years)
+Event-driven pricing application. BE architecture - Nodejs, Typescript. Event Orchestration - S3,
+Lambda, Step Functions, SNS, SQS, DynamoDB. API Layer - API gateway, Lambda,
+Authorisors. Internal UI for Vendor pricing upload - Cloudfront, S3, Lambda. CI/CD - Github
+Actions. IaC - CDK, Terraform
+VIP, Selfridges - Full stack developer (1 year)
+VIP tier Selfridges application. Serverless Web application - Next.js, a11y. Serverless Aggregator
+- Node.js (micro-services). Cloud hosted - AWS - CloudFront, API Gateway, Lambda, SQS, WAF,
+S3, ALB, Secret Manager. CI CD - Github Actions. Observability – New Relic. IaC - CDK
+Personal shopper, Selfridges - Frontend developer (1 year)
+Personal shopper application. Web application - Gatsby.js, a11y. CMS - Strapi. AWS -
+CloudFront, WAF. CI/CD - Github Actions, IaC - CDK
+Wipro (October 2012 - August 2021)
+Capital One - FinTech / Banking Technology (ONSITE UK, March 2018 - Aug 2021 )
+Quick Check, CapitalOne - Full stack developer (ONSITE UK, Sept 2019 - Aug 2021 )
+Credit eligibility checker. Web application - React.js, a11y. Orchestration - Node.js
+(micro-services). Cloud hosted - AWS - CloudFront, WAF, S3, ALB, Lambda with Hot site
+resiliency (operated in two regions). CI CD - Jenkins, Docker.
+CreditWise, CapitalOne - Full stack developer (ONSITE UK, March 2018 - Sept 2019 )
+Credit score tool. Web application - React.js, a11y. Orchestration - Node.js. Cloud hosted - AWS
+- CloudFront, WAF, S3, ALB, EC2 instance, Elasticache with standby resiliency (active - passive
+regions). CI CD - Jenkins, Docker.
+US LBM - Retail / Supply Chain / E-Commerce
+Hines Supply, US LBM - Hybrid mobile - Web app developer (India, Jan 2016 - Feb 2018)
+Payment, delivery, invoice Tracking application. Framework: Ionic framework, Angular.js.
+Devices: Android mobiles, Tablets, iPones, iPad and across all the browsers in desktop.
+Features: Push notification, Camera, Navigation, File & Files transfer.
+AWARDS
+Certified Solution Architect
+AWS Certified Solution
+Architect Associate - 2021
+IBM Hackathon - WINNER
+Developed Mobile applications
+integrated with chat bot - IBM
+Watson & Bluemix - 2017
+EDUCATION
+B.E. | 2012 | Anna
+university, Chennai, India
+MAJOR: ECE
+JEPPIAAR ENGINEERING COLLEGE
+LANGUAGES
+English, Tamil
+COACH - Fashion E-Commerce / Retail Tech
+Visual Merchandising, COACH - Hybrid mobile app developer (India, Aug 2015 - Jan
+2016)
+Merchandising application. Framework: Ionic 3, Angular 4, SASS. Device: Android mobiles,
+Tablets, iPhones, iPad. Features: Barcode, Oﬄine catalog storage, Camera, Photo upload,
+New feeds.
+Cardinal Health - Healthcare / MedTech / Supply Chain
+Pack manager, Cardinal Health - Hybrid mobile app developer (India, Jan 2015 - Aug
+2015)
+Health care business application. Framework: Angular UI, Angular.js. Device: iPads & Windows
+Surface Pro. Features: Lazy loading, QR/Barcode, E-signature

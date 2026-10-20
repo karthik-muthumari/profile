@@ -1,0 +1,4 @@
+check-paths  out=/private/tmp/claude-503/-Users-karthikmuthumari-Documents-repo-my-profile/9508d51d-09f2-4966-adcb-354370f3d5ea/scratchpad/qa-work/sub/out  base=/my-profile
+  pages=7 css=1 js=25 local URLs checked=389 external=3
+  webpack publicPath: /my-profile/_next/
+RESULT: PASS (0 broken, 0 warnings)

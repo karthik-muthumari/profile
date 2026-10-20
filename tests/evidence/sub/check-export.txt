@@ -1,0 +1,41 @@
+check-export  out=/private/tmp/claude-503/-Users-karthikmuthumari-Documents-repo-my-profile/9508d51d-09f2-4966-adcb-354370f3d5ea/scratchpad/qa-work/sub/out
+  PASS  structure:index.html             present
+  PASS  structure:404.html               present
+  PASS  structure:_next/static           present
+  PASS  structure:.nojekyll              present
+  PASS  structure:no-server-or-source    no api/, server bundles, .env, raw .md/.ts
+  PASS  structure:no-sourcemaps          none
+  PASS  structure:blog-index             blog/index.html present
+  PASS  structure:blog-posts             3 post page(s): blog/event-driven-pricing-on-aws/index.html, blog/local-rag-lancedb-bm25-rrf/index.html, blog/spec-driven-development-with-claude-code/index.html
+  PASS  structure:favicon                index.html has <link rel=icon>
+  PASS  privacy:no-phone-or-address      scanned 64 files for phone/address patterns (1 phone number(s) derived from CV): none found
+  PASS  contact:email-allowlist          only approved e-mails found in out/: karthikmuthumari7@gmail.com, karthik.muthumari@mindera.com
+  PASS  contact:mailto-targets-approved  mailto targets: karthikmuthumari7@gmail.com, karthik.muthumari@mindera.com
+  PASS  contact:mailto-work-on-home      <a href="mailto:karthik.muthumari@mindera.com"> on index.html (+7 other page(s))
+  PASS  contact:mailto-work-all-pages    present on every page (footer/contact)
+  PASS  contact:mailto-personal-on-home  <a href="mailto:karthikmuthumari7@gmail.com"> on index.html (+8 other page(s))
+  PASS  contact:mailto-personal-all-pages present on every page (footer/contact)
+  PASS  contact:social-urls-exact        exact https://www.linkedin.com/in/karthikmuthumari/ and https://github.com/karthik-muthumari present; no other linkedin/github profile links
+  PASS  contact:no-placeholder-urls      no hello@example.com / example.com / your-*-handle in HTML, RSC payloads or app chunks
+  PASS  privacy:no-original-photos       no DSC* names, no image >2MB, no sha256 match with 4 originals in pics/
+  PASS  images:per-file-budget           4 raster images, all ≤ 500KB
+  PASS  images:total-budget              total raster image bytes = 1.00 MB (budget 3 MB)
+  PASS  images:max-dimension             no image longer side > 2400px
+  PASS  privacy:no-exif-gps              no GPS EXIF tag in any JPEG
+  PASS  weight:js-total                  23 chunks, 1044 KB uncompressed (budget 1500 KB; all-routes sum, not first-load)
+  PASS  weight:out-total                 out/ = 2.93 MB across 64 files
+  PASS  html:html-lang                   ok on 7 pages
+  PASS  html:title                       ok on 7 pages
+  PASS  html:viewport                    ok on 7 pages
+  PASS  html:viewport-zoom               ok on 7 pages
+  PASS  html:meta-description            ok on 7 pages
+  PASS  html:single-h1                   ok on 7 pages
+  PASS  html:img-alt                     ok on 7 pages
+  PASS  html:noopener                    ok on 7 pages
+  PASS  html:landmark-main               ok on 7 pages
+  PASS  html:rendered-garbage            ok on 7 pages
+  PASS  html:placeholder-text            ok on 7 pages
+  PASS  html:blog-content-length         ok on 7 pages
+  PASS  html:blog-raw-markdown           ok on 7 pages
+  PASS  html:blog-article-tag            ok on 7 pages
+RESULT: PASS (0 warnings)

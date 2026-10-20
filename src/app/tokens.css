@@ -1,0 +1,190 @@
+/* ==========================================================================
+   Karthik Muthumari — portfolio design tokens   (design/tokens.css)
+   Concept: "Ember & Ink" — warm saffron/amber on deep ink (dark) / warm paper (light),
+   with a cool sky-blue counter accent. Palette is sampled from the photos
+   (mustard jacket, autumn leaves, blue sky).
+   Colours are stored as space-separated RGB channels so Tailwind alpha works:
+       color: rgb(var(--c-accent) / 0.5)
+   Theme switch: <html data-theme="dark|light">. Default follows OS (see 05 / README).
+   ========================================================================== */
+
+:root {
+  /* ---------- non-colour tokens (theme independent) ---------- */
+  --font-display: var(--font-bricolage), "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif:   var(--font-instrument-serif), "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono:    var(--font-jetbrains), "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* fluid type: clamp(min @360px, preferred, max @1440px) */
+  --fs-display: clamp(2.75rem, 1.55rem + 5.2vw, 6rem);       /* 44 → 96 */
+  --fs-h1:      clamp(2.25rem, 1.55rem + 3.1vw, 4rem);       /* 36 → 64 */
+  --fs-h2:      clamp(1.75rem, 1.30rem + 2.0vw, 2.75rem);    /* 28 → 44 */
+  --fs-h3:      clamp(1.375rem, 1.17rem + 0.9vw, 1.875rem);  /* 22 → 30 */
+  --fs-h4:      clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);/* 18 → 21 */
+  --fs-lead:    clamp(1.125rem, 1.04rem + 0.4vw, 1.375rem);  /* 18 → 22 */
+  --fs-body:    clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);    /* 16 → 17 */
+  --fs-small:   0.875rem;                                     /* 14 */
+  --fs-micro:   0.75rem;                                      /* 12 (eyebrows, tags) */
+  --fs-mono:    clamp(0.8125rem, 0.78rem + 0.12vw, 0.9rem);   /* 13 → 14.4 */
+
+  --lh-display: 0.98;  --lh-h1: 1.05;  --lh-h2: 1.12;  --lh-h3: 1.2;
+  --lh-h4: 1.3;  --lh-body: 1.65;  --lh-small: 1.5;  --lh-mono: 1.7;
+  --ls-display: -0.035em; --ls-h1: -0.03em; --ls-h2: -0.025em; --ls-h3: -0.015em;
+  --ls-eyebrow: 0.14em;
+
+  /* spacing (4px base) */
+  --sp-0: 0;       --sp-1: 0.25rem; --sp-2: 0.5rem;  --sp-3: 0.75rem; --sp-4: 1rem;
+  --sp-5: 1.25rem; --sp-6: 1.5rem;  --sp-8: 2rem;    --sp-10: 2.5rem; --sp-12: 3rem;
+  --sp-16: 4rem;   --sp-20: 5rem;   --sp-24: 6rem;   --sp-32: 8rem;   --sp-40: 10rem;
+  /* section vertical rhythm */
+  --section-y: clamp(4.5rem, 3rem + 7vw, 9rem);
+
+  /* radii */
+  --r-xs: 6px; --r-sm: 10px; --r-md: 16px; --r-lg: 24px; --r-xl: 32px; --r-pill: 999px;
+  --r-blob: 58% 42% 55% 45% / 48% 56% 44% 52%;   /* avatar blob (static shape) */
+
+  /* layout */
+  --container: 72rem;          /* 1152 default */
+  --container-wide: 80rem;     /* 1280 */
+  --container-prose: 44rem;    /* 704, blog post body */
+  --gutter: clamp(1rem, 0.5rem + 2.2vw, 2.5rem);
+  --nav-h: 64px;
+
+  /* motion tokens (mirror of 04-motion.md) */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms; --dur-base: 280ms; --dur-slow: 600ms;
+}
+
+/* ============================== DARK (default) ============================== */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --c-bg:        11 13 18;     /* #0B0D12 ink */
+  --c-surface:   18 21 28;     /* #12151C cards */
+  --c-surface-2: 26 30 40;     /* #1A1E28 raised / hover */
+  --c-border:    38 43 56;     /* #262B38 decorative hairline */
+  --c-border-strong: 108 117 139; /* #6C758B  UI-component border, ≥3:1 on all surfaces */
+  --c-text:      237 235 230;  /* #EDEBE6 warm white */
+  --c-muted:     163 169 184;  /* #A3A9B8 */
+  --c-subtle:    138 145 163;  /* #8A91A3 captions (AA 5.3:1+) */
+  --c-accent:    255 181 71;   /* #FFB547 saffron — text, links, fills */
+  --c-accent-hi: 255 210 138;  /* #FFD28A hover text */
+  --c-accent-lo: 255 138 61;   /* #FF8A3D gradient end (fills only) */
+  --c-on-accent: 26 18 4;      /* #1A1204 text on accent fills (10.5:1) */
+  --c-accent-2:  92 200 255;   /* #5CC8FF sky */
+  --c-focus:     125 211 255;  /* #7DD3FF focus ring */
+  --c-success:   74 222 128;   /* #4ADE80 */
+  --c-code-bg:   16 19 26;     /* #10131A */
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / .4);
+  --shadow-md: 0 8px 24px -8px rgb(0 0 0 / .55), 0 0 0 1px rgb(var(--c-border) / .8);
+  --shadow-lg: 0 24px 60px -20px rgb(0 0 0 / .7), 0 0 0 1px rgb(var(--c-border));
+  --shadow-glow: 0 0 0 1px rgb(var(--c-accent) / .35), 0 12px 48px -12px rgb(var(--c-accent) / .45);
+
+  --grad-accent: linear-gradient(135deg, rgb(var(--c-accent)) 0%, rgb(var(--c-accent-lo)) 100%);
+  --grad-text:   linear-gradient(100deg, #FFD28A 0%, #FFB547 40%, #FF8A3D 75%, #5CC8FF 130%);
+  --grad-ring:   conic-gradient(from 0deg, #FFB547, #FF8A3D, #5CC8FF, #FFB547);
+  --glow-hero:   radial-gradient(60% 60% at 70% 30%, rgb(var(--c-accent) / .22), transparent 70%),
+                 radial-gradient(50% 50% at 15% 80%, rgb(var(--c-accent-2) / .14), transparent 70%);
+  --noise-opacity: .06;
+  --card-bg-hover: linear-gradient(180deg, rgb(var(--c-surface-2)), rgb(var(--c-surface)));
+}
+
+/* ============================== LIGHT ============================== */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --c-bg:        251 248 242;  /* #FBF8F2 warm paper */
+  --c-surface:   255 255 255;  /* #FFFFFF */
+  --c-surface-2: 243 238 228;  /* #F3EEE4 */
+  --c-border:    228 221 207;  /* #E4DDCF */
+  --c-border-strong: 133 126 109; /* #857E6D ≥3:1 */
+  --c-text:      20 22 28;     /* #14161C */
+  --c-muted:     84 91 107;    /* #545B6B  (6.4:1) */
+  --c-subtle:    94 101 116;   /* #5E6574  (5.1:1+) */
+  --c-accent:    154 82 0;     /* #9A5200 burnt amber — TEXT/links (5.5:1) */
+  --c-accent-hi: 120 62 0;     /* #783E00 hover text */
+  --c-accent-lo: 245 165 36;   /* #F5A524 FILL colour (use with --c-on-accent text, 9:1) */
+  --c-on-accent: 26 18 4;
+  --c-accent-2:  11 106 156;   /* #0B6A9C (5.6:1) */
+  --c-focus:     11 95 255;    /* #0B5FFF focus ring (4.8:1 on bg) */
+  --c-success:   21 127 59;    /* #157F3B */
+  --c-code-bg:   246 241 232;  /* #F6F1E8 */
+
+  --shadow-sm: 0 1px 2px rgb(60 40 10 / .08);
+  --shadow-md: 0 10px 28px -10px rgb(60 40 10 / .22), 0 0 0 1px rgb(var(--c-border));
+  --shadow-lg: 0 28px 60px -24px rgb(60 40 10 / .35), 0 0 0 1px rgb(var(--c-border));
+  --shadow-glow: 0 0 0 1px rgb(var(--c-accent-lo) / .6), 0 14px 44px -14px rgb(var(--c-accent-lo) / .6);
+
+  /* In light mode fills use the brighter amber, text uses burnt amber */
+  --grad-accent: linear-gradient(135deg, #FFC24D 0%, #F5A524 55%, #F28A1C 100%);
+  --grad-text:   linear-gradient(100deg, #9A5200 0%, #C26A00 45%, #0B6A9C 120%);
+  --grad-ring:   conic-gradient(from 0deg, #F5A524, #F28A1C, #4AB3E8, #F5A524);
+  --glow-hero:   radial-gradient(60% 60% at 70% 30%, rgb(245 165 36 / .28), transparent 70%),
+                 radial-gradient(50% 50% at 15% 80%, rgb(92 200 255 / .22), transparent 70%);
+  --noise-opacity: .035;
+  --card-bg-hover: linear-gradient(180deg, #fff, rgb(var(--c-surface-2) / .6));
+}
+
+/* OS preference when user has not chosen (no data-theme attr set) */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --c-bg: 251 248 242; --c-surface: 255 255 255; --c-surface-2: 243 238 228;
+    --c-border: 228 221 207; --c-border-strong: 133 126 109;
+    --c-text: 20 22 28; --c-muted: 84 91 107; --c-subtle: 94 101 116;
+    --c-accent: 154 82 0; --c-accent-hi: 120 62 0; --c-accent-lo: 245 165 36;
+    --c-on-accent: 26 18 4; --c-accent-2: 11 106 156; --c-focus: 11 95 255;
+    --c-success: 21 127 59; --c-code-bg: 246 241 232;
+    --shadow-sm: 0 1px 2px rgb(60 40 10 / .08);
+    --shadow-md: 0 10px 28px -10px rgb(60 40 10 / .22), 0 0 0 1px rgb(var(--c-border));
+    --shadow-lg: 0 28px 60px -24px rgb(60 40 10 / .35), 0 0 0 1px rgb(var(--c-border));
+    --shadow-glow: 0 0 0 1px rgb(var(--c-accent-lo) / .6), 0 14px 44px -14px rgb(var(--c-accent-lo) / .6);
+    --grad-accent: linear-gradient(135deg, #FFC24D 0%, #F5A524 55%, #F28A1C 100%);
+    --grad-text: linear-gradient(100deg, #9A5200 0%, #C26A00 45%, #0B6A9C 120%);
+    --grad-ring: conic-gradient(from 0deg, #F5A524, #F28A1C, #4AB3E8, #F5A524);
+    --glow-hero: radial-gradient(60% 60% at 70% 30%, rgb(245 165 36 / .28), transparent 70%),
+                 radial-gradient(50% 50% at 15% 80%, rgb(92 200 255 / .22), transparent 70%);
+    --noise-opacity: .035;
+    --card-bg-hover: linear-gradient(180deg, #fff, rgb(var(--c-surface-2) / .6));
+  }
+}
+
+/* ============================== base helpers ============================== */
+html { background: rgb(var(--c-bg)); color: rgb(var(--c-text)); font-family: var(--font-body);
+       font-size: 100%; -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--nav-h) + 16px); }
+body { font-size: var(--fs-body); line-height: var(--lh-body); text-rendering: optimizeLegibility;
+       -webkit-font-smoothing: antialiased; }
+::selection { background: rgb(var(--c-accent) / .35); color: rgb(var(--c-text)); }
+
+/* Theme cross-fade (only applied for ~400ms by JS while toggling, see 04-motion §9) */
+html.theme-transition, html.theme-transition *, html.theme-transition *::before, html.theme-transition *::after {
+  transition: background-color .4s var(--ease-in-out), border-color .4s var(--ease-in-out),
+              color .4s var(--ease-in-out), fill .4s var(--ease-in-out), stroke .4s var(--ease-in-out),
+              box-shadow .4s var(--ease-in-out) !important;
+}
+
+/* Focus ring — see 05-accessibility.md */
+:focus-visible { outline: 3px solid rgb(var(--c-focus)); outline-offset: 3px; border-radius: var(--r-xs); }
+:focus:not(:focus-visible) { outline: none; }
+
+/* Reduced motion: kill CSS animation, keep colour transitions */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+                           scroll-behavior: auto !important; }
+}
+
+/* Gradient headline word */
+.text-gradient { background: var(--grad-text); -webkit-background-clip: text; background-clip: text;
+                 color: transparent; -webkit-text-fill-color: transparent; }
+/* NOTE: light-mode .text-gradient start #9A5200 on #FBF8F2 = 5.5:1; end #0B6A9C = 5.6:1 — AA OK at all stops */
+
+/* Subtle grain overlay: <div class="grain" aria-hidden/> fixed, pointer-events none, z-index 0 */
+.grain { position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: var(--noise-opacity);
+         background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+/* Avatar idle float is done in Framer Motion; this CSS keyframe is the JS-free fallback */
+@keyframes avatar-float { 0%,100% { transform: translateY(0) rotate(-.6deg); } 50% { transform: translateY(-14px) rotate(.6deg); } }
+@keyframes ring-spin    { to { transform: rotate(360deg); } }
+@keyframes blob-morph   { 0%,100% { border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%; }
+                          50%     { border-radius: 44% 56% 42% 58% / 56% 44% 56% 44%; } }

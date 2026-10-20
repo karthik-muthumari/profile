@@ -1,0 +1,93 @@
+@import "./tokens.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-bg text-fg font-sans antialiased; }
+  h1, h2, h3, h4 { @apply font-display; }
+  a { @apply transition-colors; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-container px-gutter; }
+  .section-y { @apply py-section; }
+  .eyebrow { @apply text-micro uppercase text-accent; }
+  .chip { @apply inline-flex items-center rounded-pill border border-line bg-surface-2 px-2.5 py-1 font-mono text-[12px] leading-none text-fg-muted; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-pill px-6 py-3 text-small font-semibold transition-transform duration-300 ease-out-expo; }
+  .btn-primary { @apply btn bg-grad-accent text-accent-ink hover:-translate-y-0.5 hover:shadow-glow; }
+  .btn-ghost { @apply btn border border-line-strong text-fg hover:-translate-y-0.5 hover:bg-surface-2; }
+  .card { @apply rounded-md border border-line bg-surface shadow-sm transition-all duration-300 ease-out-expo; }
+}
+
+/* Blog prose (hand-rolled to use design tokens) */
+.prose-post { max-width: var(--container-prose); }
+.prose-post > * + * { margin-top: 1.25em; }
+.prose-post h2 { font-size: var(--fs-h3); line-height: var(--lh-h3); letter-spacing: var(--ls-h3); font-weight: 600; margin-top: 2.4em; }
+.prose-post h3 { font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: 600; margin-top: 2em; }
+.prose-post p, .prose-post li { color: rgb(var(--c-text) / .92); }
+.prose-post a { color: rgb(var(--c-accent)); text-decoration: underline; text-underline-offset: 3px; }
+.prose-post a:hover { color: rgb(var(--c-accent-hi)); }
+.prose-post a.anchor { margin-left: .4em; text-decoration: none; opacity: 0; color: rgb(var(--c-subtle)); }
+.prose-post h2:hover a.anchor, .prose-post h3:hover a.anchor, .prose-post a.anchor:focus-visible { opacity: 1; }
+.prose-post ul { list-style: disc; padding-left: 1.4em; }
+.prose-post ol { list-style: decimal; padding-left: 1.4em; }
+.prose-post li + li { margin-top: .4em; }
+.prose-post li::marker { color: rgb(var(--c-accent)); }
+.prose-post strong { font-weight: 600; color: rgb(var(--c-text)); }
+.prose-post blockquote { border-left: 3px solid rgb(var(--c-accent)); padding: .25em 0 .25em 1.1em; font-family: var(--font-serif); font-style: italic; font-size: 1.25em; color: rgb(var(--c-muted)); }
+.prose-post code { font-family: var(--font-mono); font-size: .88em; background: rgb(var(--c-surface-2)); border: 1px solid rgb(var(--c-border)); border-radius: var(--r-xs); padding: .12em .4em; }
+.prose-post pre { background: rgb(var(--c-code-bg)); border: 1px solid rgb(var(--c-border)); border-radius: var(--r-md); padding: 1.1rem 1.25rem; overflow-x: auto; font-size: var(--fs-mono); line-height: var(--lh-mono); }
+.prose-post pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+.prose-post hr { border: 0; border-top: 1px solid rgb(var(--c-border)); }
+.prose-post table { width: 100%; border-collapse: collapse; font-size: var(--fs-small); }
+.prose-post th, .prose-post td { border-bottom: 1px solid rgb(var(--c-border)); padding: .5rem .75rem; text-align: left; }
+
+/* ---------- Hero avatar slot ---------- */
+.avatar-box { width: min(72vw, 300px); max-width: 100%; aspect-ratio: 1; }
+@media (min-width: 640px) { .avatar-box { width: 320px; } }
+@media (min-width: 768px) { .avatar-box { width: min(100%, 360px); } }
+@media (min-width: 1024px) { .avatar-box { width: min(100%, clamp(400px, 36vw, 540px)); } }
+.avatar-blob { border-radius: var(--r-blob); animation: blob-morph 10s ease-in-out infinite; overflow: hidden; }
+.avatar-blob-static { border-radius: var(--r-blob); }
+.avatar-ring, .avatar-ring-dashed { position: absolute; left: 50%; top: 50%; border-radius: 9999px; pointer-events: none; }
+.avatar-ring { width: 108%; height: 108%; margin: -54% 0 0 -54%; background: var(--grad-ring);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
+  animation: ring-spin 14s linear infinite; }
+.avatar-ring-dashed { width: 118%; height: 118%; margin: -59% 0 0 -59%; border: 2px dashed rgb(var(--c-accent) / .25); animation: ring-spin 40s linear infinite reverse; }
+
+/* ---------- Hero background grid ---------- */
+.hero-grid {
+  background-image: linear-gradient(to right, rgb(var(--c-border) / .35) 1px, transparent 1px), linear-gradient(to bottom, rgb(var(--c-border) / .35) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 70%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 70%);
+}
+
+/* ---------- Marquee (CSS-only) ---------- */
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+.marquee-track { display: flex; width: max-content; gap: .5rem; animation: marquee 40s linear infinite; }
+.marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(calc(-50% - .25rem)); } }
+@media (prefers-reduced-motion: reduce) {
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+  .marquee-track { width: auto; flex-wrap: wrap; animation: none; }
+  .marquee-dup { display: none; }
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Nav link underline slide (04 §4, pure CSS) */
+.nav-link::after { content: ""; position: absolute; left: 1rem; right: 1rem; bottom: .55rem; height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: left; transition: transform 200ms var(--ease-out-expo); }
+.nav-link:hover::after { transform: scaleX(1); }
+
+/* Circular theme reveal (View Transitions API, progressive enhancement) */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { animation: theme-reveal .55s var(--ease-in-out); }
+@keyframes theme-reveal {
+  from { clip-path: circle(0 at var(--vt-x, 50%) var(--vt-y, 0)); }
+  to { clip-path: circle(150vmax at var(--vt-x, 50%) var(--vt-y, 0)); }
+}
+@media (prefers-reduced-motion: reduce) { ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; } }

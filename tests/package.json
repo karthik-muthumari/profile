@@ -1,0 +1,16 @@
+{
+  "name": "my-profile-qa",
+  "private": true,
+  "type": "module",
+  "description": "QA tooling for the static export. Isolated from the app's package.json. The CI gate scripts (check-paths, check-export) have ZERO dependencies; only e2e.mjs needs the devDependencies below.",
+  "scripts": {
+    "check:paths": "node scripts/check-paths.mjs ../out",
+    "check:export": "node scripts/check-export.mjs ../out",
+    "serve": "node scripts/serve.mjs ../out 4173",
+    "e2e": "node scripts/e2e.mjs http://127.0.0.1:4173"
+  },
+  "devDependencies": {
+    "axe-core": "^4.10.0",
+    "playwright-core": "^1.49.0"
+  }
+}
