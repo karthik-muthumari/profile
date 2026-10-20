@@ -19,5 +19,5 @@ export const AVATAR = {
   ],
   fallbackSrc: "/avatar/karthik-fallback.jpg",
   alt: "Illustrated portrait of Karthik Muthumari",
-  fallbackAlt: "Portrait photo of Karthik Muthumari",
+  fallbackAlt: "Portrait of Karthik Muthumari",
 };

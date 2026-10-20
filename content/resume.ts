@@ -15,14 +15,14 @@ export const profile = {
     "Full-stack engineer with 14 years across retail, fintech and supply-chain products. I like clean architecture, accessible UIs, serverless backends on AWS, and — lately — making AI coding tools genuinely useful through spec-driven development.",
   // Contact details (publishing approved by the owner). Phone number and home address are NEVER published.
   emails: [
-    { id: "personal", label: "Personal", address: "karthikmuthumari7@gmail.com", aria: "Email Karthik at personal address" },
     { id: "work", label: "Work", address: "karthik.muthumari@mindera.com", aria: "Email Karthik at work address" },
+    { id: "personal", label: "Personal", address: "karthikmuthumari7@gmail.com", aria: "Email Karthik at personal address" },
   ],
   github: "https://github.com/karthik-muthumari",
   linkedin: "https://www.linkedin.com/in/karthikmuthumari/",
 };
 
-/** Primary contact address used by single-email CTAs (hero icon, "Email me" button). */
+/** Preferred contact address (first entry = work) used by single-email CTAs and JSON-LD. */
 export const primaryEmail = profile.emails[0].address;
 
 export const stats = [

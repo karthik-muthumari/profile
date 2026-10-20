@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Briefcase, Check, Copy, Mail } from "lucide-react";
 import { spring } from "@/lib/motion";
+import { useMotion } from "../MotionPrefs";
 
 export interface EmailEntry {
   id: string;
@@ -35,6 +36,7 @@ async function copyText(text: string): Promise<boolean> {
 
 /** One email row: whole card is a mailto link (stretched ::after); copy button is a sibling above it. */
 export default function ContactCard({ entry, primary = false }: { entry: EmailEntry; primary?: boolean }) {
+  const { fx } = useMotion();
   const [state, setState] = useState<"idle" | "ok" | "fail">("idle");
   const timer = useRef<number | undefined>(undefined);
   const Icon = entry.id === "work" ? Briefcase : Mail;
@@ -49,8 +51,8 @@ export default function ContactCard({ entry, primary = false }: { entry: EmailEn
 
   return (
     <motion.div
-      whileHover={{ y: -2 }}
-      whileTap={{ scale: 0.985 }}
+      whileHover={fx.hover ? { y: -2 } : undefined}
+      whileTap={fx.tap ? { scale: 0.985 } : undefined}
       transition={spring.snappy}
       className={`group relative flex min-h-[64px] min-w-0 items-center gap-2 rounded-lg border bg-surface p-2.5 min-[360px]:gap-3 min-[360px]:p-3 transition-colors hover:border-accent/60 hover:bg-surface-2 has-[a:focus-visible]:outline has-[a:focus-visible]:outline-[3px] has-[a:focus-visible]:outline-offset-[3px] has-[a:focus-visible]:outline-focus ${
         primary ? "border-accent/40 shadow-glow" : "border-line"

@@ -32,9 +32,20 @@ export const viewport: Viewport = {
   ],
 };
 
+// Runs before first paint: resolves the motion tier (stored choice → else OS reduce-motion / data-saver ⇒ "gentle" → else "full").
+const motionInit = `(function(){try{var d=document.documentElement,t=null;try{t=localStorage.getItem("motion")}catch(e){}if(t!=="full"&&t!=="gentle"&&t!=="off"){t="full";var c=navigator.connection;if(matchMedia("(prefers-reduced-motion: reduce)").matches||(c&&c.saveData))t="gentle"}d.setAttribute("data-motion",t)}catch(e){}})();`;
+// No-JS / pre-hydration safety net: never leave Framer's hidden initial styles on screen.
+const noscriptCss = `[style*="opacity: 0"],[style*="opacity:0"]{opacity:1!important;transform:none!important;filter:none!important}`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={fontVariables} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: motionInit }} />
+        <noscript>
+          <style dangerouslySetInnerHTML={{ __html: noscriptCss }} />
+        </noscript>
+      </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <ThemeProvider>

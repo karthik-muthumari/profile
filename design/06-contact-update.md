@@ -1,4 +1,7 @@
-# 06 · Contact addendum (two emails + LinkedIn + GitHub)
+# 06 · Contact addendum
+
+> **UPDATE (round 2, see `07-round2-fixes.md` §1): the WORK email is now the primary/preferred contact; Personal is secondary. Wherever this doc says Personal is primary, read Work.**
+ (two emails + LinkedIn + GitHub)
 
 Supersedes the "email TBC / placeholder" wording in 02 (Footer, Contact strip), 03 (§3.1 CTA row, §3.2 Nav, Contact). **Phone number and home address must NOT appear anywhere.** Only the four items below are published.
 

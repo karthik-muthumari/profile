@@ -3,8 +3,10 @@ import { motion } from "framer-motion";
 import { skillGroups } from "../../../content/resume";
 import SectionHeader from "../ui/SectionHeader";
 import Reveal from "../ui/Reveal";
+import { useMotion } from "../MotionPrefs";
 
 export default function Skills() {
+  const { fx } = useMotion();
   return (
     <section id="skills" aria-labelledby="skills-title" className="section-y">
       <div className="container-x">
@@ -18,7 +20,7 @@ export default function Skills() {
                   {g.items.map((s) => (
                     <motion.li
                       key={s}
-                      whileHover={{ y: -2 }}
+                      whileHover={fx.hover ? { y: -2 } : undefined}
                       className="chip cursor-default transition-colors hover:border-accent/50 hover:bg-accent/10 hover:text-fg"
                     >
                       {s}

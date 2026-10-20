@@ -1,31 +1,38 @@
 "use client";
 import { useRef, useState } from "react";
-import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
+import { AnimatePresence, motion, useMotionValue, useScroll, useSpring } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { experience, type Company, type Project } from "../../../content/resume";
-import { ease, fadeUp, scaleIn, slideX, spring, viewport } from "@/lib/motion";
+import { ease, spring } from "@/lib/motion";
+import { useFailsafe, useMotion } from "../MotionPrefs";
 import { useMediaQuery } from "@/lib/useMediaQuery";
 import SectionHeader from "../ui/SectionHeader";
 
 function Dot({ size = 12 }: { size?: 12 | 16 }) {
   const s = size === 16 ? "h-4 w-4" : "h-3 w-3";
+  const m = useMotion();
+  const [ref, forced] = useFailsafe<HTMLSpanElement>();
+  const still = m.tier === "off";
   return (
-    <span aria-hidden className={`relative block ${s}`}>
+    <span ref={ref} aria-hidden className={`relative block ${s}`}>
       <span className={`absolute inset-0 rounded-full border-2 border-line-strong bg-bg`} />
       <motion.span
-        initial={{ scale: 0, opacity: 0 }}
+        initial={still ? false : { scale: m.tier === "gentle" ? 1 : 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true, amount: 1, margin: "-35% 0px -35% 0px" }}
-        transition={{ type: "spring", stiffness: 500, damping: 18 }}
+        animate={forced ? { scale: 1, opacity: 1 } : undefined}
+        viewport={m.vpDot}
+        transition={m.tier === "gentle" ? { duration: 0.4 } : { type: "spring", stiffness: 500, damping: 18 }}
         className="absolute -inset-[2px] rounded-full bg-grad-accent shadow-glow"
       />
-      <motion.span
-        initial={{ scale: 1, opacity: 0 }}
-        whileInView={{ scale: [1, 2.2], opacity: [0.6, 0] }}
-        viewport={{ once: true, amount: 1, margin: "-35% 0px -35% 0px" }}
-        transition={{ duration: 1.2 }}
-        className="absolute inset-0 rounded-full border-2 border-accent"
-      />
+      {m.tier === "full" && (
+        <motion.span
+          initial={{ scale: 1, opacity: 0 }}
+          whileInView={{ scale: [1, 2.2], opacity: [0.6, 0] }}
+          viewport={m.vpDot}
+          transition={{ duration: 1.2 }}
+          className="absolute inset-0 rounded-full border-2 border-accent"
+        />
+      )}
     </span>
   );
 }
@@ -33,6 +40,8 @@ function Dot({ size = 12 }: { size?: 12 | 16 }) {
 function ProjectCard({ p, side }: { p: Project; side: 1 | -1 }) {
   const [open, setOpen] = useState(false);
   const desktop = useMediaQuery("(min-width: 1024px)");
+  const m = useMotion();
+  const [aref, forced] = useFailsafe<HTMLElement>();
   const expandable = (p.highlights?.length ?? 0) > 0 || p.tech.length > 6;
   const visibleTech = open ? p.tech : p.tech.slice(0, 6);
   const hidden = p.tech.length - 6;
@@ -40,13 +49,15 @@ function ProjectCard({ p, side }: { p: Project; side: 1 | -1 }) {
 
   return (
     <motion.article
-      variants={desktop ? slideX(side) : fadeUp}
+      ref={aref}
+      variants={desktop ? m.slideX(side) : m.fadeUp}
       initial="hidden"
       whileInView="show"
-      viewport={viewport}
+      animate={forced ? "show" : undefined}
+      viewport={m.mobile ? m.vpDot : m.vp}
       className="group relative rounded-lg border border-line bg-surface p-6 shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-md focus-within:border-accent/40 md:p-7"
     >
-      <motion.div whileHover={{ y: -4 }} transition={spring.card} className="relative">
+      <motion.div whileHover={m.fx.hover ? { y: -4 } : undefined} whileTap={m.fx.tap ? { y: -2 } : undefined} transition={spring.card} className="relative">
         <span aria-hidden className="absolute -left-6 inset-y-0 hidden w-[3px] origin-top scale-y-0 rounded-full bg-grad-accent transition-transform duration-300 group-hover:scale-y-100 md:-left-7 md:block" />
         <div className="mb-3 flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
           <h4 className="text-h3 font-display">{p.client} <span className="text-fg-muted">— {p.name}</span></h4>
@@ -101,8 +112,11 @@ function ProjectCard({ p, side }: { p: Project; side: 1 | -1 }) {
 
 function EmployerNode({ c }: { c: Company }) {
   const present = /present/i.test(c.period);
+  const m = useMotion();
+  const [ref, forced] = useFailsafe<HTMLDivElement>();
+  const shortDuration = c.duration.replace(/\byears?\b/, "yrs").replace(/\bmonths?\b/, "mo");
   return (
-    <motion.div variants={scaleIn} initial="hidden" whileInView="show" viewport={viewport} className="relative lg:flex lg:justify-center">
+    <motion.div ref={ref} variants={m.scaleIn} initial="hidden" whileInView="show" animate={forced ? "show" : undefined} viewport={m.mobile ? m.vpDot : m.vp} className="relative lg:flex lg:justify-center">
       <div className="inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border border-line-strong bg-surface p-4 pr-6 shadow-md lg:max-w-xl">
         <span aria-hidden className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-grad-accent font-display text-h4 font-bold text-accent-ink">
           {c.company[0]}
@@ -111,14 +125,19 @@ function EmployerNode({ c }: { c: Company }) {
           <h3 className="text-h3">{c.company}</h3>
           <p className="text-fg-muted">{c.title}</p>
         </div>
-        <p className="inline-flex items-center gap-2 rounded-pill bg-surface-2 px-3 py-1 font-mono text-mono text-fg-muted">
+        <p className="inline-flex flex-wrap items-center gap-x-2 rounded-pill bg-surface-2 px-3 py-1 font-mono text-mono text-fg-muted">
           {present && (
             <span className="relative flex h-2 w-2" aria-hidden>
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
             </span>
           )}
-          {c.period} · {c.duration}
+          <span className="whitespace-nowrap">{c.period}</span>
+          <span aria-hidden>·</span>
+          <span className="whitespace-nowrap">
+            <span className="min-[480px]:hidden" aria-hidden>{shortDuration}</span>
+            <span className="sr-only min-[480px]:not-sr-only">{c.duration}</span>
+          </span>
         </p>
       </div>
       <p className="mt-3 max-w-prose text-fg-muted lg:hidden">{c.blurb}</p>
@@ -128,8 +147,12 @@ function EmployerNode({ c }: { c: Company }) {
 
 export default function ExperienceTimeline() {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 80%", "end 60%"] });
-  const scaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
+  const m = useMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: m.mobile ? ["start 90%", "end 50%"] : ["start 80%", "end 60%"] });
+  const spring_ = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
+  const staticLine = useMotionValue(1);
+  // touch: bind progress directly (no spring: JS springs over late iOS scroll events look laggy)
+  const scaleY = m.tier === "off" ? staticLine : m.mobile ? scrollYProgress : spring_;
 
   return (
     <section id="experience" aria-labelledby="experience-title" className="section-y">

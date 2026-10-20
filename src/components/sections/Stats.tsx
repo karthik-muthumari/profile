@@ -1,20 +1,21 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { animate, useInView, useReducedMotion } from "framer-motion";
+import { animate, useInView } from "framer-motion";
+import { useMotionTier } from "../MotionPrefs";
 import { Award, Building2, Cloud, Trophy } from "lucide-react";
 import Reveal from "../ui/Reveal";
 
 function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-10% 0px" });
-  const reduce = useReducedMotion();
+  const tier = useMotionTier();
   const [n, setN] = useState(to) // SSR/no-JS shows the final value; animation restarts from 0 when scrolled into view;
   useEffect(() => {
     if (!inView) return;
-    if (reduce) { setN(to); return; }
-    const c = animate(0, to, { duration: 1.2, ease: [0.16, 1, 0.3, 1], onUpdate: (v) => setN(Math.round(v)) });
+    if (tier === "off") { setN(to); return; }
+    const c = animate(0, to, { duration: tier === "gentle" ? 0.6 : 1.2, ease: [0.16, 1, 0.3, 1], onUpdate: (v) => setN(Math.round(v)) });
     return () => c.stop();
-  }, [inView, reduce, to]);
+  }, [inView, tier, to]);
   return <span ref={ref} className="tabular-nums">{n}{suffix}</span>;
 }
 

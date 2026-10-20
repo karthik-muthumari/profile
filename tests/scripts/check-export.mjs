@@ -6,7 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { EMAIL_ALLOWLIST, WORK_EMAIL, PERSONAL_EMAIL, LINKEDIN_URL, GITHUB_URL, PLACEHOLDER_RAW, PLACEHOLDER_VISIBLE } from './contact.config.mjs';
+import { EMAIL_ALLOWLIST, WORK_EMAIL, PERSONAL_EMAIL, LINKEDIN_URL, GITHUB_URL, PLACEHOLDER_RAW, PLACEHOLDER_VISIBLE, PREFERRED_BADGE, AVATAR_MAX_KB, AVATAR_MAX_PX, ORIGINAL_PHOTO_NAMES, MOTION_KEY } from './contact.config.mjs';
 
 const argv = process.argv.slice(2);
 const opt = (n, d) => { const i = argv.indexOf(n); return i >= 0 ? argv.splice(i, 2)[1] : d; };
@@ -29,6 +29,7 @@ const walk = (d, acc = []) => { for (const e of fs.readdirSync(d, { withFileType
 const files = walk(out);
 const rel = (p) => path.relative(out, p).split(path.sep).join('/');
 const has = (r) => fs.existsSync(path.join(out, r));
+const textOf0 = (h) => h.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<style[\s\S]*?<\/style>/gi, '').replace(/<[^>]+>/g, ' ').replace(/&[a-z#0-9]+;/gi, ' ').replace(/\s+/g, ' ').trim();
 
 // ---------- 1. structure ----------
 for (const r of ['index.html', '404.html', '_next/static']) rec(`structure:${r}`, has(r), has(r) ? 'present' : 'MISSING');
@@ -101,6 +102,36 @@ for (const [label, addr] of [['work', WORK_EMAIL], ['personal', PERSONAL_EMAIL]]
   rec(`contact:mailto-${label}-on-home`, pgs.includes('index.html'), pgs.includes('index.html') ? `<a href="mailto:${addr}"> on index.html (+${pgs.length - 1} other page(s))` : `no mailto:${addr} link on index.html`);
   const withoutLink = files.filter((f) => /(^|\/)index\.html$/.test(f) && !mailtos.get(addr.toLowerCase())?.includes(rel(f))).map(rel);
   rec(`contact:mailto-${label}-all-pages`, withoutLink.length === 0, withoutLink.length ? `missing on: ${withoutLink.join(', ')}` : 'present on every page (footer/contact)', true);
+}
+// ---- Round 2: WORK e-mail is the PREFERRED contact (first, badged, hero mail icon, JSON-LD) ----
+{
+  const home = idxHtml;
+  const firstMail = (h) => { const m = h.match(/href=["']mailto:([^"'?#]+)/i); return m ? decodeURIComponent(m[1]).toLowerCase() : null; };
+  const order = [...home.matchAll(/href=["']mailto:([^"'?#]+)/gi)].map((m) => decodeURIComponent(m[1]).toLowerCase());
+  rec('contact:work-first-on-home', firstMail(home) === WORK_EMAIL.toLowerCase(), `first mailto in index.html = ${firstMail(home)}; sequence: ${[...new Set(order)].join(' -> ')}`);
+  // every block (hero / contact / footer): the first mailto inside must be the work address, and personal must never precede work
+  const regions = { contact: /<section\b[^>]*\bid=["']contact["'][\s\S]*?<\/section>/i, footer: /<footer\b[\s\S]*?<\/footer>/i, hero: /<section\b[^>]*\bid=["']about["'][\s\S]*?<\/section>/i };
+  const bad2 = [];
+  for (const [name, re] of Object.entries(regions)) {
+    const m = home.match(re); if (!m) { if (name !== 'hero') bad2.push(`${name}: region not found`); continue; }
+    const seq = [...m[0].matchAll(/href=["']mailto:([^"'?#]+)/gi)].map((x) => decodeURIComponent(x[1]).toLowerCase());
+    if (seq.length && seq[0] !== WORK_EMAIL.toLowerCase()) bad2.push(`${name}: first mailto is ${seq[0]}`);
+    if (name === 'hero' && seq.includes(PERSONAL_EMAIL.toLowerCase())) bad2.push('hero: mailto points at the personal address');
+    if (name === 'contact' && !seq.includes(WORK_EMAIL.toLowerCase())) bad2.push('contact: no work mailto');
+  }
+  rec('contact:work-first-in-hero-contact-footer', bad2.length === 0, bad2.length ? bad2.join('; ') : 'hero mail icon, #contact and <footer>: work address comes first (hero links only to work)');
+  // nav/header: if it carries any mailto it must be the work address
+  const hdr = home.match(/<header\b[\s\S]*?<\/header>/i); const hdrMails = hdr ? [...hdr[0].matchAll(/href=["']mailto:([^"'?#]+)/gi)].map((x) => decodeURIComponent(x[1]).toLowerCase()) : [];
+  rec('contact:nav-mailto-is-work-if-any', hdrMails.every((e) => e === WORK_EMAIL.toLowerCase()), hdrMails.length ? `header mailto: ${[...new Set(hdrMails)].join(', ')}` : 'header/nav has no mailto (CTA is the #contact anchor)');
+  rec('contact:preferred-badge-present', PREFERRED_BADGE.test(textOf0(home)), PREFERRED_BADGE.test(textOf0(home)) ? '"Preferred" label is in the static HTML' : 'no "Preferred" text found in index.html');
+  // JSON-LD Person.email
+  const ld = [...home.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].map((m) => m[1]);
+  const emails = []; const walkLd = (o) => { if (Array.isArray(o)) o.forEach(walkLd); else if (o && typeof o === 'object') { for (const [k, v] of Object.entries(o)) { if (k === 'email') emails.push(String(v)); walkLd(v); } } };
+  let ldErr = ''; for (const t of ld) { try { walkLd(JSON.parse(t)); } catch (e) { ldErr = e.message; } }
+  const ldNorm = emails.map((e) => e.replace(/^mailto:/i, '').toLowerCase());
+  rec('contact:jsonld-email-is-work', !ldErr && ld.length > 0 && ldNorm.length > 0 && ldNorm.every((e) => e === WORK_EMAIL.toLowerCase()),
+    ldErr ? `JSON-LD parse error: ${ldErr}` : (!ld.length ? 'no application/ld+json block on /' : (ldNorm.length ? `JSON-LD email(s): ${ldNorm.join(', ')}` : 'JSON-LD has no email property')));
+  rec('contact:jsonld-no-personal-email', !ld.join(' ').toLowerCase().includes(PERSONAL_EMAIL.toLowerCase()), 'personal address must not be the structured-data contact');
 }
 // LinkedIn / GitHub: exact URLs, no other profile links on site pages (blog posts may cite other GitHub repos)
 const socialProblems = []; const seenSocial = new Set();
@@ -195,6 +226,50 @@ rec('images:total-budget', total <= IMG_TOTAL, `total raster image bytes = ${(to
 rec('images:max-dimension', big.length === 0, big.length ? `> ${IMG_PX}px: ${big.join('; ')}` : `no image longer side > ${IMG_PX}px`, true);
 rec('privacy:no-exif-gps', gps.length === 0, gps.length ? 'EXIF GPS in: ' + gps.join(', ') : 'no GPS EXIF tag in any JPEG');
 
+// ---- Round 2: hero photo = web copy of pics/MyProfilePic.PNG ----
+{
+  const bn = (f) => path.basename(f);
+  const origNames = files.filter((f) => ORIGINAL_PHOTO_NAMES.some((re) => re.test(bn(f)))).map(rel);
+  rec('images:no-original-or-leftover-names', origNames.length === 0, origNames.length ? 'shipped but must not be: ' + origNames.join(', ') : 'no MyProfilePic.* original, no DSC*, no portrait-{square,tall,wide}.jpg leftovers in out/');
+  const upper = files.map(rel).filter((r) => /\.(PNG|JPG|JPEG|WEBP|GIF|AVIF)$/.test(r) || (IMGEXT.has(path.extname(r).toLowerCase()) && path.basename(r) !== path.basename(r).toLowerCase()));
+  rec('images:lowercase-filenames', upper.length === 0, upper.length ? 'upper-case image name/extension (404s on case-sensitive Pages): ' + upper.join(', ') : 'every image file name and extension is lowercase');
+  // the image the hero actually uses: <img> with data-avatar-state or alt containing "portrait" (before next/image or plain)
+  const hero = [...idxHtml.matchAll(/<img\b[^>]*>/gi)].map((m) => m[0]).filter((t) => /data-avatar-state|portrait/i.test(t));
+  rec('images:hero-img-found', hero.length > 0, hero.length ? `${hero.length} hero <img>: ${hero[0].slice(0, 140)}` : 'no <img data-avatar-state|alt~portrait> in index.html');
+  for (const tag of hero.slice(0, 1)) {
+    const m = tag.match(/\bsrc=["']([^"']+)["']/i); let src = m ? m[1].split('?')[0] : '';
+    const okBase = !base || src.startsWith(base + '/');
+    rec('images:hero-src-has-base', okBase, src + (base ? ` (base ${base})` : ''));
+    const rp = src.slice(base.length).replace(/^\//, ''); const fp = path.join(out, rp);
+    rec('images:hero-file-exists-lowercase', has(rp) && rp === rp.toLowerCase() && !/portrait-(square|tall|wide)/.test(rp), `${rp} exists=${has(rp)} lowercase=${rp === rp.toLowerCase()}`);
+    if (has(rp)) {
+      const st = fs.statSync(fp); const buf = fs.readFileSync(fp); const ext = path.extname(fp).toLowerCase(); const d = dims(buf, ext);
+      rec('images:hero-size-budget', st.size <= AVATAR_MAX_KB * 1024, `${rp} = ${(st.size / 1024).toFixed(0)} KB (budget ${AVATAR_MAX_KB} KB)`);
+      rec('images:hero-dimensions', !!d && Math.max(...d) <= AVATAR_MAX_PX && Math.min(...d) >= 400, d ? `${d.join('x')} (400..${AVATAR_MAX_PX}px; the multi-megapixel original must not ship)` : 'could not read dimensions');
+      const sha = crypto.createHash('sha256').update(buf).digest('hex');
+      rec('images:hero-not-original', !origHashes.has(sha), origHashes.has(sha) ? 'IDENTICAL to ' + origHashes.get(sha) : `sha256 differs from all ${origHashes.size} originals in pics/`);
+    }
+  }
+  // metadata in non-JPEG rasters (PNG eXIf/tEXt-GPS, WebP EXIF chunk) – jpegHasGps only covers JPEG
+  const meta = [];
+  for (const { f } of imgs) {
+    const ext = path.extname(f).toLowerCase(); const b = fs.readFileSync(f);
+    if (ext === '.png') { let i = 8; while (i + 8 <= b.length) { const len = b.readUInt32BE(i); const typ = b.toString('ascii', i + 4, i + 8); if (typ === 'eXIf') meta.push(rel(f) + ' (PNG eXIf chunk)'); if ((typ === 'tEXt' || typ === 'iTXt' || typ === 'zTXt') && /GPS|Exif|xmp/i.test(b.toString('latin1', i + 8, i + 8 + Math.min(len, 400)))) meta.push(rel(f) + ` (PNG ${typ} metadata)`); if (typ === 'IEND') break; i += 12 + len; } }
+    if (ext === '.webp' && b.toString('ascii', 0, 4) === 'RIFF') { let i = 12; while (i + 8 <= b.length) { const typ = b.toString('ascii', i, i + 4); const len = b.readUInt32LE(i + 4); if (typ === 'EXIF' || typ === 'XMP ') meta.push(rel(f) + ` (WebP ${typ.trim()} chunk)`); i += 8 + len + (len & 1); } }
+    if ((ext === '.jpg' || ext === '.jpeg') && b.includes(Buffer.from('http://ns.adobe.com/xap/1.0/')) && /GPS/i.test(b.toString('latin1', 0, Math.min(b.length, 65536)))) meta.push(rel(f) + ' (JPEG XMP GPS)');
+  }
+  rec('privacy:no-exif-in-png-webp-xmp', meta.length === 0, meta.length ? 'metadata present: ' + meta.join('; ') : 'no EXIF/XMP/GPS metadata chunk in any PNG/WebP/JPEG');
+}
+
+// ---- Round 2: motion-tier + failsafe plumbing visible in the export (static smoke only; behaviour is tested in e2e.mjs) ----
+{
+  const chunkText = files.filter((f) => /_next\/static\/chunks\/.*\.js$/.test(f.split(path.sep).join('/'))).map((f) => fs.readFileSync(f, 'utf8')).join('\n');
+  const hasKey = chunkText.includes(`"${MOTION_KEY}"`) || chunkText.includes(`'${MOTION_KEY}'`);
+  rec('motion:tier-code-shipped', /gentle/.test(chunkText) && hasKey && /data-motion|dataset\.motion|\.motion\s*=/.test(chunkText + idxHtml), `chunks contain "gentle" tier=${/gentle/.test(chunkText)}, localStorage key "${MOTION_KEY}"=${hasKey}, data-motion hook=${/data-motion|dataset\.motion/.test(chunkText + idxHtml)}`);
+  const ns = /<noscript>[\s\S]*?<style>[\s\S]*?opacity\s*:\s*1[\s\S]*?<\/style>[\s\S]*?<\/noscript>/i.test(idxHtml);
+  rec('motion:noscript-reveal-fallback', ns, ns ? '<noscript><style> forces opacity:1 so no-JS visitors do not see an empty page' : 'no <noscript> style override: with JS disabled framer "initial" styles (opacity:0) leave content invisible');
+}
+
 // ---------- 4. JS weight ----------
 const js = files.filter((f) => /_next\/static\/chunks\/.*\.js$/.test(f.split(path.sep).join('/')));
 const jsBytes = js.reduce((a, f) => a + fs.statSync(f).size, 0);
@@ -225,7 +300,8 @@ for (const p of pages) {
   if (/\b(undefined|\[object Object\]|NaN)\b/.test(t)) P('rendered-garbage', p, (t.match(/.{0,30}\b(undefined|\[object Object\]|NaN)\b.{0,30}/) || [''])[0]);
   if (/^blog\/[^/]+\/index\.html$/.test(rel(p))) {
     if (t.length < 400) P('blog-content-length', p, `only ${t.length} chars of text`);
-    if (/(^|\s)#{1,6}\s\w|```|\*\*\w|^---\s*title:|\btitle:\s.*\bdate:/m.test(textOf(h.replace(/<pre[\s\S]*?<\/pre>/gi, ' '))))   // code blocks may legitimately show markdown P('blog-raw-markdown', p, 'raw markdown/frontmatter leaked into HTML text');
+    // (code blocks may legitimately show markdown, so <pre> is stripped first)
+    if (/(^|\s)#{1,6}\s\w|```|\*\*\w|^---\s*title:|\btitle:\s.*\bdate:/m.test(textOf(h.replace(/<pre[\s\S]*?<\/pre>/gi, ' ')))) P('blog-raw-markdown', p, 'raw markdown/frontmatter leaked into HTML text');
     if (!/<article\b/i.test(h)) P('blog-article-tag', p);
   }
 }

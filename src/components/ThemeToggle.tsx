@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { spring } from "@/lib/motion";
+import { useMotionTier } from "./MotionPrefs";
 
 type VTDocument = Document & { startViewTransition?: (cb: () => void) => { ready: Promise<void> } };
 
@@ -14,7 +15,7 @@ type VTDocument = Document & { startViewTransition?: (cb: () => void) => { ready
  */
 export default function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  const reduce = useReducedMotion();
+  const reduce = useMotionTier() !== "full"; // no circular reveal / icon spin unless the Full tier is active
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -30,7 +31,8 @@ export default function ThemeToggle() {
     const root = document.documentElement;
     const doc = document as VTDocument;
     if (reduce) return apply();
-    if (doc.startViewTransition) {
+    const touch = window.matchMedia("(hover: none) and (pointer: coarse)").matches; // iOS: full-page snapshot reveal is janky
+    if (doc.startViewTransition && !touch) {
       const r = e.currentTarget.getBoundingClientRect();
       root.style.setProperty("--vt-x", `${r.left + r.width / 2}px`);
       root.style.setProperty("--vt-y", `${r.top + r.height / 2}px`);

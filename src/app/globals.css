@@ -50,12 +50,78 @@
 @media (min-width: 1024px) { .avatar-box { width: min(100%, clamp(400px, 36vw, 540px)); } }
 .avatar-blob { border-radius: var(--r-blob); animation: blob-morph 10s ease-in-out infinite; overflow: hidden; }
 .avatar-blob-static { border-radius: var(--r-blob); }
-.avatar-ring, .avatar-ring-dashed { position: absolute; left: 50%; top: 50%; border-radius: 9999px; pointer-events: none; }
-.avatar-ring { width: 108%; height: 108%; margin: -54% 0 0 -54%; background: var(--grad-ring);
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
-  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
-  animation: ring-spin 14s linear infinite; }
-.avatar-ring-dashed { width: 118%; height: 118%; margin: -59% 0 0 -59%; border: 2px dashed rgb(var(--c-accent) / .25); animation: ring-spin 40s linear infinite reverse; }
+/* touch devices: static blob (radius keyframes repaint a huge layer every frame; WebKit drops the rounded clip) */
+@media (hover: none), (pointer: coarse) { .avatar-blob { animation: none; } }
+.avatar-ring-dashed { position: absolute; left: 50%; top: 50%; border-radius: 9999px; pointer-events: none;
+  width: 112%; height: 112%; margin: -56% 0 0 -56%; border: 2px dashed rgb(var(--c-accent) / .35); animation: ring-spin 30s linear infinite reverse; display: none; }
+@media (min-width: 640px) { .avatar-ring-dashed { display: block; } }
+
+/* iOS-safe ring (design/07 §3.6 D): inline SVG stroke gradient, rotated via CSS transform on the <svg> element.
+   No mask, no conic-gradient, no filter, no SMIL, no pathLength. */
+.avatar-ring-svg { position: absolute; left: 50%; top: 50%; width: 112%; height: 112%; margin: -56% 0 0 -56%; pointer-events: none; overflow: visible;
+  transform: rotate(-60deg); animation: ring-spin 12s linear infinite; }
+.ring-track { stroke: rgb(var(--c-border-strong) / .45); stroke-width: .45; }
+.ring-arc { stroke-width: 1.15; }
+@media (min-width: 768px) { .ring-arc { stroke-width: .9; } }
+@media (min-width: 1024px) { .ring-arc { stroke-width: .65; } .avatar-ring-svg { animation-duration: 16s; } }
+html[data-motion="gentle"] .avatar-ring-svg, html[data-motion="off"] .avatar-ring-svg { animation: none; }
+@keyframes ring-spin-from { from { transform: rotate(-60deg); } to { transform: rotate(300deg); } }
+.avatar-ring-svg { animation-name: ring-spin-from; }
+
+/* Glow pulse + avatar float: CSS keyframes (opacity / transform only) so they keep running on the compositor thread */
+.avatar-glow { animation: glow-pulse 5s ease-in-out infinite; }
+.avatar-float { animation: avatar-float 6s ease-in-out infinite; }
+@keyframes glow-pulse { 0%, 100% { opacity: .7; } 50% { opacity: 1; } }
+@keyframes avatar-float-soft { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -5px, 0); } }
+html[data-motion="gentle"] .avatar-float { animation: avatar-float-soft 8s ease-in-out infinite; }
+html[data-motion="gentle"] .avatar-glow { animation: none; }
+.avatar-paused .avatar-glow, .avatar-paused .avatar-float { animation-play-state: paused; }
+
+/* Floating badges: CSS-only transform animations (compositor thread), on every breakpoint. */
+.avatar-badges { position: absolute; inset: 0; z-index: 10; pointer-events: none; list-style: none; margin: 0; padding: 0; }
+.avatar-badge { position: absolute; animation: badge-in .45s var(--ease-out-expo) both; animation-delay: calc(.35s + var(--i) * .1s); }
+.badge-float { display: inline-flex; align-items: center; white-space: nowrap; border-radius: 9999px; border: 1px solid rgb(var(--c-border-strong));
+  background: rgb(var(--c-surface) / .95); color: rgb(var(--c-fg)); box-shadow: var(--shadow-md);
+  font-size: 12px; line-height: 1.15; padding: .25rem .625rem;
+  animation: badge-float var(--bd, 6s) ease-in-out infinite; animation-delay: var(--bl, 0s); }
+.badge-dot { width: 6px; height: 6px; border-radius: 9999px; background: rgb(var(--c-accent)); margin-right: 6px; flex: none; }
+@keyframes badge-in { from { opacity: 0; transform: translate3d(0, 8px, 0); } to { opacity: 1; transform: none; } }
+@keyframes badge-float { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, var(--bf, -4px), 0); } }
+/* offsets relative to the avatar box (design/07 §3.6 B) */
+.badge-aws { left: max(-14%, calc(8px - (100vw - 100%) / 2)); top: 12%; }
+.badge-yrs { right: max(-10%, calc(8px - (100vw - 100%) / 2)); top: 5%; }
+.badge-ibm { right: max(-12%, calc(8px - (100vw - 100%) / 2)); bottom: 10%; }
+.badge-ibm .badge-float { white-space: normal; text-align: center; max-width: 6.5rem; }
+@media (min-width: 640px) {
+  .badge-float { font-size: 13px; padding: .375rem .75rem; }
+  .badge-aws { left: -18%; } .badge-yrs { right: -14%; } .badge-ibm { right: -16%; }
+  .badge-ibm .badge-float { white-space: nowrap; max-width: none; }
+}
+@media (min-width: 768px) {
+  .badge-aws { left: -6%; } .badge-yrs { right: -4%; } .badge-ibm { right: -4%; }
+  .badge-ibm .badge-float { white-space: normal; max-width: 7rem; }
+}
+@media (min-width: 1024px) {
+  .badge-float { --bf: -8px; font-size: var(--fs-small, 14px); }
+  .badge-aws { left: -1rem; top: 14%; } .badge-yrs { right: -.5rem; top: 8%; } .badge-ibm { right: -1.5rem; bottom: 12%; }
+  .badge-ibm .badge-float { white-space: nowrap; max-width: none; }
+}
+@media (min-width: 1280px) { .badge-aws { left: -2.5rem; } .badge-yrs { right: -2rem; } .badge-ibm { right: -3.5rem; } }
+html[data-motion="gentle"] .badge-float, html[data-motion="off"] .badge-float { animation: none; }
+html[data-motion="off"] .avatar-badge { animation: none; opacity: 1; }
+.avatar-paused .badge-float, .avatar-paused .avatar-ring-svg, .avatar-paused .avatar-ring-dashed { animation-play-state: paused; }
+
+/* Page enter (replaces a Framer-driven opacity:0 wrapper that depended on hydration) */
+@keyframes page-in { from { opacity: 0; transform: translate3d(0, 10px, 0); } to { opacity: 1; transform: none; } }
+.page-enter { animation: page-in .5s var(--ease-out-expo) both; }
+html[data-motion="gentle"] .page-enter { animation-name: page-in-fade; }
+@keyframes page-in-fade { from { opacity: 0; } to { opacity: 1; } }
+html[data-motion="off"] .page-enter { animation: none; }
+
+/* Failsafe: if hydration never completes (JS blocked / very slow), un-hide Framer's SSR `initial` styles after 5s.
+   CSS animations override non-!important inline styles. Disarmed as soon as MotionPrefs sets data-hydrated. */
+@keyframes fs-show { to { opacity: 1; transform: none; filter: none; } }
+html:not([data-hydrated]) [style*="opacity:0"], html:not([data-hydrated]) [style*="opacity: 0"] { animation: fs-show .01s 5s forwards; }
 
 /* ---------- Hero background grid ---------- */
 .hero-grid {
@@ -66,22 +132,29 @@
 }
 
 /* ---------- Marquee (CSS-only) ---------- */
-.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+.marquee { position: relative; overflow: hidden; }
+.marquee::before, .marquee::after { content: ""; position: absolute; top: 0; bottom: 0; width: 10%; z-index: 1; pointer-events: none; }
+.marquee::before { left: 0; background: linear-gradient(to right, rgb(var(--c-bg)), transparent); }
+.marquee::after { right: 0; background: linear-gradient(to left, rgb(var(--c-bg)), transparent); }
 .marquee-track { display: flex; width: max-content; gap: .5rem; animation: marquee 40s linear infinite; }
-.marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+@media (hover: hover) and (pointer: fine) { .marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; } }
 @keyframes marquee { to { transform: translateX(calc(-50% - .25rem)); } }
+/* Static marquee: "gentle" and "off" tiers (and OS reduce-motion before JS has chosen a tier). */
+html[data-motion="gentle"] .marquee::before, html[data-motion="gentle"] .marquee::after, html[data-motion="off"] .marquee::before, html[data-motion="off"] .marquee::after { display: none; }
+html[data-motion="gentle"] .marquee-track, html[data-motion="off"] .marquee-track { width: auto; flex-wrap: wrap; animation: none; }
+html[data-motion="gentle"] .marquee-dup, html[data-motion="off"] .marquee-dup { display: none; }
 @media (prefers-reduced-motion: reduce) {
-  .marquee { -webkit-mask-image: none; mask-image: none; }
-  .marquee-track { width: auto; flex-wrap: wrap; animation: none; }
-  .marquee-dup { display: none; }
+  html:not([data-motion]) .marquee-track { width: auto; flex-wrap: wrap; animation: none; }
+  html:not([data-motion]) .marquee-dup { display: none; }
 }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html[data-motion="off"] { scroll-behavior: auto; }
 
 /* Nav link underline slide (04 §4, pure CSS) */
 .nav-link::after { content: ""; position: absolute; left: 1rem; right: 1rem; bottom: .55rem; height: 1px; background: currentColor;
   transform: scaleX(0); transform-origin: left; transition: transform 200ms var(--ease-out-expo); }
-.nav-link:hover::after { transform: scaleX(1); }
+@media (hover: hover) and (pointer: fine) { .nav-link:hover::after { transform: scaleX(1); } }
 
 /* Circular theme reveal (View Transitions API, progressive enhancement) */
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }

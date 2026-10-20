@@ -6,10 +6,9 @@ import { ArrowRight } from "lucide-react";
 import type { PostMeta } from "@/lib/posts";
 import SpotlightCard from "../ui/SpotlightCard";
 import Reveal from "../ui/Reveal";
+import { formatDate } from "@/lib/date";
 
-// Client component: date formatting duplicated here to avoid importing node-only code.
-const fmt = (iso: string) =>
-  new Date(iso + "T00:00:00Z").toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
+const fmt = formatDate; // deterministic (see lib/date.ts)
 
 function PostCard({ post, featured = false }: { post: PostMeta; featured?: boolean }) {
   return (

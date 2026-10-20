@@ -1,13 +1,5 @@
-"use client";
-import { motion } from "framer-motion";
-import { pageVariants } from "@/lib/motion";
-
-/** Re-mounts on every navigation → enter animation (exit omitted by design; see design/04 §10).
- *  Reduced motion: MotionConfig drops the y offset; opacity-only fade remains. */
+/** Re-mounts on every navigation → CSS enter animation (`.page-enter` in globals.css). Pure CSS on purpose: it does
+ *  not depend on hydration, so page content is never stuck invisible waiting for JS (WebKit/slow networks). */
 export default function Template({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div variants={pageVariants} initial="initial" animate="enter">
-      {children}
-    </motion.div>
-  );
+  return <div className="page-enter">{children}</div>;
 }

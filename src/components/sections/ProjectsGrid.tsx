@@ -1,10 +1,45 @@
 "use client";
-import { useState } from "react";
+import { forwardRef, useCallback, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { featuredProjects, type ProjectCategory } from "../../../content/resume";
+import { useFailsafe, useMotion } from "../MotionPrefs";
 import SpotlightCard from "../ui/SpotlightCard";
 import SectionHeader from "../ui/SectionHeader";
+
+/** One grid cell: scroll-reveal with failsafe. forwardRef because AnimatePresence(popLayout) measures the child. */
+const Item = forwardRef<HTMLLIElement, { index: number; className: string; children: React.ReactNode }>(function Item({ index, className, children }, fref) {
+  const m = useMotion();
+  const [ref, forced] = useFailsafe<HTMLLIElement>();
+  const setRef = useCallback(
+    (n: HTMLLIElement | null) => {
+      ref.current = n;
+      if (typeof fref === "function") fref(n);
+      else if (fref) fref.current = n;
+    },
+    [ref, fref],
+  );
+  const hidden = m.tier === "off" ? { opacity: 1 } : { opacity: 0, y: m.tier === "gentle" ? 12 : m.mobile ? 14 : 24 };
+  return (
+    <motion.li
+      ref={setRef}
+      layout={m.tier === "full"}
+      initial={hidden}
+      whileInView={{ opacity: 1, y: 0 }}
+      animate={forced ? { opacity: 1, y: 0 } : undefined}
+      viewport={m.vp}
+      exit={m.tier === "off" ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0, scale: m.tier === "full" ? 0.96 : 1 }}
+      transition={
+        m.tier === "off"
+          ? { duration: 0 }
+          : { duration: m.tier === "gentle" ? 0.4 : m.mobile ? 0.45 : 0.5, delay: m.mobile ? 0 : (index % 3) * (m.tier === "gentle" ? 0.04 : 0.08), ease: [0.16, 1, 0.3, 1] }
+      }
+      className={className}
+    >
+      {children}
+    </motion.li>
+  );
+});
 
 const FILTERS: ("All" | ProjectCategory)[] = ["All", "Frontend", "Backend", "Cloud", "AI"];
 
@@ -40,15 +75,7 @@ export default function ProjectsGrid() {
         <motion.ul layout className="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-8">
           <AnimatePresence mode="popLayout">
             {list.map((p, i) => (
-              <motion.li
-                key={p.slug}
-                layout
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.5, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className={p.featured && filter === "All" ? "lg:col-span-2" : ""}
-              >
+              <Item key={p.slug} index={i} className={p.featured && filter === "All" ? "lg:col-span-2" : ""}>
                 <SpotlightCard featured={p.featured} className="h-full">
                   <div aria-hidden className="relative flex aspect-video items-center justify-center overflow-hidden bg-surface-2">
                     <div className="absolute inset-0 bg-glow-hero opacity-80 transition-transform duration-500 group-hover:scale-105" />
@@ -79,13 +106,13 @@ export default function ProjectsGrid() {
                           aria-label={`Open ${p.name}`}
                           className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-pill border border-line-strong text-accent after:absolute after:inset-0 after:content-['']"
                         >
-                          <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden />
+                          <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-data-[pressed=1]:-translate-y-1 group-data-[pressed=1]:translate-x-1" aria-hidden />
                         </a>
                       )}
                     </div>
                   </div>
                 </SpotlightCard>
-              </motion.li>
+              </Item>
             ))}
           </AnimatePresence>
         </motion.ul>

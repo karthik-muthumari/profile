@@ -85,8 +85,9 @@
   --grad-accent: linear-gradient(135deg, rgb(var(--c-accent)) 0%, rgb(var(--c-accent-lo)) 100%);
   --grad-text:   linear-gradient(100deg, #FFD28A 0%, #FFB547 40%, #FF8A3D 75%, #5CC8FF 130%);
   --grad-ring:   conic-gradient(from 0deg, #FFB547, #FF8A3D, #5CC8FF, #FFB547);
-  --glow-hero:   radial-gradient(60% 60% at 70% 30%, rgb(var(--c-accent) / .22), transparent 70%),
-                 radial-gradient(50% 50% at 15% 80%, rgb(var(--c-accent-2) / .14), transparent 70%);
+  --ring-a: #FFB547; --ring-b: #FF8A3D; --ring-c: #5CC8FF;
+  --glow-hero:   radial-gradient(60% 60% at 70% 30%, rgb(var(--c-accent) / .22), rgb(var(--c-accent) / 0) 70%),
+                 radial-gradient(50% 50% at 15% 80%, rgb(var(--c-accent-2) / .14), rgb(var(--c-accent-2) / 0) 70%);
   --noise-opacity: .06;
   --card-bg-hover: linear-gradient(180deg, rgb(var(--c-surface-2)), rgb(var(--c-surface)));
 }
@@ -120,8 +121,9 @@
   --grad-accent: linear-gradient(135deg, #FFC24D 0%, #F5A524 55%, #F28A1C 100%);
   --grad-text:   linear-gradient(100deg, #9A5200 0%, #C26A00 45%, #0B6A9C 120%);
   --grad-ring:   conic-gradient(from 0deg, #F5A524, #F28A1C, #4AB3E8, #F5A524);
-  --glow-hero:   radial-gradient(60% 60% at 70% 30%, rgb(245 165 36 / .28), transparent 70%),
-                 radial-gradient(50% 50% at 15% 80%, rgb(92 200 255 / .22), transparent 70%);
+  --ring-a: #D97706; --ring-b: #EA580C; --ring-c: #0B6A9C;
+  --glow-hero:   radial-gradient(60% 60% at 70% 30%, rgb(245 165 36 / .28), rgb(245 165 36 / 0) 70%),
+                 radial-gradient(50% 50% at 15% 80%, rgb(92 200 255 / .22), rgb(92 200 255 / 0) 70%);
   --noise-opacity: .035;
   --card-bg-hover: linear-gradient(180deg, #fff, rgb(var(--c-surface-2) / .6));
 }
@@ -143,8 +145,9 @@
     --grad-accent: linear-gradient(135deg, #FFC24D 0%, #F5A524 55%, #F28A1C 100%);
     --grad-text: linear-gradient(100deg, #9A5200 0%, #C26A00 45%, #0B6A9C 120%);
     --grad-ring: conic-gradient(from 0deg, #F5A524, #F28A1C, #4AB3E8, #F5A524);
-    --glow-hero: radial-gradient(60% 60% at 70% 30%, rgb(245 165 36 / .28), transparent 70%),
-                 radial-gradient(50% 50% at 15% 80%, rgb(92 200 255 / .22), transparent 70%);
+    --ring-a: #D97706; --ring-b: #EA580C; --ring-c: #0B6A9C;
+    --glow-hero: radial-gradient(60% 60% at 70% 30%, rgb(245 165 36 / .28), rgb(245 165 36 / 0) 70%),
+                 radial-gradient(50% 50% at 15% 80%, rgb(92 200 255 / .22), rgb(92 200 255 / 0) 70%);
     --noise-opacity: .035;
     --card-bg-hover: linear-gradient(180deg, #fff, rgb(var(--c-surface-2) / .6));
   }
@@ -168,10 +171,16 @@ html.theme-transition, html.theme-transition *, html.theme-transition *::before,
 :focus-visible { outline: 3px solid rgb(var(--c-focus)); outline-offset: 3px; border-radius: var(--r-xs); }
 :focus:not(:focus-visible) { outline: none; }
 
-/* Reduced motion: kill CSS animation, keep colour transitions */
+/* Motion tiers (design/07 §3.1). <html data-motion="full|gentle|off"> is set by an inline script before first paint.
+   gentle = decorative infinite CSS loops stop (ring spin, blob morph, marquee, pings); off = no CSS motion at all.
+   The OS reduce-motion media query only applies until a tier has been chosen (no-JS / pre-script). */
+html[data-motion="gentle"] .avatar-ring-dashed,
+html[data-motion="gentle"] .avatar-blob, html[data-motion="gentle"] .animate-ping { animation: none; }
+html[data-motion="off"] *, html[data-motion="off"] *::before, html[data-motion="off"] *::after {
+  animation: none !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important;
-                           scroll-behavior: auto !important; }
+  html:not([data-motion]) *, html:not([data-motion]) *::before, html:not([data-motion]) *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
 
 /* Gradient headline word */
@@ -184,7 +193,7 @@ html.theme-transition, html.theme-transition *, html.theme-transition *::before,
          background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
 
 /* Avatar idle float is done in Framer Motion; this CSS keyframe is the JS-free fallback */
-@keyframes avatar-float { 0%,100% { transform: translateY(0) rotate(-.6deg); } 50% { transform: translateY(-14px) rotate(.6deg); } }
+@keyframes avatar-float { 0%,100% { transform: translate3d(0,0,0) rotate(-.6deg); } 50% { transform: translate3d(0,-12px,0) rotate(.6deg); } }
 @keyframes ring-spin    { to { transform: rotate(360deg); } }
 @keyframes blob-morph   { 0%,100% { border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%; }
                           50%     { border-radius: 44% 56% 42% 58% / 56% 44% 56% 44%; } }

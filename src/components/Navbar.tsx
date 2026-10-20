@@ -91,8 +91,8 @@ export default function Navbar() {
   return (
     <>
     <header
-      className={`fixed inset-x-0 top-0 z-50 h-nav border-b border-line/60 backdrop-blur-xl transition-[background-color,box-shadow] duration-[250ms] ${
-        scrolled || open ? "bg-bg/85 shadow-sm" : "bg-bg/70"
+      className={`fixed inset-x-0 top-0 z-50 h-nav border-b border-line/60 transition-[background-color,box-shadow] duration-[250ms] [@media(hover:hover)_and_(min-width:1024px)]:backdrop-blur-xl ${
+        scrolled || open ? "bg-bg/95 shadow-sm" : "bg-bg/90"
       }`}
     >
       <nav aria-label="Primary" className="mx-auto flex h-full w-full max-w-wide items-center justify-between px-gutter">
@@ -166,7 +166,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-x-0 bottom-0 top-nav z-[60] overflow-y-auto bg-bg/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-x-0 bottom-0 top-nav z-[60] overflow-y-auto bg-bg md:hidden"
           >
             <motion.ul
               initial="hidden"

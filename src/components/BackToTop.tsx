@@ -18,7 +18,7 @@ export default function BackToTop() {
           exit={{ opacity: 0, scale: 0.8 }}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.92 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })}
+          onClick={() => window.scrollTo({ top: 0, behavior: document.documentElement.dataset.motion === "full" ? "smooth" : "auto" })}
           className="fixed bottom-6 right-6 z-40 inline-flex h-11 w-11 items-center justify-center rounded-pill border border-line-strong bg-surface-2 text-fg shadow-md"
           style={{ bottom: "max(1.5rem, env(safe-area-inset-bottom))" }}
         >
